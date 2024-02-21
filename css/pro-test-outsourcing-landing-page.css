@@ -241,7 +241,7 @@
     height: 35.18519vh;
     position: absolute;
     overflow: visible;
-    transition: transform 0.3s ease-in-out, width 0.3s ease-in-out, height  0.3s ease-in-out, margin 0.3s ease-in-out;
+    transition: transform 0.2s ease-in-out, width 0.2s ease-in-out, height  0.2s ease-in-out, margin 0.2s ease-in-out;
     transform: rotate3d(0, 0, 0, 0);
 }
 
@@ -264,6 +264,7 @@
 #composition_4{
     margin-top: 12.54352vh;
 }
+
 
 @media screen and (min-width: 992px) and (max-width: 1199.98px) {
     #from_1200 {
