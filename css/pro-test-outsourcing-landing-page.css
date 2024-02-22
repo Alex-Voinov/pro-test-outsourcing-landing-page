@@ -364,7 +364,8 @@
     margin-top: 12.54352vh;
     align-self: flex-start;
     margin-left: -11.77083vw;
-    overflow-y: visible;
+    width: 100vw;
+    min-height: 136.11111vh;
 }
 
 #composition_4 > img{
@@ -397,11 +398,18 @@
 }
 
 .accordion_point{
+    position: relative;
+    cursor: pointer;
     width: 100%; 
     height: 10.18519vh;
+    overflow: hidden;
     border: var(--border_radius_3px) solid #DFE7EC;
     border-radius: var(--border_radius_35px);
     background-color: #FFFFFF;
+    transition: height 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .accordion_point:not(:last-of-type){
@@ -410,9 +418,42 @@
 
 .accordion_point__hiedden{
     opacity: 0;
+    transition: opacity 0.3s ease-in-out;
     display: none;
+    justify-content: center;
+    align-items: center;
+    width: 38.75vw;
+    text-align: center;
+    font-weight: 400;
+    letter-spacing: -0.015em;
+    font-size: var(--font_24px);
+    line-height: 2.96296vh;
+    overflow: hidden;
+    margin-top: 10.25185vh;
 }
 
+.accordion_point__title{
+    position: absolute;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 10.18519vh;
+}
+
+.accordion_point__title > p{
+    text-align: center;
+    width: 35.12865vw;
+    font-size: var(--font_32px);
+    letter-spacing: -0.015em;
+    font-weight: 500;
+    margin-left: 5.59687vw;
+}
+
+.accordion_point__title > img{
+    width: 1.44583vw;
+    height: 1.00278vh;
+    margin-left: 1.17604vw;
+}
 
 @media screen and (min-width: 992px) and (max-width: 1199.98px) {
     #from_1200 {
