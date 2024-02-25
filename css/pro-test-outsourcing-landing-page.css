@@ -717,6 +717,165 @@
     margin-top: 8.05556vh;
 }
 
+#composition_8{
+    --section_len: 151.30208vw; 
+    width: var(--section_len);
+    height: 74.07407vh;
+    margin-top: -11.81389vh;
+    margin-left: calc((var(--section_len) - 100vw) / -2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#comp_8__navigation_block{
+    height: 1.94444vh;
+    border: #0026FF 1px solid;
+}
+
+#composition_8__card_section{
+    --mixing: -12vw;
+    margin-left: var(--mixing);
+    height: 67.58148vh;
+    width: 100%;
+    margin-top: 4.35185vh;
+    display: flex;
+    align-items: center;
+}
+
+.from1200__comp_8__tester_card{
+    position: relative;
+    width: 44.36667vw;
+    opacity: 0.25;
+    height: 50.88241vh;
+    background-color: #D9D9D9;
+    border-radius: min(2.60417vw, 4.62963vh);
+    transition: width 0.3s ease-in-out, height 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+}
+
+.from1200__comp_8__tester_card > img:first-of-type{
+    position: absolute;
+    width: 18.375vw;
+    height: 49.0vh;
+    margin-left: 2.86563vw;
+    margin-top: 18.51852vh;
+}
+
+.from1200__comp_8__tester_card > img:nth-of-type(2){
+    position: absolute;
+    width: 3.00885vw;
+    height: 4.3537vh;
+    margin-left: 17.13646vw;
+    margin-top: 22.53981vh;
+    transform: rotate(4.17deg);
+}
+
+.from1200__comp_8__tester_card__header{
+    margin-top: 6.13889vh;
+    margin-left: 13.41823vw;
+    height: 18.7963vh;
+    width: 37.5vw;
+    display: flex;
+    justify-content: space-between;
+}
+
+.from1200__comp_8__tester_card__header > div:last-of-type{
+    width: 21vw;
+    margin-top: 1.48148vh;
+    letter-spacing: -0.015em;
+    font-size: min(1.35417vw, 2.40741vh);
+    font-weight: 400;
+    overflow: visible;
+    list-style-type: disc; 
+    padding-left: 0;
+    line-height: 3.7037vh;
+}
+
+
+.from1200__comp_8__tester_card__name_block{
+    width: 14.81406vw;
+    height: 14.16667vh;
+    border-radius: min(1.04167vw, 1.85185vh);
+    border: white min(0.26042vw, 0.46296vh) solid;
+    background-color: #CDD5E9;
+    display: flex;
+    flex-direction: column;
+    padding-left: 1.71875vw;
+    padding-top: 1.5vh;
+    overflow: visible;
+}
+
+.from1200__comp_8__tester_card__name_block > h1{
+    font-size: min(2.44792vw, 4.35185vh);
+    font-weight: 700;
+    letter-spacing: -0.015em;
+    color: black;
+
+}
+
+.from1200__comp_8__tester_card__name_block > p{
+    color: black;
+    font-size: min(1.19792vw, 2.12963vh);
+    font-weight: 400;
+    letter-spacing: -0.015em;
+    font-style: italic;
+    margin-top: 0.8vh;
+}
+
+.from1200__comp_8__tester_card:not(:last-of-type){
+    margin-right: 1.82292vw; 
+}
+
+.from1200__comp_8__tester_card__does_own{
+    margin-left: 29.84375vw;
+    width: 22.60417vw;
+    height: 27.77778vh;
+    border: chartreuse 1px solid;
+}
+
+.from1200__comp_8__tester_card > div:last-of-type{
+    width: 26.30208vw;
+    height: 6.26296vh;
+    margin-left: 29.84375vw;
+    display: flex;
+    justify-content: space-between;
+    overflow: visible;
+}
+
+.from1200__comp_8__tester_card > div:last-of-type>div{
+    width: min(3.52292vw, 6.26296vh);
+    height: min(3.52292vw, 6.26296vh);
+    background-color: #FFFFFF;
+    border-radius: min(1.12292vw, 1.9963vh);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.from1200__comp_8__tester_card > div:last-of-type>button{
+    background: linear-gradient(180deg, #3E5AFA 0%, #4DB6FF 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    letter-spacing: -0.015em;
+    font-size: min(1.5625vw, 2.77778vh);
+    color: white;
+    width: 21.25vw;
+    height: min(3.52292vw, 6.26296vh);
+    border-radius: min(3.33333vw, 5.92593vh);
+    cursor: pointer;
+}
+
+.from1200__comp_8__active_card{
+    width: 58.92708vw!important;
+    height: 67.58148vh!important;
+    background-color: #E8EFF9;
+    opacity: 1;
+}
+
 @media screen and (min-width: 992px) and (max-width: 1199.98px) {
     #from_1200 {
         display: none;
