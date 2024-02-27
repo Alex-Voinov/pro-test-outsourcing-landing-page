@@ -16,6 +16,14 @@ const comp_3__tile_0 = document.getElementById('composition_3__tile_0');
 const comp_3__tile_1 = document.getElementById('composition_3__tile_1');
 const comp_3__tile_2 = document.getElementById('composition_3__tile_2');
 
+const anchor = document.getElementById('anchor');
+anchor.addEventListener('click', function () {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+});
+
 const amountTesters = testers.length;
 navigationPointsBlock.style.width = `${1.09375 + testers.length * 2.76042}vw`;
 
@@ -117,31 +125,39 @@ for (let i = 0; i < amountTesters; i++) {
     const circlePoint = document.createElement('div');
     circlePoint.className = `from1200__comp_8__navigation_point${i == navigationPointsBlockActivePoint ? ' from1200__comp_8__navigation_point_active' : ''}`
     circlePoint.id = `composition_8__navigation_point__${i}`;
-    circlePoint.addEventListener('click', () => {//test id 0-7 //amount 8
-        const rightMoveCard = (step) => {
-            const testerCardLeft = document.getElementById(`from1200__comp_8__tester_card_${(navigationPointsBlockActivePoint > 0 ? navigationPointsBlockActivePoint : amountTesters) - 1}`); // левая карточка
-            const testerCardMain = document.getElementById(`from1200__comp_8__tester_card_${navigationPointsBlockActivePoint}`); // центральная карточка
-            const testerCardRight = document.getElementById(`from1200__comp_8__tester_card_${(navigationPointsBlockActivePoint < amountTesters - 1 ? navigationPointsBlockActivePoint : -1) + 1}`); // правая карточка
+    circlePoint.addEventListener('click', () => {//test id 0-5 //amount 6
+        const rightMoveCard = async (step, amount) => {
+            const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+            const realPoint = i - amount;
+            console.log(realPoint);
+            const testerCardLeft = document.getElementById(`from1200__comp_8__tester_card_${(realPoint > 0 ? realPoint : amountTesters) - 1}`); // левая карточка
+            const testerCardMain = document.getElementById(`from1200__comp_8__tester_card_${realPoint}`); // центральная карточка
+            const testerCardRight = document.getElementById(`from1200__comp_8__tester_card_${(realPoint < amountTesters - 1 ? realPoint : -1) + 1}`); // правая карточка
             const is_right = step === -1
+            console.log(`from1200__comp_8__tester_card_${navigationPointsBlockActivePoint}`);
+            console.log(testerCardMain)
             testerCardMain.classList.remove('from1200__comp_8__active_card'); //убираем класс активная карта у основной
             if (is_right) {
                 testerCardRight.classList.add('from1200__comp_8__active_card'); //добавляем активный класс правой
                 testerCardLeft.style.width = '0vw';
-                const newRightCard = createCard((navigationPointsBlockActivePoint < amountTesters - 2 ? navigationPointsBlockActivePoint : -2) + 2);
+                const newRightCard = createCard((realPoint < amountTesters - 2 ? realPoint : -2) + 2);
                 cardSection.appendChild(newRightCard);
                 setTimeout(() => { testerCardLeft.remove(); }, 300)
             } else {
                 testerCardLeft.classList.add('from1200__comp_8__active_card'); // или добавляем активный класс левой
-                //const newLeftCard = createCard((navigationPointsBlockActivePoint > 1 ? navigationPointsBlockActivePoint : amountTesters) - 2);
-                //cardSection.insertBefore(newLeftCard, newLeftCard)
-                //setTimeout(() => { testerCardRight.remove(); }, 75)
+                const newLeftCard = createCard((realPoint > 1 ? realPoint : amountTesters + 1) - 2);
+                newLeftCard.style.width = '0';
+                cardSection.insertBefore(newLeftCard, testerCardLeft);
+                setTimeout(() => { newLeftCard.style.width = ''; }, 1)
+                setTimeout(() => { testerCardRight.remove(); }, 75)
             }
+            await delay(400);
         }
 
-        const moveTheCards = (amount) => {
+        const moveTheCards = async (amount) => {
             const step = amount < 0 ? 1 : -1
             while (amount != 0) {
-                rightMoveCard(step);
+                await rightMoveCard(step, amount);
                 amount += step
             }
         }
@@ -174,6 +190,13 @@ window.addEventListener('scroll', () => {
         setTimeout(() => {
             comp_3__tile_2.style.opacity = '1';
         }, 1000);
+    }
+    if (window.scrollY > 0) {
+        anchor.style.display = 'block';
+        setTimeout(() => anchor.style.opacity = '1', 1)
+    } else {
+        anchor.style.opacity = '0'
+        setTimeout(() => anchor.style.display = '', 300)
     }
 })
 

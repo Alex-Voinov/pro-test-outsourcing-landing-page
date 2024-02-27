@@ -1,6 +1,6 @@
 export const testers = [
     {
-        name: 'Иван',
+        name: 'Иван0',
         specialization: 'Middle QA Engineer',
         characteristics: [
             '3+лет опыта в разработке ПО',
@@ -21,7 +21,7 @@ export const testers = [
         img: 'Ivan'
     },
     {
-        name: 'Иван',
+        name: 'Иван1',
         specialization: 'Middle QA Engineer',
         characteristics: [
             '3+лет опыта в разработке ПО',
@@ -42,7 +42,7 @@ export const testers = [
         img: 'Ivan'
     },
     {
-        name: 'Иван',
+        name: 'Иван2',
         specialization: 'Middle QA Engineer',
         characteristics: [
             '3+лет опыта в разработке ПО',
@@ -63,7 +63,7 @@ export const testers = [
         img: 'Ivan'
     },
     {
-        name: 'Иван',
+        name: 'Иван3',
         specialization: 'Middle QA Engineer',
         characteristics: [
             '3+лет опыта в разработке ПО',
@@ -84,7 +84,7 @@ export const testers = [
         img: 'Ivan'
     },
     {
-        name: 'Иван',
+        name: 'Иван4',
         specialization: 'Middle QA Engineer',
         characteristics: [
             '3+лет опыта в разработке ПО',
@@ -105,7 +105,7 @@ export const testers = [
         img: 'Ivan'
     },
     {
-        name: 'Иван',
+        name: 'Иван5',
         specialization: 'Middle QA Engineer',
         characteristics: [
             '3+лет опыта в разработке ПО',
