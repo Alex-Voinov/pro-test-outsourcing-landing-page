@@ -11,3 +11,4 @@ while True:
     print(f'\theight: {round(font*100/r_y, 5)}vh;')
     print()
     print(f'\tfont-size: min({round(font*100/r_x, 5)}vw, {round(font*100/r_y, 5)}vh);')
+    
