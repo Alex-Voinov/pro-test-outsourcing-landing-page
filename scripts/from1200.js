@@ -29,10 +29,10 @@ navigationPointsBlock.style.width = `${1.09375 + testers.length * 2.76042}vw`;
 
 let navigationPointsBlockActivePoint = 0;
 
-const createCard = (i) => {
+const createCard = (i, f=false) => {
     const testerCard = document.createElement('div');
     testerCard.className = 'from1200__comp_8__tester_card';
-    if (i === navigationPointsBlockActivePoint) testerCard.classList.add('from1200__comp_8__active_card');
+    if (i === navigationPointsBlockActivePoint && f) testerCard.classList.add('from1200__comp_8__active_card');
     testerCard.id = `from1200__comp_8__tester_card_${i}`
     const headerCard = document.createElement('div');
     headerCard.className = 'from1200__comp_8__tester_card__header';
@@ -47,7 +47,7 @@ const createCard = (i) => {
     }
 
     const backImageMan = document.createElement('img');
-    backImageMan.src = `img/png/from1200_comp_8_backman__${testers[i].img}.png`;
+    backImageMan.src = `img/photos_of_testers/${testers[i].img}.png`;
     backImageMan.alt = 'photo of a specialist';
 
     const backDetail = document.createElement('img');
@@ -117,7 +117,7 @@ const createCard = (i) => {
 }
 
 for (let i = 0; i < 3; i++) {
-    cardSection.appendChild(createCard(i === 0 ? amountTesters - 1 : i - 1));
+    cardSection.appendChild(createCard(i === 0 ? amountTesters - 1 : i - 1, true));
 }
 
 
@@ -134,7 +134,6 @@ for (let i = 0; i < amountTesters; i++) {
             const testerCardMain = document.getElementById(`from1200__comp_8__tester_card_${realPoint}`); // центральная карточка
             const testerCardRight = document.getElementById(`from1200__comp_8__tester_card_${(realPoint < amountTesters - 1 ? realPoint : -1) + 1}`); // правая карточка
             const is_right = step === -1
-            console.log(`from1200__comp_8__tester_card_${navigationPointsBlockActivePoint}`);
             console.log(testerCardMain)
             testerCardMain.classList.remove('from1200__comp_8__active_card'); //убираем класс активная карта у основной
             if (is_right) {
@@ -144,17 +143,20 @@ for (let i = 0; i < amountTesters; i++) {
                 cardSection.appendChild(newRightCard);
                 setTimeout(() => { testerCardLeft.remove(); }, 300)
             } else {
+
                 testerCardLeft.classList.add('from1200__comp_8__active_card'); // или добавляем активный класс левой
+                console.log(testerCardLeft)
                 const newLeftCard = createCard((realPoint > 1 ? realPoint : amountTesters + 1) - 2);
                 newLeftCard.style.width = '0';
                 cardSection.insertBefore(newLeftCard, testerCardLeft);
                 setTimeout(() => { newLeftCard.style.width = ''; }, 1)
-                setTimeout(() => { testerCardRight.remove(); }, 75)
+                setTimeout(() => { testerCardRight.remove(); }, 300)
             }
-            await delay(400);
+            await delay(600);
         }
 
         const moveTheCards = async (amount) => {
+            console.log(amount)
             const step = amount < 0 ? 1 : -1
             while (amount != 0) {
                 await rightMoveCard(step, amount);
