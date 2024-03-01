@@ -15,6 +15,19 @@ const comp_3__tile_0 = document.getElementById('composition_3__tile_0');
 const comp_3__tile_1 = document.getElementById('composition_3__tile_1');
 const comp_3__tile_2 = document.getElementById('composition_3__tile_2');
 
+const anchorImg = document.getElementById('anchor_img');
+const anchorImgPath = document.querySelector('#anchor_img circle');
+
+anchorImg.addEventListener('mouseenter', function () {
+    anchorImgPath.style.transition = 'fill-opacity 0.5s ease'; 
+    anchorImgPath.style.fillOpacity = '1'; 
+});
+
+
+anchorImg.addEventListener('mouseleave', function () {
+    anchorImgPath.style.fillOpacity = '0.3'; 
+});
+
 let isActiveCarousel = false;
 let isActiveCarouselPoints = false;
 

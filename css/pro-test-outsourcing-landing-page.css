@@ -38,7 +38,10 @@
 #anchor>img {
     width: min(3.125vw, 5.55556vh);
     height: min(3.125vw, 5.55556vh);
+    transition: opacity 0.3s ease;
 }
+
+
 
 #from_1200>header {
     position: fixed;
@@ -1037,6 +1040,7 @@
     margin-top: 20.83333vh;
     display: flex;
     justify-content: center;
+    overflow: visible;
 }
 
 #composition_9>div {
@@ -1225,7 +1229,26 @@
     width: 10.41667vw;
 }
 
-#composition_10 {}
+#composition_10 {
+    position: relative;
+    margin-top: 17.5287vh;
+    height: 127.5vh;
+    width: 100vw;
+    border: 1px solid red;
+}
+
+#composition_10 > img{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    max-block-size: none;
+    max-inline-size: none;
+}
 
 @media screen and (min-width: 992px) and (max-width: 1199.98px) {
     #from_1200 {
