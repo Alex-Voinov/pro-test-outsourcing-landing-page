@@ -15,6 +15,9 @@ const comp_3__tile_0 = document.getElementById('composition_3__tile_0');
 const comp_3__tile_1 = document.getElementById('composition_3__tile_1');
 const comp_3__tile_2 = document.getElementById('composition_3__tile_2');
 
+let isActiveCarousel = false;
+let isActiveCarouselPoints = false;
+
 const anchor = document.getElementById('anchor');
 anchor.addEventListener('click', function () {
     window.scrollTo({
@@ -27,13 +30,16 @@ const amountTesters = testers.length;
 navigationPointsBlock.style.width = `${1.09375 + testers.length * 2.76042}vw`;
 
 const onClickLeftCardGenerate = (step, i) => {
+    const numberNewActivePoint = step > 0 ? (i > 0 ? i : amountTesters) - 1 : (i < amountTesters - 1 ? i : -1) + 1;
     const inner_f = () => {
-        rightMoveCard(step, 0, i); 
-        const newActivePoint = document.getElementById(`composition_8__navigation_point__${(i > 0 ? i  : amountTesters) - 1}`);
-        const oldActivePoint = document.getElementById(`composition_8__navigation_point__${i}`);
-        navigationPointsBlockActivePoint = (i > 0 ? i  : amountTesters) - 1;
-        newActivePoint.classList.add('from1200__comp_8__navigation_point_active');
-        oldActivePoint.classList.remove('from1200__comp_8__navigation_point_active');
+        if (!isActiveCarousel) {
+            rightMoveCard(step, 0, i);
+            const newActivePoint = document.getElementById(`composition_8__navigation_point__${numberNewActivePoint}`);
+            const oldActivePoint = document.getElementById(`composition_8__navigation_point__${i}`);
+            navigationPointsBlockActivePoint = numberNewActivePoint;
+            newActivePoint.classList.add('from1200__comp_8__navigation_point_active');
+            oldActivePoint.classList.remove('from1200__comp_8__navigation_point_active');
+        }
     }
     return inner_f;
 }
@@ -41,36 +47,46 @@ const onClickLeftCardGenerate = (step, i) => {
 let navigationPointsBlockActivePoint = 0;
 
 const rightMoveCard = async (step, amount, i) => {
-    const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
-    const realPoint = i - amount;
-    console.log(realPoint)
-    const testerCardLeft = document.getElementById(`from1200__comp_8__tester_card_${(realPoint > 0 ? realPoint : amountTesters) - 1}`); // левая карточка
-    const testerCardMain = document.getElementById(`from1200__comp_8__tester_card_${realPoint}`); // центральная карточка
-    const testerCardRight = document.getElementById(`from1200__comp_8__tester_card_${(realPoint < amountTesters - 1 ? realPoint : -1) + 1}`); // правая карточка
-    const is_right = step === -1
-    testerCardMain.classList.remove('from1200__comp_8__active_card'); //убираем класс активная карта у основной
-    if (is_right) {
-        //testerCardRight.removeEventListener('click', null);
-        const new_element = testerCardRight.cloneNode(true);
-        testerCardRight.parentNode.replaceChild(new_element, testerCardRight);
-        new_element.classList.add('from1200__comp_8__active_card'); //добавляем активный класс правой
-        testerCardLeft.style.width = '0vw';
-        const newRightCard = createCard((realPoint < amountTesters - 2 ? realPoint : -2) + 2);
-        cardSection.appendChild(newRightCard);
-        setTimeout(() => { testerCardLeft.remove(); }, 300)
-    } else {
-        const new_element = testerCardLeft.cloneNode(true);
-        testerCardLeft.parentNode.replaceChild(new_element, testerCardLeft);
-        new_element.classList.add('from1200__comp_8__active_card'); // или добавляем активный класс левой
-        const newLeftCard = createCard((realPoint > 1 ? realPoint : (amountTesters + realPoint)) - 2);
-        const nextLeftSwap = onClickLeftCardGenerate(step, (realPoint > 0 ? realPoint : amountTesters) - 1);
-        newLeftCard.addEventListener('click', nextLeftSwap);
-        newLeftCard.style.width = '0';
-        cardSection.insertBefore(newLeftCard, new_element);
-        setTimeout(() => { newLeftCard.style.width = ''; }, 1)
-        setTimeout(() => { testerCardRight.remove(); }, 300)
+    if (!isActiveCarousel) {
+        isActiveCarousel = true;
+        const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+        const realPoint = i - amount;
+        console.log(realPoint)
+        const testerCardLeft = document.getElementById(`from1200__comp_8__tester_card_${(realPoint > 0 ? realPoint : amountTesters) - 1}`); // левая карточка
+        const testerCardMain = document.getElementById(`from1200__comp_8__tester_card_${realPoint}`); // центральная карточка
+        const testerCardRight = document.getElementById(`from1200__comp_8__tester_card_${(realPoint < amountTesters - 1 ? realPoint : -1) + 1}`); // правая карточка
+        const is_right = step === -1
+        testerCardMain.classList.remove('from1200__comp_8__active_card'); //убираем класс активная карта у основной
+        if (is_right) {
+            //testerCardRight.removeEventListener('click', null);
+            const new_element = testerCardRight.cloneNode(true);
+            testerCardRight.parentNode.replaceChild(new_element, testerCardRight);
+            const nextRightSwap = onClickLeftCardGenerate(step, (realPoint < amountTesters - 1 ? realPoint : -1) + 1);
+            const nextLeftSwap = onClickLeftCardGenerate(-step, (realPoint < amountTesters - 1 ? realPoint : -1) + 1);
+            testerCardMain.addEventListener('click', nextLeftSwap);
+            new_element.classList.add('from1200__comp_8__active_card'); //добавляем активный класс правой
+            testerCardLeft.style.width = '0vw';
+            const newRightCard = createCard((realPoint < amountTesters - 2 ? realPoint : realPoint - amountTesters) + 2);
+            newRightCard.addEventListener('click', nextRightSwap);//а на новую правую даём новую правую
+            cardSection.appendChild(newRightCard);
+            setTimeout(() => { testerCardLeft.remove(); }, 300)
+        } else {
+            const new_element = testerCardLeft.cloneNode(true);
+            testerCardLeft.parentNode.replaceChild(new_element, testerCardLeft);//убираем все с левой карточки, она теперь центральная
+            new_element.classList.add('from1200__comp_8__active_card'); // или добавляем активный класс левой
+            const newLeftCard = createCard((realPoint > 1 ? realPoint : (amountTesters + realPoint)) - 2);
+            const nextLeftSwap = onClickLeftCardGenerate(step, (realPoint > 0 ? realPoint : amountTesters) - 1);
+            newLeftCard.addEventListener('click', nextLeftSwap);//на новую левую, теперь новая функция на ещё более левую
+            const nextRightSwap = onClickLeftCardGenerate(-step, (realPoint > 0 ? realPoint : amountTesters) - 1);
+            testerCardMain.addEventListener('click', nextRightSwap);//а на новую правую даём новую правую
+            newLeftCard.style.width = '0';
+            cardSection.insertBefore(newLeftCard, new_element);
+            setTimeout(() => { newLeftCard.style.width = ''; }, 1)
+            setTimeout(() => { testerCardRight.remove(); }, 300)
+        }
+        await delay(600);
+        isActiveCarousel = false;
     }
-    await delay(600);
 }
 
 const createCard = (i, f = false) => {
@@ -167,14 +183,10 @@ for (let i = 0; i < 3; i++) {
         const onClickLeftCard = onClickLeftCardGenerate(1, 0)
         new_card.addEventListener('click', onClickLeftCard)
     } else if (i === 2) {
-        new_card.addEventListener('click', () => {
-            const newActivePoint = document.getElementById('composition_8__navigation_point__1');
-            const oldActivePoint = document.getElementById('composition_8__navigation_point__0');
-            rightMoveCard(-1, 1, 1); //-1 - вправо; (1) - 1 раз; (1) - куда? //работает
-            navigationPointsBlockActivePoint = 1;
-            newActivePoint.classList.add('from1200__comp_8__navigation_point_active');
-            oldActivePoint.classList.remove('from1200__comp_8__navigation_point_active');
-        })
+
+        const onClickLeftCard = onClickLeftCardGenerate(-1, 0)
+        new_card.addEventListener('click', onClickLeftCard)
+
     }
     cardSection.appendChild(new_card);
 }
@@ -185,21 +197,23 @@ for (let i = 0; i < amountTesters; i++) {
     circlePoint.className = `from1200__comp_8__navigation_point${i == navigationPointsBlockActivePoint ? ' from1200__comp_8__navigation_point_active' : ''}`
     circlePoint.id = `composition_8__navigation_point__${i}`;
     circlePoint.addEventListener('click', () => {//test id 0-2 //amount 3
-
-
-        const moveTheCards = async (amount) => {
-            const step = amount < 0 ? 1 : -1
-            while (amount != 0) {
-                await rightMoveCard(step, amount, i);
-                amount += step
+        if (!isActiveCarouselPoints) {
+            isActiveCarouselPoints = true;
+            const moveTheCards = async (amount) => {
+                const step = amount < 0 ? 1 : -1
+                while (amount != 0) {
+                    await rightMoveCard(step, amount, i);
+                    amount += step
+                }
+                isActiveCarouselPoints = false;
             }
-        }
-        if (i !== navigationPointsBlockActivePoint) {
-            moveTheCards(i - navigationPointsBlockActivePoint)
-            circlePoint.classList.add('from1200__comp_8__navigation_point_active');
-            const oldCirclePoint = document.getElementById(`composition_8__navigation_point__${navigationPointsBlockActivePoint}`);
-            oldCirclePoint.classList.remove('from1200__comp_8__navigation_point_active');
-            navigationPointsBlockActivePoint = i;
+            if (i !== navigationPointsBlockActivePoint) {
+                moveTheCards(i - navigationPointsBlockActivePoint)
+                circlePoint.classList.add('from1200__comp_8__navigation_point_active');
+                const oldCirclePoint = document.getElementById(`composition_8__navigation_point__${navigationPointsBlockActivePoint}`);
+                oldCirclePoint.classList.remove('from1200__comp_8__navigation_point_active');
+                navigationPointsBlockActivePoint = i;
+            }
         }
     })
     navigationPointsBlock.appendChild(circlePoint);

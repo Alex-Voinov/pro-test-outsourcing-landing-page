@@ -785,6 +785,7 @@
 }
 
 .from1200__comp_8__tester_card {
+    cursor: pointer;
     position: relative;
     width: var(--passive_card_width);
     opacity: 0.25;
@@ -795,6 +796,9 @@
     display: flex;
     flex-direction: column;
     overflow: hidden;
+}
+.from1200__comp_8__tester_card.from1200__comp_8__active_card{
+    cursor: default;
 }
 
 .from1200__comp_8__tester_card>img:first-of-type {
