@@ -7,7 +7,6 @@ const hieght = window.innerHeight;
 const accordionPoints = document.getElementsByClassName('accordion_point');
 const navigationPointsBlock = document.getElementById('comp_8__navigation_block');
 const cardSection = document.getElementById('composition_8__card_section');
-
 const comp_2_widdget_1 = document.getElementById('composition_2__w1');
 const comp_2_widdget_2 = document.getElementById('composition_2__w2');
 const comp_2_widdget_3 = document.getElementById('composition_2__w3');
@@ -27,9 +26,54 @@ anchor.addEventListener('click', function () {
 const amountTesters = testers.length;
 navigationPointsBlock.style.width = `${1.09375 + testers.length * 2.76042}vw`;
 
+const onClickLeftCardGenerate = (step, i) => {
+    const inner_f = () => {
+        rightMoveCard(step, 0, i); 
+        const newActivePoint = document.getElementById(`composition_8__navigation_point__${(i > 0 ? i  : amountTesters) - 1}`);
+        const oldActivePoint = document.getElementById(`composition_8__navigation_point__${i}`);
+        navigationPointsBlockActivePoint = (i > 0 ? i  : amountTesters) - 1;
+        newActivePoint.classList.add('from1200__comp_8__navigation_point_active');
+        oldActivePoint.classList.remove('from1200__comp_8__navigation_point_active');
+    }
+    return inner_f;
+}
+
 let navigationPointsBlockActivePoint = 0;
 
-const createCard = (i, f=false) => {
+const rightMoveCard = async (step, amount, i) => {
+    const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+    const realPoint = i - amount;
+    console.log(realPoint)
+    const testerCardLeft = document.getElementById(`from1200__comp_8__tester_card_${(realPoint > 0 ? realPoint : amountTesters) - 1}`); // левая карточка
+    const testerCardMain = document.getElementById(`from1200__comp_8__tester_card_${realPoint}`); // центральная карточка
+    const testerCardRight = document.getElementById(`from1200__comp_8__tester_card_${(realPoint < amountTesters - 1 ? realPoint : -1) + 1}`); // правая карточка
+    const is_right = step === -1
+    testerCardMain.classList.remove('from1200__comp_8__active_card'); //убираем класс активная карта у основной
+    if (is_right) {
+        //testerCardRight.removeEventListener('click', null);
+        const new_element = testerCardRight.cloneNode(true);
+        testerCardRight.parentNode.replaceChild(new_element, testerCardRight);
+        new_element.classList.add('from1200__comp_8__active_card'); //добавляем активный класс правой
+        testerCardLeft.style.width = '0vw';
+        const newRightCard = createCard((realPoint < amountTesters - 2 ? realPoint : -2) + 2);
+        cardSection.appendChild(newRightCard);
+        setTimeout(() => { testerCardLeft.remove(); }, 300)
+    } else {
+        const new_element = testerCardLeft.cloneNode(true);
+        testerCardLeft.parentNode.replaceChild(new_element, testerCardLeft);
+        new_element.classList.add('from1200__comp_8__active_card'); // или добавляем активный класс левой
+        const newLeftCard = createCard((realPoint > 1 ? realPoint : (amountTesters + realPoint)) - 2);
+        const nextLeftSwap = onClickLeftCardGenerate(step, (realPoint > 0 ? realPoint : amountTesters) - 1);
+        newLeftCard.addEventListener('click', nextLeftSwap);
+        newLeftCard.style.width = '0';
+        cardSection.insertBefore(newLeftCard, new_element);
+        setTimeout(() => { newLeftCard.style.width = ''; }, 1)
+        setTimeout(() => { testerCardRight.remove(); }, 300)
+    }
+    await delay(600);
+}
+
+const createCard = (i, f = false) => {
     const testerCard = document.createElement('div');
     testerCard.className = 'from1200__comp_8__tester_card';
     if (i === navigationPointsBlockActivePoint && f) testerCard.classList.add('from1200__comp_8__active_card');
@@ -116,8 +160,23 @@ const createCard = (i, f=false) => {
     return testerCard
 }
 
+
 for (let i = 0; i < 3; i++) {
-    cardSection.appendChild(createCard(i === 0 ? amountTesters - 1 : i - 1, true));
+    const new_card = createCard(i === 0 ? amountTesters - 1 : i - 1, true);
+    if (i === 0) {
+        const onClickLeftCard = onClickLeftCardGenerate(1, 0)
+        new_card.addEventListener('click', onClickLeftCard)
+    } else if (i === 2) {
+        new_card.addEventListener('click', () => {
+            const newActivePoint = document.getElementById('composition_8__navigation_point__1');
+            const oldActivePoint = document.getElementById('composition_8__navigation_point__0');
+            rightMoveCard(-1, 1, 1); //-1 - вправо; (1) - 1 раз; (1) - куда? //работает
+            navigationPointsBlockActivePoint = 1;
+            newActivePoint.classList.add('from1200__comp_8__navigation_point_active');
+            oldActivePoint.classList.remove('from1200__comp_8__navigation_point_active');
+        })
+    }
+    cardSection.appendChild(new_card);
 }
 
 
@@ -125,41 +184,13 @@ for (let i = 0; i < amountTesters; i++) {
     const circlePoint = document.createElement('div');
     circlePoint.className = `from1200__comp_8__navigation_point${i == navigationPointsBlockActivePoint ? ' from1200__comp_8__navigation_point_active' : ''}`
     circlePoint.id = `composition_8__navigation_point__${i}`;
-    circlePoint.addEventListener('click', () => {//test id 0-5 //amount 6
-        const rightMoveCard = async (step, amount) => {
-            const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
-            const realPoint = i - amount;
-            console.log(realPoint);
-            const testerCardLeft = document.getElementById(`from1200__comp_8__tester_card_${(realPoint > 0 ? realPoint : amountTesters) - 1}`); // левая карточка
-            const testerCardMain = document.getElementById(`from1200__comp_8__tester_card_${realPoint}`); // центральная карточка
-            const testerCardRight = document.getElementById(`from1200__comp_8__tester_card_${(realPoint < amountTesters - 1 ? realPoint : -1) + 1}`); // правая карточка
-            const is_right = step === -1
-            console.log(testerCardMain)
-            testerCardMain.classList.remove('from1200__comp_8__active_card'); //убираем класс активная карта у основной
-            if (is_right) {
-                testerCardRight.classList.add('from1200__comp_8__active_card'); //добавляем активный класс правой
-                testerCardLeft.style.width = '0vw';
-                const newRightCard = createCard((realPoint < amountTesters - 2 ? realPoint : -2) + 2);
-                cardSection.appendChild(newRightCard);
-                setTimeout(() => { testerCardLeft.remove(); }, 300)
-            } else {
+    circlePoint.addEventListener('click', () => {//test id 0-2 //amount 3
 
-                testerCardLeft.classList.add('from1200__comp_8__active_card'); // или добавляем активный класс левой
-                console.log(testerCardLeft)
-                const newLeftCard = createCard((realPoint > 1 ? realPoint : amountTesters + 1) - 2);
-                newLeftCard.style.width = '0';
-                cardSection.insertBefore(newLeftCard, testerCardLeft);
-                setTimeout(() => { newLeftCard.style.width = ''; }, 1)
-                setTimeout(() => { testerCardRight.remove(); }, 300)
-            }
-            await delay(600);
-        }
 
         const moveTheCards = async (amount) => {
-            console.log(amount)
             const step = amount < 0 ? 1 : -1
             while (amount != 0) {
-                await rightMoveCard(step, amount);
+                await rightMoveCard(step, amount, i);
                 amount += step
             }
         }

@@ -938,7 +938,11 @@
     font-size: min(1.01719vw, 1.80833vh);
     font-weight: 400;
     letter-spacing: -0.015em;
-    transition: font-size 0.3s ease-in-out;
+    transition: font-size 0.3s ease-in-out, margin-right 0.3s ease-in-out, margin-bottom 0.3s ease-in-out, padding 0.3s ease-in-out;
+}
+
+.from1200__comp_8__active_card .from1200__comp_8__tester_card__does_own__detail{
+    padding: 0.208335 0.75vw 0.208335vh 0.75vw;
 }
 
 .from1200__comp_8__active_card .from1200__comp_8__tester_card__does_own__detail {
@@ -946,6 +950,10 @@
 }
 
 .from1200__comp_8__tester_card__row_block>.from1200__comp_8__tester_card__does_own__detail:not(:last-of-type) {
+    margin-right: 0.41667vw;
+}
+
+.from1200__comp_8__active_card .from1200__comp_8__tester_card__row_block>.from1200__comp_8__tester_card__does_own__detail:not(:last-of-type) {
     margin-right: 0.55625vw;
 }
 
