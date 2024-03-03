@@ -1,12 +1,19 @@
 import { testers } from "./dataAboutTesters.js";
 
 const TELEGRAM_LINK = 'https://t.me/proteststudio';
+const VK_LINK = 'https://t.me/proteststudio';
+const TELEPHON_NUMBER = '+79250717321';
+
 
 const header = document.getElementById('fixedHeader1200');
 const hieght = window.innerHeight;
 const accordionPoints = document.getElementsByClassName('accordion_point');
 const navigationPointsBlock = document.getElementById('comp_8__navigation_block');
 const cardSection = document.getElementById('composition_8__card_section');
+
+const vkFormButton = document.getElementById('bottom_with_link_on_vk');
+const tgFormButton = document.getElementById('bottom_with_link_on_tellegram');
+
 const comp_2_widdget_1 = document.getElementById('composition_2__w1');
 const comp_2_widdget_2 = document.getElementById('composition_2__w2');
 const comp_2_widdget_3 = document.getElementById('composition_2__w3');
@@ -17,15 +24,30 @@ const comp_3__tile_2 = document.getElementById('composition_3__tile_2');
 
 const anchorImg = document.getElementById('anchor_img');
 const anchorImgPath = document.querySelector('#anchor_img circle');
+const callingButton = document.getElementById('calling_button');
+
+
+
+vkFormButton.addEventListener('click', ()=>{
+    window.open(VK_LINK, '_blank');
+})
+
+tgFormButton.addEventListener('click', ()=>{
+    window.open(TELEGRAM_LINK, '_blank');
+})
+
+callingButton.addEventListener('click', ()=>{
+    window.location.href = `tel:${TELEPHON_NUMBER}`;
+})
 
 anchorImg.addEventListener('mouseenter', function () {
-    anchorImgPath.style.transition = 'fill-opacity 0.5s ease'; 
-    anchorImgPath.style.fillOpacity = '1'; 
+    anchorImgPath.style.transition = 'fill-opacity 0.5s ease';
+    anchorImgPath.style.fillOpacity = '1';
 });
 
 
 anchorImg.addEventListener('mouseleave', function () {
-    anchorImgPath.style.fillOpacity = '0.3'; 
+    anchorImgPath.style.fillOpacity = '0.3';
 });
 
 let isActiveCarousel = false;
@@ -40,7 +62,7 @@ anchor.addEventListener('click', function () {
 });
 
 const amountTesters = testers.length;
-navigationPointsBlock.style.width = `${1.09375 + testers.length * 2.76042}vw`;
+navigationPointsBlock.style.width = `${1.09375 + (testers.length - 1) * 2.76042}vw`;
 
 const onClickLeftCardGenerate = (step, i) => {
     const numberNewActivePoint = step > 0 ? (i > 0 ? i : amountTesters) - 1 : (i < amountTesters - 1 ? i : -1) + 1;
