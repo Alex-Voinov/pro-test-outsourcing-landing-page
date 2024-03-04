@@ -1,8 +1,8 @@
 import { testers } from "./dataAboutTesters.js";
 
 const TELEGRAM_LINK = 'https://t.me/proteststudio';
-const VK_LINK = 'https://t.me/proteststudio';
-const TELEPHON_NUMBER = '+79250717321';
+const VK_LINK = 'https://vk.com/pro_test.studio';
+const TELEPHON_NUMBER = '+79933553088';
 
 
 const header = document.getElementById('fixedHeader1200');
@@ -26,17 +26,41 @@ const anchorImg = document.getElementById('anchor_img');
 const anchorImgPath = document.querySelector('#anchor_img circle');
 const callingButton = document.getElementById('calling_button');
 
+const block_junior = document.getElementById('form_point_checkbox_block_junior');
+const block_middle = document.getElementById('form_point_checkbox_block_middle');
+const block_senior = document.getElementById('form_point_checkbox_block_senior');
 
+const marcer_junior = document.getElementById('form_point_checkbox_marcer_junior');
+const marcer_middle = document.getElementById('form_point_checkbox_marcer_middle');
+const marcer_senior = document.getElementById('form_point_checkbox_marcer_senior');
 
-vkFormButton.addEventListener('click', ()=>{
+let formCheckBoxValue = [false, false, false];
+const checkBoxMarcerSet = [marcer_junior, marcer_middle, marcer_senior];
+const checkBoxBlockSet = [block_junior, block_middle, block_senior];
+
+const setupNewCheckBoxValue = (index) => {
+    const innerFunc = () => {
+        const state = formCheckBoxValue[index]; 
+        checkBoxMarcerSet[index].style.backgroundColor = !state ? '#4273FB' : '';
+        checkBoxMarcerSet[index].style.borderColor = !state ? '#4273FB' : '';
+        formCheckBoxValue[index] = !state;
+    }
+    return innerFunc;
+}
+
+for (let i in checkBoxBlockSet) {
+    checkBoxBlockSet[i].addEventListener('click', setupNewCheckBoxValue(i));
+}
+
+vkFormButton.addEventListener('click', () => {
     window.open(VK_LINK, '_blank');
 })
 
-tgFormButton.addEventListener('click', ()=>{
+tgFormButton.addEventListener('click', () => {
     window.open(TELEGRAM_LINK, '_blank');
 })
 
-callingButton.addEventListener('click', ()=>{
+callingButton.addEventListener('click', () => {
     window.location.href = `tel:${TELEPHON_NUMBER}`;
 })
 
