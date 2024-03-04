@@ -1493,9 +1493,9 @@
 }
 
 .form_point_checkbox_block {
-    --bgcolor: #ffffff;
+    --bgcolor: #EDEDED;
     --borderColor: #7D7C7C;
-    --opacity_value: 1;
+    --opacity_value: 0;
     overflow: visible;
     cursor: pointer;
     width: 10.3125vw;
@@ -1513,6 +1513,7 @@
 .form_point_checkbox_block:hover {
     --bgcolor: #4173fb7c;
     --borderColor: #4173fb7c;
+    --opacity_value: 1;
     box-shadow: 0 0 min(1.04167vw, 1.85185vh) 10px #4066fb;
 }
 
@@ -1539,6 +1540,8 @@
     align-items: center;
     justify-content: center;
     margin-left: 0.1vw;
+    transition: opacity 0.5s ease-in-out;
+    opacity: var(--opacity_value);
 }
 
 .form_point_checkbox_block>div>img {

@@ -43,6 +43,7 @@ const setupNewCheckBoxValue = (index) => {
         const state = formCheckBoxValue[index]; 
         checkBoxMarcerSet[index].style.backgroundColor = !state ? '#4273FB' : '';
         checkBoxMarcerSet[index].style.borderColor = !state ? '#4273FB' : '';
+        checkBoxMarcerSet[index].style.setProperty('--opacity_value', !state ? '1' : '');
         formCheckBoxValue[index] = !state;
     }
     return innerFunc;
