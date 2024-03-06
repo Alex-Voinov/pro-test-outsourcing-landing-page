@@ -1,8 +1,14 @@
 import { testers } from "./dataAboutTesters.js";
+import { responders } from './dataAboutResponders.js';
 
+//если нужно будет подредактировать контанты
 const TELEGRAM_LINK = 'https://t.me/proteststudio';
 const VK_LINK = 'https://vk.com/pro_test.studio';
 const TELEPHON_NUMBER = '+79933553088';
+const EMAIL = 'support@pro-test.studio';
+const LOCATION ="CDFjBYZ8";
+const SERVIES_LINK = 'https://pro-test.studio/ru';
+const COUESES_LINK = 'https://pro-test.studio/ru/course';
 
 
 const header = document.getElementById('fixedHeader1200');
@@ -38,9 +44,78 @@ let formCheckBoxValue = [false, false, false];
 const checkBoxMarcerSet = [marcer_junior, marcer_middle, marcer_senior];
 const checkBoxBlockSet = [block_junior, block_middle, block_senior];
 
+const reportsAutorBlock = document.getElementById('reports_autor_block');
+const reportsTextBlock = document.getElementById('reports_text_block');
+const reportsAutorImg = document.getElementById('reports_autor_img');
+const reportsAutorName = document.getElementById('reports_autor_name');
+const reportsAutorDescription = document.getElementById('reports_autor_desc');
+const reportsText = document.getElementById('reports_text');
+const amountResponders = responders.length;
+const leftPointer = document.getElementById('respond_pointer_left');
+const rightPointer = document.getElementById('respond_pointer_right');
+
+let activeResponders = 0;
+
+const contactsBlockMail = document.getElementById('contactsBlockMail');
+const contactsBlockLocation = document.getElementById('contactsBlockLocation');
+const contactsBlockTel = document.getElementById('contactsBlockTel');
+
+const linksBlockCategory1 = document.getElementById('linksBlockCategory1');
+const linksBlockCategory3 = document.getElementById('linksBlockCategory3');
+
+
+const setActiveResponders = (number) => {
+    const { name, description, feedback, img } = responders[number];
+    reportsAutorBlock.style.opacity = '0';
+    reportsTextBlock.style.opacity = '0';
+    setTimeout(() => {
+        reportsAutorImg.src = `img/photos_of_responders/${img}.png`;
+        reportsAutorImg.alt = `responder ${name}`;
+        reportsAutorName.textContent = name;
+        reportsAutorDescription.textContent = description;
+        reportsText.textContent = feedback;
+        reportsAutorBlock.style.opacity = '1';
+        reportsTextBlock.style.opacity = '1';
+    }, 300)
+
+}
+
+setActiveResponders(0);
+
+const changeActiveResponders = (isRight) => {
+    activeResponders += isRight ? 1 : -1;
+    if (activeResponders < 0) activeResponders = amountResponders - 1
+    else if (activeResponders === amountResponders) activeResponders = 0;
+    setActiveResponders(activeResponders);
+}
+
+contactsBlockMail.addEventListener('click', function() {
+    window.location.href = `mailto:${encodeURIComponent(EMAIL)}`;
+});
+
+contactsBlockLocation.addEventListener('click', function() {
+    window.location.href = `https://yandex.ru/maps/-/:${LOCATION}`;
+});
+
+linksBlockCategory1.addEventListener('click', function() {
+    window.location.href = SERVIES_LINK;
+});
+
+linksBlockCategory3.addEventListener('click', function() {
+    window.location.href = COUESES_LINK;
+});
+
+contactsBlockTel.addEventListener('click', () => {
+    window.location.href = `tel:${TELEPHON_NUMBER}`;
+})
+
+leftPointer.addEventListener('click', () => { changeActiveResponders(false) });
+rightPointer.addEventListener('click', () => { changeActiveResponders(true) });
+
+
 const setupNewCheckBoxValue = (index) => {
     const innerFunc = () => {
-        const state = formCheckBoxValue[index]; 
+        const state = formCheckBoxValue[index];
         checkBoxMarcerSet[index].style.backgroundColor = !state ? '#4273FB' : '';
         checkBoxMarcerSet[index].style.borderColor = !state ? '#4273FB' : '';
         checkBoxMarcerSet[index].style.setProperty('--opacity_value', !state ? '1' : '');
@@ -327,3 +402,5 @@ for (let i = 0; i < accordionPoints.length; i++) {
         point.setAttribute('data-active', isActive === '1' ? '0' : '1');
     });
 };
+
+
