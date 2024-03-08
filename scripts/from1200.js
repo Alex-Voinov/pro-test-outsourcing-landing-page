@@ -79,8 +79,40 @@ const headerMenuBlockPoint2 = document.getElementById('header_block_point_2');
 const headerMenuInnerPoint2 = document.getElementById('header_point_2');
 const headerMenuPoint2Pointer = document.getElementById('header_point_2_pointer');
 
+const interactionBlockButton = document.getElementById('composition_1__interaction_block__button');
+const composition_10 = document.getElementById('composition_10');
+
+
 let hederMenuPoint2IsActive = 0;
 let hederMenuPoint2IsActiveNow = false;
+
+
+const mainForm = document.getElementById('mainForm')
+mainForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const value = 'привет!'
+    fetch('http://localhost:3000/submit-form', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ value: value })
+    })
+        .then(response => response.json())
+        .then(data => {
+            console.log('Server response:', data);
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+})
+
+interactionBlockButton.addEventListener('click', () => {
+    window.scrollTo({
+        top: composition_10.offsetTop * 1.015,
+        behavior: 'smooth'
+    });
+})
 
 const hederMenuPoint1IsLeaveFunction = () => { //когда с него уходим
     hederMenuPoint1IsActiveNow = false;
@@ -249,13 +281,13 @@ callingButton.addEventListener('click', () => {
     window.location.href = `tel:${TELEPHON_NUMBER}`;
 })
 
-anchorImg.addEventListener('mouseenter', function () {
+anchorImg.addEventListener('mouseenter', () => {
     anchorImgPath.style.transition = 'fill-opacity 0.5s ease';
     anchorImgPath.style.fillOpacity = '1';
 });
 
 
-anchorImg.addEventListener('mouseleave', function () {
+anchorImg.addEventListener('mouseleave', () => {
     anchorImgPath.style.fillOpacity = '0.3';
 });
 
@@ -263,7 +295,7 @@ let isActiveCarousel = false;
 let isActiveCarouselPoints = false;
 
 const anchor = document.getElementById('anchor');
-anchor.addEventListener('click', function () {
+anchor.addEventListener('click', () => {
     window.scrollTo({
         top: 0,
         behavior: 'smooth'
