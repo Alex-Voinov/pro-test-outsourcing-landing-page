@@ -9,6 +9,8 @@ const EMAIL = 'support@pro-test.studio';
 const LOCATION = "CDFjBYZ8";
 const SERVIES_LINK = 'https://pro-test.studio/ru';
 const COUESES_LINK = 'https://pro-test.studio/ru/course';
+const SOFTWARE_TESTER_COURSE = '';
+const COMPUTER_LITERACY_COURSE_FOR_QA = '';
 
 
 const header = document.getElementById('fixedHeader1200');
@@ -71,6 +73,15 @@ const headerMenuPoint1Pointer = document.getElementById('header_point_1_pointer'
 let hederMenuPoint1IsActive = 0;//1 - зашли в функцию 2 - завершили ; 3 и 0 для обратной
 let hederMenuPoint1IsActiveNow = false;
 
+const headerMenuDropPoint2_1 = document.getElementById('header_droppoint_2_1');
+const headerMenuDropPoint2_2 = document.getElementById('header_droppoint_2_2');
+const headerMenuBlockPoint2 = document.getElementById('header_block_point_2');
+const headerMenuInnerPoint2 = document.getElementById('header_point_2');
+const headerMenuPoint2Pointer = document.getElementById('header_point_2_pointer');
+
+let hederMenuPoint2IsActive = 0;
+let hederMenuPoint2IsActiveNow = false;
+
 const hederMenuPoint1IsLeaveFunction = () => { //когда с него уходим
     hederMenuPoint1IsActiveNow = false;
     if (hederMenuPoint1IsActive === 2) { //если меню открытое
@@ -80,6 +91,7 @@ const hederMenuPoint1IsLeaveFunction = () => { //когда с него уход
         headerMenuInnerPoint1.style.marginBottom = '';
         headerMenuBlockPoint1.style.height = '';
         headerMenuPoint1Pointer.style.transform = '';
+        headerMenuBlockPoint1.style.backgroundColor = '';
         setTimeout(() => {
             headerMenuBlockPoint1.style.border = '';
             headerMenuBlockPoint1.style.boxShadow = '';
@@ -95,6 +107,7 @@ headerMenuBlockPoint1.addEventListener('mousemove', () => { //при ДВИЖЕ�
         headerMenuBlockPoint1.style.border = 'min(0.10417vw, 0.18519vh) solid #FFFFFF99';
         headerMenuBlockPoint1.style.boxShadow = '0 0 min(0.78125vw, 1.38889vh) 0 #FFFFFF40';
         headerMenuPoint1Pointer.style.transform = 'rotate(0deg)';
+        headerMenuBlockPoint1.style.backgroundColor = '#FFFFFF0C';
         setTimeout(() => {
             headerMenuDropPoint1.style.height = '3.7963vh';
             headerMenuDropPoint1.style.opacity = 1;
@@ -110,6 +123,55 @@ headerMenuBlockPoint1.addEventListener('mousemove', () => { //при ДВИЖЕ�
 headerMenuBlockPoint1.addEventListener('mouseleave', hederMenuPoint1IsLeaveFunction);
 
 
+const hederMenuPoint2IsLeaveFunction = () => { //когда с него уходим
+    hederMenuPoint2IsActiveNow = false;
+    if (hederMenuPoint2IsActive === 2) { //если меню открытое
+        hederMenuPoint2IsActive = 3; //отмечаем что началось закрытие, чтобы снова сюда не попадать
+        headerMenuDropPoint2_1.style.height = '';
+        headerMenuDropPoint2_1.style.opacity = '';
+        headerMenuDropPoint2_2.style.height = '';
+        headerMenuDropPoint2_2.style.opacity = '';
+        headerMenuInnerPoint2.style.marginBottom = '';
+        headerMenuBlockPoint2.style.height = '';
+        headerMenuPoint2Pointer.style.transform = '';
+        setTimeout(() => {
+            headerMenuBlockPoint2.style.border = '';
+            headerMenuBlockPoint2.style.boxShadow = '';
+            hederMenuPoint2IsActive = 0; //отмечаем что закрытие кончилось
+        }, 300);
+    }
+}
+
+headerMenuBlockPoint2.addEventListener('mousemove', () => { //при ДВИЖЕНИИ по компоненту
+    hederMenuPoint2IsActiveNow = true;
+    if (hederMenuPoint2IsActive === 0) {//если меню убрана - заходим
+        hederMenuPoint2IsActive = 1;//отмечаем что меню начинает открытие, чтобы снова сюда не попадать
+        headerMenuBlockPoint2.style.border = 'min(0.10417vw, 0.18519vh) solid #FFFFFF99';
+        headerMenuBlockPoint2.style.boxShadow = '0 0 min(0.78125vw, 1.38889vh) 0 #FFFFFF40';
+        headerMenuPoint2Pointer.style.transform = 'rotate(0deg)';
+        setTimeout(() => {
+            headerMenuDropPoint2_1.style.height = '3.7963vh';
+            headerMenuDropPoint2_1.style.opacity = 1;
+            headerMenuDropPoint2_2.style.height = '3.7963vh';
+            headerMenuDropPoint2_2.style.opacity = 1;
+            headerMenuInnerPoint2.style.marginBottom = '1.3vh';
+            headerMenuBlockPoint2.style.height = '16.85185vh';
+            hederMenuPoint2IsActive = 2;// отмечаем, что меню успешно открылось
+            if (!hederMenuPoint2IsActiveNow) { hederMenuPoint2IsLeaveFunction(); }
+        }, 300
+        );
+    }
+})
+
+headerMenuBlockPoint2.addEventListener('mouseleave', hederMenuPoint2IsLeaveFunction);
+
+headerMenuDropPoint2_1.addEventListener('click', () => {
+    window.location.href = SOFTWARE_TESTER_COURSE;
+})
+
+headerMenuDropPoint2_2.addEventListener('click', () => {
+    window.location.href = COMPUTER_LITERACY_COURSE_FOR_QA;
+})
 
 const setActiveResponders = (number) => {
     const { name, description, feedback, img } = responders[number];
@@ -136,19 +198,19 @@ const changeActiveResponders = (isRight) => {
     setActiveResponders(activeResponders);
 }
 
-contactsBlockMail.addEventListener('click', function () {
+contactsBlockMail.addEventListener('click', () => {
     window.location.href = `mailto:${encodeURIComponent(EMAIL)}`;
 });
 
-contactsBlockLocation.addEventListener('click', function () {
+contactsBlockLocation.addEventListener('click', () => {
     window.location.href = `https://yandex.ru/maps/-/:${LOCATION}`;
 });
 
-linksBlockCategory1.addEventListener('click', function () {
+linksBlockCategory1.addEventListener('click', () => {
     window.location.href = SERVIES_LINK;
 });
 
-linksBlockCategory3.addEventListener('click', function () {
+linksBlockCategory3.addEventListener('click', () => {
     window.location.href = COUESES_LINK;
 });
 

@@ -77,7 +77,8 @@
     margin-left: 36.25vw;
 }
 
-#header_point_1_pointer {
+#header_point_1_pointer,
+#header_point_2_pointer {
     width: 0.88542vw;
     transform: rotate(90deg);
     transition: transform 0.6s ease-in-out;
@@ -97,7 +98,7 @@
 
 #composition_1__header {
     margin-top: 4vh;
-    margin-left: 3.44vw;
+    margin-left: 3.4375vw;
     height: 5.834vh;
     display: flex;
     overflow: visible;
@@ -117,26 +118,60 @@
     letter-spacing: -0.015em;
     padding: 1.94444vh 1.51042vw 1.94444vh 1.51042vw;
     border-radius: min(1.04167vw, 1.85185vh);
-    margin-left: 5.9375vw;
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-color: #ffffff00;
+    transition: background-color 0.3s ease-in-out;
 }
 
 #composition_1__header>#header_block_point_1 {
-    cursor: pointer;
     transition: height 0.3s ease-in-out;
     height: 7vh;
-    width: 19.53125vw;
+    width: 19.01042vw;
+    cursor: default;
+    margin-left: 5vw;
+}
+
+#composition_1__header>#header_block_point_2 {
+    transition: height 0.3s ease-in-out;
+    height: 7vh;
+    width: 15.20833vw;
+    margin-left: 1.77083vw;
+    cursor: pointer;
+    color: #FFFFFF;
 }
 
 #composition_1__header #header_point_1 {
+    width: 16.66667vw !important;
     justify-content: space-between;
     margin-bottom: 0;
     transition: margin-bottom 0.3s ease-in-out;
 }
 
+#composition_1__header #header_point_2 {
+    width: 12.5vw !important;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0;
+    transition: margin-bottom 0.3s ease-in-out;
+    overflow: visible;
+}
+
 #composition_1__header #header_droppoint_1 {
+    height: 0;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out, height 0.3s ease-in-out;
+    margin-left: -1.5vw;
+}
+
+#composition_1__header #header_droppoint_2_1 {
+    height: 0;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out, height 0.3s ease-in-out;
+}
+
+#composition_1__header #header_droppoint_2_2 {
     height: 0;
     opacity: 0;
     transition: opacity 0.3s ease-in-out, height 0.3s ease-in-out;
@@ -146,30 +181,80 @@
     width: min(2.05052vw, 3.64537vh);
 }
 
+#composition_1__header #header_droppoint_2_1>svg>*,
+#composition_1__header #header_droppoint_2_2>svg>* {
+    transition: stroke 0.3s ease-in-out;
+}
+
+#composition_1__header #header_droppoint_2_1>svg {
+    width: min(1.98021vw, 3.52037vh);
+}
+
+#composition_1__header #header_droppoint_2_2>svg {
+    width: min(1.97917vw, 3.51852vh);
+}
+
 #composition_1__header #header_point_1,
-#composition_1__header #header_droppoint_1 {
+#composition_1__header #header_droppoint_1,
+#composition_1__header #header_point_2,
+#composition_1__header #header_droppoint_2_1,
+#composition_1__header #header_droppoint_2_2 {
     overflow: visible;
     display: flex;
     align-items: center;
-    width: 100%;
+    width: 15.20833vw;
+}
+
+#composition_1__header #header_droppoint_2_1,
+#composition_1__header #header_droppoint_2_2 {
+    padding-left: 1.51042vw;
+    font-size: min(0.72917vw, 1.2963vh);
+    transition: color 0.3s ease-in-out;
+}
+
+
+#composition_1__header #header_droppoint_2_2 {
+    margin-top: 1.40741vh;
 }
 
 #composition_1__header #header_droppoint_1>h1 {
-    font-size: min(0.9375vw, 1.66667vh);
     color: #4DB2FF;
+}
+
+#composition_1__header #header_droppoint_1>h1,
+#composition_1__header #header_droppoint_2_1>h1,
+#composition_1__header #header_droppoint_2_2>h1 {
+    font-size: min(0.9375vw, 1.66667vh);
     line-height: 1.90185vh;
     margin-left: 0.89167vw;
     font-weight: 700;
     overflow: visible;
+    white-space: nowrap;
+    transition: 0.3s color ease-in-out;
 }
 
 #composition_1__header #header_point_1>h1 {
     color: #4DB2FF;
 }
 
-#composition_1__header>div:last-of-type {
-    color: #FFFFFF;
-    margin-left: 1.77083vw;
+#composition_1__header #header_droppoint_2_1,
+#composition_1__header #header_droppoint_2_2 {
+    --droppointcolor: white;
+}
+
+#composition_1__header #header_droppoint_2_1:hover,
+#composition_1__header #header_droppoint_2_2:hover {
+    --droppointcolor: #8ACFFF;
+}
+
+#composition_1__header #header_droppoint_2_1>h1,
+#composition_1__header #header_droppoint_2_2>h1 {
+    color: var(--droppointcolor);
+}
+
+#composition_1__header #header_droppoint_2_1>svg>*,
+#composition_1__header #header_droppoint_2_2>svg>* {
+    stroke: var(--droppointcolor);
 }
 
 #composition_1__background {
@@ -277,8 +362,6 @@
     transition: opacity 1.2s ease-in-out, margin-top 1.2s ease-in-out;
     overflow: visible;
 }
-
-
 
 #composition_2__w1 {
     width: 7.96875vw;
