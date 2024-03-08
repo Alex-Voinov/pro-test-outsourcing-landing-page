@@ -77,6 +77,12 @@
     margin-left: 36.25vw;
 }
 
+#header_point_1_pointer {
+    width: 0.88542vw;
+    transform: rotate(90deg);
+    transition: transform 0.6s ease-in-out;
+}
+
 #from_1200>header>p:last-of-type {
     color: #FFFFFF;
     width: 15.41vw;
@@ -94,7 +100,7 @@
     margin-left: 3.44vw;
     height: 5.834vh;
     display: flex;
-    align-items: center;
+    overflow: visible;
 }
 
 #composition_1__header>img {
@@ -102,22 +108,68 @@
     height: 100%;
 }
 
-#composition_1__header>p {
+#composition_1__header>#header_block_point_1,
+#composition_1__header>#header_block_point_2 {
+    overflow: hidden;
     display: inline-block;
     font-size: var(--font_24px);
     font-weight: 700;
-    text-align: center;
     letter-spacing: -0.015em;
+    padding: 1.94444vh 1.51042vw 1.94444vh 1.51042vw;
+    border-radius: min(1.04167vw, 1.85185vh);
+    margin-left: 5.9375vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-#composition_1__header>p:first-of-type {
+#composition_1__header>#header_block_point_1 {
+    cursor: pointer;
+    transition: height 0.3s ease-in-out;
+    height: 7vh;
+    width: 19.53125vw;
+}
+
+#composition_1__header #header_point_1 {
+    justify-content: space-between;
+    margin-bottom: 0;
+    transition: margin-bottom 0.3s ease-in-out;
+}
+
+#composition_1__header #header_droppoint_1 {
+    height: 0;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out, height 0.3s ease-in-out;
+}
+
+#composition_1__header #header_droppoint_1>img {
+    width: min(2.05052vw, 3.64537vh);
+}
+
+#composition_1__header #header_point_1,
+#composition_1__header #header_droppoint_1 {
+    overflow: visible;
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+#composition_1__header #header_droppoint_1>h1 {
+    font-size: min(0.9375vw, 1.66667vh);
     color: #4DB2FF;
-    margin-left: 7.4vw;
+    line-height: 1.90185vh;
+    margin-left: 0.89167vw;
+    font-weight: 700;
+    overflow: visible;
 }
 
-#composition_1__header>p:last-of-type {
+#composition_1__header #header_point_1>h1 {
+    color: #4DB2FF;
+}
+
+#composition_1__header>div:last-of-type {
     color: #FFFFFF;
-    margin-left: 5.177vw;
+    margin-left: 1.77083vw;
 }
 
 #composition_1__background {
@@ -1910,7 +1962,7 @@
     align-items: center;
 }
 
-#composition12>#under_footer > p{
+#composition12>#under_footer>p {
     margin-left: 56.35417vw;
     color: white;
     letter-spacing: -0.015em;
