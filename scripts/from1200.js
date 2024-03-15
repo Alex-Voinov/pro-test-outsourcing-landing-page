@@ -11,9 +11,16 @@ const SERVIES_LINK = 'https://pro-test.studio/ru';
 const COUESES_LINK = 'https://pro-test.studio/ru/course';
 const SOFTWARE_TESTER_COURSE = '';
 const COMPUTER_LITERACY_COURSE_FOR_QA = '';
-
+const MESSAGE_TITLE = 'Новая заявка на аутсорсинг/аутстаффинг тестировщиков'
+const MESSAGE_TEMPLATE = `Клиент: %name
+Краткое описание проекта: %description
+Необходимы тестировщики уровня: %skillLevelTesters
+Номер телефона: %telNumber
+Почта: %email
+`
 
 const header = document.getElementById('fixedHeader1200');
+let fixedHeaderIsVisible = false;
 const hieght = window.innerHeight;
 const accordionPoints = document.getElementsByClassName('accordion_point');
 const navigationPointsBlock = document.getElementById('comp_8__navigation_block');
@@ -79,6 +86,24 @@ const headerMenuBlockPoint2 = document.getElementById('header_block_point_2');
 const headerMenuInnerPoint2 = document.getElementById('header_point_2');
 const headerMenuPoint2Pointer = document.getElementById('header_point_2_pointer');
 
+const fixedHeaderMenuDropPoint1 = document.getElementById('fixed_header_droppoint_1');
+const fixedHeaderMenuBlockPoint1 = document.getElementById('fixed_header_block_point_1');
+const fixedHeaderMenuPoint1Blur = document.getElementById('fixed_header_blur_back');
+const fixedHeaderMenuPoint2Blur = document.getElementById('fixed_header_blur_back_2');
+const fixedHeaderMenuInnerPoint1 = document.getElementById('fixed_header_point_1');
+const fixedHeaderMenuPoint1Pointer = document.getElementById('fixed_header_point_1_pointer');
+
+let fixedHederMenuPoint1IsActive = 0;//1 - зашли в функцию 2 - завершили ; 3 и 0 для обратной
+let fixedHederMenuPoint1IsActiveNow = false;
+
+const fixedHeaderMenuDropPoint2_1 = document.getElementById('fixed_header_droppoint_2_1');
+const fixedHeaderMenuDropPoint2_2 = document.getElementById('fixed_header_droppoint_2_2');
+const fixedHeaderMenuBlockPoint2 = document.getElementById('fixed_header_block_point_2');
+const fixedHeaderMenuInnerPoint2 = document.getElementById('fixed_header_point_2');
+const fixedHeaderMenuPoint2Pointer = document.getElementById('fixed_header_point_2_pointer');
+
+
+
 const interactionBlockButton = document.getElementById('composition_1__interaction_block__button');
 const composition_10 = document.getElementById('composition_10');
 
@@ -86,17 +111,48 @@ const composition_10 = document.getElementById('composition_10');
 let hederMenuPoint2IsActive = 0;
 let hederMenuPoint2IsActiveNow = false;
 
+let fixedHederMenuPoint2IsActive = 0;
+let fixedHederMenuPoint2IsActiveNow = false;
+
 
 const mainForm = document.getElementById('mainForm')
 mainForm.addEventListener('submit', (event) => {
     event.preventDefault();
-    const value = 'привет!'
+    const description = document.getElementById('form_textarea').value || '';
+    const name = document.getElementById('form_name').value || '';
+    const tel = document.getElementById('form_tel').value || '';
+    const email = document.getElementById('form_email').value || '';
+    let skillLevelTesters = '';
+    if (formCheckBoxValue[0]) {
+        if (formCheckBoxValue[1] && formCheckBoxValue[2]) {
+            skillLevelTesters = 'Junior, Middle, Senior';
+        } else if (formCheckBoxValue[1]) {
+            skillLevelTesters = 'Junior, Middle';
+        } else if (formCheckBoxValue[2]) {
+            skillLevelTesters = 'Junior, Senior';
+        } else {
+            skillLevelTesters = 'Junior';
+        }
+    } else {
+        skillLevelTesters = formCheckBoxValue[1] && formCheckBoxValue[2] ? 'Middle, Senior' : formCheckBoxValue[1] ? 'Middle' : 'Senior';
+    }
+    const msg = MESSAGE_TEMPLATE.replace(
+        '%description', description).replace(
+            '%name', name).replace(
+                '%skillLevelTesters', skillLevelTesters).replace(
+                    '%telNumber', tel).replace(
+                        '%email', email);
+
+
     fetch('http://localhost:3000/submit-form', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ value: value })
+        body: JSON.stringify({
+            titleMessage: MESSAGE_TITLE,
+            textMessage: msg,
+        })
     })
         .then(response => response.json())
         .then(data => {
@@ -166,6 +222,7 @@ const hederMenuPoint2IsLeaveFunction = () => { //когда с него уход
         headerMenuInnerPoint2.style.marginBottom = '';
         headerMenuBlockPoint2.style.height = '';
         headerMenuPoint2Pointer.style.transform = '';
+        headerMenuBlockPoint2.style.backgroundColor = '';
         setTimeout(() => {
             headerMenuBlockPoint2.style.border = '';
             headerMenuBlockPoint2.style.boxShadow = '';
@@ -181,6 +238,7 @@ headerMenuBlockPoint2.addEventListener('mousemove', () => { //при ДВИЖЕ�
         headerMenuBlockPoint2.style.border = 'min(0.10417vw, 0.18519vh) solid #FFFFFF99';
         headerMenuBlockPoint2.style.boxShadow = '0 0 min(0.78125vw, 1.38889vh) 0 #FFFFFF40';
         headerMenuPoint2Pointer.style.transform = 'rotate(0deg)';
+        headerMenuBlockPoint2.style.backgroundColor = '#FFFFFF0C';
         setTimeout(() => {
             headerMenuDropPoint2_1.style.height = '3.7963vh';
             headerMenuDropPoint2_1.style.opacity = 1;
@@ -220,6 +278,104 @@ const setActiveResponders = (number) => {
     }, 300)
 
 }
+
+//fixed H
+const fixedHederMenuPoint1IsLeaveFunction = () => { //когда с него уходим
+    fixedHederMenuPoint1IsActiveNow = false;
+    if (fixedHederMenuPoint1IsActive === 2) { //если меню открытое
+        fixedHederMenuPoint1IsActive = 3; //отмечаем что началось закрытие, чтобы снова сюда не попадать
+        fixedHeaderMenuDropPoint1.style.height = '';
+        fixedHeaderMenuDropPoint1.style.opacity = '';
+        fixedHeaderMenuInnerPoint1.style.marginBottom = '';
+        fixedHeaderMenuBlockPoint1.style.height = '';
+        fixedHeaderMenuPoint1Pointer.style.transform = '';
+        fixedHeaderMenuBlockPoint1.style.backgroundColor = '';
+        fixedHeaderMenuPoint1Blur.style.opacity = '0';
+        setTimeout(() => {
+            fixedHeaderMenuBlockPoint1.style.border = '';
+            fixedHeaderMenuBlockPoint1.style.boxShadow = '';
+            fixedHederMenuPoint1IsActive = 0; //отмечаем что закрытие кончилось
+        }, 300);
+    }
+}
+
+fixedHeaderMenuBlockPoint1.addEventListener('mousemove', () => { //при ДВИЖЕНИИ по компоненту
+    fixedHederMenuPoint1IsActiveNow = true;
+    if (fixedHederMenuPoint1IsActive === 0) {//если меню убрана - заходим
+        fixedHederMenuPoint1IsActive = 1;//отмечаем что меню начинает открытие, чтобы снова сюда не попадать
+        fixedHeaderMenuBlockPoint1.style.border = 'min(0.10417vw, 0.18519vh) solid #FFFFFF99';
+        fixedHeaderMenuBlockPoint1.style.boxShadow = '0 0 min(0.78125vw, 1.38889vh) 0 #FFFFFF40';
+        fixedHeaderMenuPoint1Pointer.style.transform = 'rotate(0deg)';
+        fixedHeaderMenuPoint1Blur.style.opacity = '0.99';
+        setTimeout(() => {
+            fixedHeaderMenuDropPoint1.style.height = '3.7963vh';
+            fixedHeaderMenuDropPoint1.style.opacity = 1;
+            fixedHeaderMenuInnerPoint1.style.marginBottom = '1.3vh';
+            fixedHeaderMenuBlockPoint1.style.height = '12.22222vh';
+            fixedHederMenuPoint1IsActive = 2;// отмечаем, что меню успешно открылось
+            if (!fixedHederMenuPoint1IsActiveNow) { fixedHederMenuPoint1IsLeaveFunction(); }
+        }, 300
+        );
+    }
+})
+
+fixedHeaderMenuBlockPoint1.addEventListener('mouseleave', fixedHederMenuPoint1IsLeaveFunction);
+
+
+const fixedHederMenuPoint2IsLeaveFunction = () => { //когда с него уходим
+    fixedHederMenuPoint2IsActiveNow = false;
+    if (fixedHederMenuPoint2IsActive === 2) { //если меню открытое
+        fixedHederMenuPoint2IsActive = 3; //отмечаем что началось закрытие, чтобы снова сюда не попадать
+        fixedHeaderMenuDropPoint2_1.style.height = '';
+        fixedHeaderMenuDropPoint2_1.style.opacity = '';
+        fixedHeaderMenuDropPoint2_2.style.height = '';
+        fixedHeaderMenuDropPoint2_2.style.opacity = '';
+        fixedHeaderMenuInnerPoint2.style.marginBottom = '';
+        fixedHeaderMenuBlockPoint2.style.height = '';
+        fixedHeaderMenuPoint2Pointer.style.transform = '';
+        fixedHeaderMenuPoint2Blur.style.opacity = '0';
+        setTimeout(() => {
+            fixedHeaderMenuBlockPoint2.style.border = '';
+            fixedHeaderMenuBlockPoint2.style.boxShadow = '';
+            fixedHederMenuPoint2IsActive = 0; //отмечаем что закрытие кончилось
+        }, 300);
+    }
+}
+
+fixedHeaderMenuBlockPoint2.addEventListener('mousemove', () => { //при ДВИЖЕНИИ по компоненту
+    fixedHederMenuPoint2IsActiveNow = true;
+    if (fixedHederMenuPoint2IsActive === 0) {//если меню убрана - заходим
+        fixedHederMenuPoint2IsActive = 1;//отмечаем что меню начинает открытие, чтобы снова сюда не попадать
+        fixedHeaderMenuBlockPoint2.style.border = 'min(0.10417vw, 0.18519vh) solid #FFFFFF99';
+        fixedHeaderMenuBlockPoint2.style.boxShadow = '0 0 min(0.78125vw, 1.38889vh) 0 #FFFFFF40';
+        fixedHeaderMenuPoint2Pointer.style.transform = 'rotate(0deg)';
+        fixedHeaderMenuPoint2Blur.style.opacity = '99';
+        setTimeout(() => {
+            fixedHeaderMenuDropPoint2_1.style.height = '3.7963vh';
+            fixedHeaderMenuDropPoint2_1.style.opacity = 1;
+            fixedHeaderMenuDropPoint2_2.style.height = '3.7963vh';
+            fixedHeaderMenuDropPoint2_2.style.opacity = 1;
+            fixedHeaderMenuInnerPoint2.style.marginBottom = '1.3vh';
+            fixedHeaderMenuBlockPoint2.style.height = '16.85185vh';
+            fixedHederMenuPoint2IsActive = 2;// отмечаем, что меню успешно открылось
+            if (!fixedHederMenuPoint2IsActiveNow) { fixedHederMenuPoint2IsLeaveFunction(); }
+        }, 300
+        );
+    }
+})
+
+fixedHeaderMenuBlockPoint2.addEventListener('mouseleave', fixedHederMenuPoint2IsLeaveFunction);
+
+fixedHeaderMenuDropPoint2_1.addEventListener('click', () => {
+    window.location.href = SOFTWARE_TESTER_COURSE;
+})
+
+fixedHeaderMenuDropPoint2_2.addEventListener('click', () => {
+    window.location.href = COMPUTER_LITERACY_COURSE_FOR_QA;
+})
+
+
+//
 
 setActiveResponders(0);
 
@@ -496,7 +652,16 @@ for (let i = 0; i < amountTesters; i++) {
 }
 
 window.addEventListener('scroll', () => {
-    header.style.marginTop = window.scrollY > hieght ? '0' : '';
+    if (window.scrollY > hieght && !fixedHeaderIsVisible) {
+        fixedHeaderIsVisible = true;
+        header.style.display = 'flex';
+        setTimeout(() => { header.style.marginTop = '0'; }, 1)
+    } else if (window.scrollY < hieght && fixedHeaderIsVisible) {
+        fixedHeaderIsVisible = false;
+        header.style.marginTop = '';
+        setTimeout(() => { header.style.display = ''; }, 300)
+    }
+
     if (window.scrollY > hieght * 0.6) {
         comp_2_widdget_1.style.opacity = '1';
         comp_2_widdget_2.style.opacity = '1';

@@ -20,7 +20,8 @@ app.use((req, res, next) => {
 // Обработка POST запроса от формы
 app.post('/submit-form', (req, res) => {
     // Получаем данные из запроса
-    const value = req.body.value;
+    const { titleMessage, textMessage } = req.body;
+
 
     // Создаем транспорт для отправки писем
     let transporter = nodemailer.createTransport({
@@ -33,10 +34,10 @@ app.post('/submit-form', (req, res) => {
 
     // Настройки письма
     let mailOptions = {
-        from: '', // Отправитель
-        to: '', // Получатель
-        subject: 'Привет!', // Тема письма
-        text: `${value}!` // Текст письма
+        from: '5708691@gmail.com', // Отправитель
+        to: 'VoinovAlex1900@yandex.ru', // Получатель
+        subject: titleMessage, // Тема письма
+        text: textMessage // Текст письма
     };
 
     // Отправка письма
