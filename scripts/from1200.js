@@ -115,6 +115,36 @@ let fixedHederMenuPoint2IsActive = 0;
 let fixedHederMenuPoint2IsActiveNow = false;
 
 
+const selectQ = (i) => {
+    const innerSelectQ = () => {
+        window.scrollTo({
+            top: composition_10.offsetTop * 1.015,
+            behavior: 'smooth'
+        });
+        formCheckBoxValue = [false, false, false];
+        let select;
+        if (testers[i].specialization.includes('Junior')) {
+            select = 0;
+        } else if (testers[i].specialization.includes('Middle')) {
+            select = 1;
+        } else {
+            select = 2;
+        }
+        for (let j = 0; j < 3; j++) {
+            if (j !== select) {
+                checkBoxMarcerSet[j].style.backgroundColor = '';
+                checkBoxMarcerSet[j].style.borderColor = '';
+                checkBoxMarcerSet[j].style.setProperty('--opacity_value', '');
+            }
+        }
+        formCheckBoxValue[select] = true;
+        checkBoxMarcerSet[select].style.backgroundColor = '#4273FB';
+        checkBoxMarcerSet[select].style.borderColor = '#4273FB';
+        checkBoxMarcerSet[select].style.setProperty('--opacity_value', '1');
+    }
+    return innerSelectQ
+}
+
 const mainForm = document.getElementById('mainForm')
 mainForm.addEventListener('submit', (event) => {
     event.preventDefault();
@@ -497,6 +527,12 @@ const rightMoveCard = async (step, amount, i) => {
             const nextLeftSwap = onClickLeftCardGenerate(-step, (realPoint < amountTesters - 1 ? realPoint : -1) + 1);
             testerCardMain.addEventListener('click', nextLeftSwap);
             new_element.classList.add('from1200__comp_8__active_card'); //добавляем активный класс правой
+            const buttonSelectQ = document.getElementById(`card_button_to_select_acive_q_${(realPoint < amountTesters - 1 ? realPoint : -1) + 1}`);
+            buttonSelectQ.addEventListener('click', selectQ((realPoint < amountTesters - 1 ? realPoint : -1) + 1));
+            const buttonTellegram = document.getElementById(`card_button_to_telegramm_${(realPoint < amountTesters - 1 ? realPoint : -1) + 1}`);
+            buttonTellegram.addEventListener('click', () => {
+                window.open(TELEGRAM_LINK, '_blank');
+            });
             testerCardLeft.style.width = '0vw';
             const newRightCard = createCard((realPoint < amountTesters - 2 ? realPoint : realPoint - amountTesters) + 2);
             newRightCard.addEventListener('click', nextRightSwap);//а на новую правую даём новую правую
@@ -506,6 +542,12 @@ const rightMoveCard = async (step, amount, i) => {
             const new_element = testerCardLeft.cloneNode(true);
             testerCardLeft.parentNode.replaceChild(new_element, testerCardLeft);//убираем все с левой карточки, она теперь центральная
             new_element.classList.add('from1200__comp_8__active_card'); // или добавляем активный класс левой
+            const buttonSelectQ = document.getElementById(`card_button_to_select_acive_q_${(realPoint > 0 ? realPoint : amountTesters) - 1}`);
+            buttonSelectQ.addEventListener('click', selectQ((realPoint > 0 ? realPoint : amountTesters) - 1));
+            const buttonTellegram = document.getElementById(`card_button_to_telegramm_${(realPoint > 0 ? realPoint : amountTesters) - 1}`);
+            buttonTellegram.addEventListener('click', () => {
+                window.open(TELEGRAM_LINK, '_blank');
+            });
             const newLeftCard = createCard((realPoint > 1 ? realPoint : (amountTesters + realPoint)) - 2);
             const nextLeftSwap = onClickLeftCardGenerate(step, (realPoint > 0 ? realPoint : amountTesters) - 1);
             newLeftCard.addEventListener('click', nextLeftSwap);//на новую левую, теперь новая функция на ещё более левую
@@ -564,12 +606,15 @@ const createCard = (i, f = false) => {
     const lastBlock = document.createElement('div');
 
     const lastBlockArtBoard = document.createElement('div');
+    lastBlockArtBoard.id = `card_button_to_telegramm_${i}`;
     lastBlockArtBoard.addEventListener('click', () => {
         window.open(TELEGRAM_LINK, '_blank');
     });
     const lastBlockButtons = document.createElement('button');
 
     lastBlockButtons.textContent = 'Забронировать встречу';
+    lastBlockButtons.addEventListener('click', selectQ(i))
+    lastBlockButtons.id = `card_button_to_select_acive_q_${i}`;
     lastBlockArtBoard.appendChild(leftButtonImg);
     lastBlock.appendChild(lastBlockArtBoard);
     lastBlock.appendChild(lastBlockButtons);
@@ -651,6 +696,7 @@ for (let i = 0; i < amountTesters; i++) {
     navigationPointsBlock.appendChild(circlePoint);
 }
 
+
 window.addEventListener('scroll', () => {
     if (window.scrollY > hieght && !fixedHeaderIsVisible) {
         fixedHeaderIsVisible = true;
@@ -679,6 +725,35 @@ window.addEventListener('scroll', () => {
             comp_3__tile_2.style.opacity = '1';
         }, 1000);
     }
+
+    if (window.scrollY > hieght * 2) {
+        for (let i = 0; i < accordionPoints.length; i++) {
+            const point = document.getElementById(`1200_accordion_point_${i}`);
+            setTimeout(() => {
+                point.style.opacity = 1;
+                point.style.marginLeft = '0';
+            }, i * 150)
+        }
+    }
+
+    if (window.scrollY > hieght * 2) {
+        for (let i = 0; i < accordionPoints.length; i++) {
+            const point = document.getElementById(`1200_accordion_point_${i}`);
+            setTimeout(() => {
+                point.style.opacity = 1;
+                point.style.marginLeft = '0';
+            }, i * 150)
+        }
+    }
+
+    for (let j = 1; j < 5; j++) {
+        const comp5Point = document.getElementById(`from1200__composition_5__text_point_${j}`);
+        if (window.scrollY > hieght * (3.4 + (j / 10))) {
+            comp5Point.style.opacity = 1;
+            comp5Point.style.marginLeft = '0';
+        }
+    }
+
     if (window.scrollY > 0) {
         anchor.style.display = 'block';
         setTimeout(() => anchor.style.opacity = '1', 1)

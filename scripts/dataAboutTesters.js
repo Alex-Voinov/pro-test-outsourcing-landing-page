@@ -2,6 +2,7 @@ export const testers = [
     {
         name: 'Станислав',
         specialization: 'Senior QA Engineer',
+        qualification: 'Senior',
         characteristics: [
             'Более 6 лет опыта работы.',
             'Инженер по автоматизированному и ручному тестированию.',
@@ -25,6 +26,7 @@ export const testers = [
     {
         name: 'Юлия',
         specialization: 'Middle QA Engineer',
+        qualification: 'Middle',
         characteristics: [
             'Более 3 лет опыта ручного тестирования  веб, десктоп, мобильных приложений',
             'Умение работать в команде с высокой коммуникабельностью.',
@@ -40,7 +42,7 @@ export const testers = [
         borderColor: [
             ['gold', 'black', 'gold', 'black',],
             ['blue', 'black', 'black',],
-            ['blue','gold' ,'blue', 'black',],
+            ['blue', 'gold', 'blue', 'black',],
             ['black'],
         ],
         img: 'Julia'
@@ -48,6 +50,7 @@ export const testers = [
     {
         name: 'Кирилл',
         specialization: 'Junior QA Engineer',
+        qualification: 'Junior',
         characteristics: [
             'Более 2 лет опыта тестирования веб-приложений (фронтенд, бэкенд, верстка).',
             'Тестирование мобильных приложений \n(Android, iOS).',
@@ -55,7 +58,7 @@ export const testers = [
         ],
         doesOwn: [
             ['Confluence', 'TestRail', 'Figma', 'Jira',],
-            ['Swagger', 'Postman', 'DevTools', ],
+            ['Swagger', 'Postman', 'DevTools',],
             ['PerfectPixel',],
         ],
         borderColor: [

@@ -760,7 +760,10 @@
     transition: height 0.3s ease-in-out;
     display: flex;
     flex-direction: column;
+    margin-left: 10vw;
     align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out, margin-left 0.3s ease-in-out;
 }
 
 .accordion_point:not(:last-of-type) {
@@ -863,30 +866,45 @@
 #from1200__composition_5__text_point_1 {
     width: 35.3125vw;
     height: 6.66667vh;
+    opacity: 0;
+    margin-left: -10vw;
+    transition: opacity 0.5s ease-in-out, margin-left 0.5s ease-in-out ;
 }
 
 #from1200__composition_5__text_point_2 {
     margin-top: 14.0vh;
     width: 35.88542vw;
     height: 6.66667vh;
+    opacity: 0;
+    margin-left: 10vw;
+    transition: opacity 0.5s ease-in-out, margin-left 0.5s ease-in-out ;
 }
 
 #from1200__composition_5__text_point_3 {
     margin-top: 13vh;
     width: 35.88542vw;
     height: 13.33333vh;
+    opacity: 0;
+    margin-left: -10vw;
+    transition: opacity 0.5s ease-in-out, margin-left 0.5s ease-in-out ;
 }
 
 #from1200__composition_5__text_point_4 {
     margin-top: 11.85185vh;
     width: 29.59219vw;
     height: 6.66667vh;
+    opacity: 0;
+    margin-left: 10vw;
+    transition: opacity 0.5s ease-in-out, margin-left 0.5s ease-in-out ;
 }
 
 #from1200__composition_5__text_point_5 {
     margin-top: 12.12963vh;
     width: 33.64583vw;
     height: 6.66667vh;
+    opacity: 0;
+    margin-left: -10vw;
+    transition: opacity 0.5s ease-in-out, margin-left 0.5s ease-in-out ;
 }
 
 #composition_6 {
