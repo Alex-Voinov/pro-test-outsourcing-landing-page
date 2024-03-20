@@ -1,23 +1,7 @@
 import { testers } from "./dataAboutTesters.js";
 import { responders } from './dataAboutResponders.js';
+import { TELEGRAM_LINK, VK_LINK, TELEPHON_NUMBER, EMAIL, LOCATION, SERVIES_LINK, COUESES_LINK, SOFTWARE_TESTER_COURSE, COMPUTER_LITERACY_COURSE_FOR_QA, MESSAGE_TITLE, MESSAGE_TEMPLATE } from "./basicInformation.js";
 
-//если нужно будет подредактировать контанты
-const TELEGRAM_LINK = 'https://t.me/proteststudio';
-const VK_LINK = 'https://vk.com/pro_test.studio';
-const TELEPHON_NUMBER = '+79933553088';
-const EMAIL = 'support@pro-test.studio';
-const LOCATION = "CDFjBYZ8";
-const SERVIES_LINK = 'https://pro-test.studio/ru';
-const COUESES_LINK = 'https://pro-test.studio/ru/course';
-const SOFTWARE_TESTER_COURSE = '';
-const COMPUTER_LITERACY_COURSE_FOR_QA = '';
-const MESSAGE_TITLE = 'Новая заявка на аутсорсинг/аутстаффинг тестировщиков'
-const MESSAGE_TEMPLATE = `Клиент: %name
-Краткое описание проекта: %description
-Необходимы тестировщики уровня: %skillLevelTesters
-Номер телефона: %telNumber
-Почта: %email
-`
 
 const header = document.getElementById('fixedHeader1200');
 let fixedHeaderIsVisible = false;
