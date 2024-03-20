@@ -145,12 +145,65 @@ const selectQ = (i) => {
     return innerSelectQ
 }
 
+
+
 const mainForm = document.getElementById('mainForm')
 mainForm.addEventListener('submit', (event) => {
     event.preventDefault();
-    const description = document.getElementById('form_textarea').value || '';
-    const name = document.getElementById('form_name').value || '';
-    const tel = document.getElementById('form_tel').value || '';
+    let isError = false;
+    const sendFormButton = document.getElementById('send_form');
+    const descriptionInput = document.getElementById('form_textarea');
+    const description = descriptionInput.value || '';
+    const nameInput = document.getElementById('form_name');
+    const name = nameInput.value || '';
+    const telInput = document.getElementById('form_tel')
+    const tel = telInput.value || '';
+    if (!name) {
+        isError = true;
+        nameInput.placeholder = 'Введите имя';
+        nameInput.style.border = '1px solid red';
+        nameInput.style.color = 'red';
+        setTimeout(() => {
+            nameInput.placeholder = 'Имя';
+            nameInput.style.border = '';
+            nameInput.style.color = '';
+        }, 2000)
+    }
+    else if (!/^[a-zA-Zа-яА-Я\s]+$/.test(name)) {
+        isError = true;
+        nameInput.value = ''
+        nameInput.placeholder = 'Недопустимый символ';
+        nameInput.style.border = '1px solid red';
+        nameInput.style.color = 'red';
+        setTimeout(() => {
+            nameInput.placeholder = 'Имя';
+            nameInput.style.border = '';
+            nameInput.style.color = '';
+        }, 2000)
+    }
+    if (!tel) {
+        isError = true;
+        telInput.placeholder = 'Введите номер телефона';
+        telInput.style.border = '1px solid red';
+        telInput.style.color = 'red';
+        setTimeout(() => {
+            telInput.placeholder = 'Номер телефона';
+            telInput.style.border = '';
+            telInput.style.color = '';
+        }, 2000)
+    }
+    else if (!/^\+?[0-9() ]{0,14}$/.test(tel)) {
+        isError = true;
+        telInput.placeholder = 'Некорректный номер телефона';
+        telInput.style.border = '1px solid red';
+        telInput.style.color = 'red';
+        telInput.value = ''
+        setTimeout(() => {
+            telInput.placeholder = 'Номер телефона';
+            telInput.style.border = '';
+            telInput.style.color = '';
+        }, 2000)
+    }
     const email = document.getElementById('form_email').value || '';
     let skillLevelTesters = '';
     if (formCheckBoxValue[0]) {
@@ -166,31 +219,49 @@ mainForm.addEventListener('submit', (event) => {
     } else {
         skillLevelTesters = formCheckBoxValue[1] && formCheckBoxValue[2] ? 'Middle, Senior' : formCheckBoxValue[1] ? 'Middle' : 'Senior';
     }
-    const msg = MESSAGE_TEMPLATE.replace(
-        '%description', description).replace(
-            '%name', name).replace(
-                '%skillLevelTesters', skillLevelTesters).replace(
-                    '%telNumber', tel).replace(
-                        '%email', email);
+    if (!isError) {
+        sendFormButton.innerText = 'Отправка...';
+        const msg = MESSAGE_TEMPLATE.replace(
+            '%description', description).replace(
+                '%name', name).replace(
+                    '%skillLevelTesters', skillLevelTesters).replace(
+                        '%telNumber', tel).replace(
+                            '%email', email);
 
 
-    fetch('http://localhost:3000/submit-form', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-            titleMessage: MESSAGE_TITLE,
-            textMessage: msg,
+        fetch('http://localhost:3000/submit-form', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                titleMessage: MESSAGE_TITLE,
+                textMessage: msg,
+            })
         })
-    })
-        .then(response => response.json())
-        .then(data => {
-            console.log('Server response:', data);
-        })
-        .catch(error => {
-            console.error('Error:', error);
-        });
+            .then(response => response.json())
+            .then(data => {
+                console.log('Server response:', data);
+                sendFormButton.innerText = 'Отправлено 🚀';
+                setTimeout(() => {
+                    sendFormButton.innerText = 'Отправить заявку';
+                }, 2000)
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                sendFormButton.innerText = 'Произошла ошибка';
+                setTimeout(() => {
+                    sendFormButton.innerText = 'Отправить заявку';
+                }, 2000)
+            });
+    } else {
+        sendFormButton.innerText = 'Ошибка, заявка не отправлена 😢';
+        sendFormButton.style.cursor = 'not-allowed';
+        setTimeout(() => {
+            sendFormButton.innerText = 'Отправить заявку';
+            sendFormButton.style.cursor = '';
+        }, 1000)
+    }
 })
 
 interactionBlockButton.addEventListener('click', () => {

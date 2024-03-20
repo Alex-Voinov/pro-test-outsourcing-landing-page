@@ -27,7 +27,7 @@ app.post('/submit-form', (req, res) => {
     let transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
-            user: '', // Ваша электронная почта
+            user: '5708691@gmail.com', // Ваша электронная почта
             pass: '' // Пароль приложения
         }
     });
