@@ -8,11 +8,13 @@ const accordionPointActiveHeights = ['15.19196vh', '15.19196vh', '15.19196vh', '
 for (let i = 1; i <= 6; ++i) {
     const accordionPoint = document.getElementById(`tablet__accordion__point_${i}`);
     const accordionBody = document.getElementById(`tablet__accordion__point_${i}__body`);
+    const pointer = document.getElementById(`tablet__accordion__point_${i}__pointer`)
     accordionPoint.addEventListener('click', () => {
         accordionPointStatets[i - 1] = !accordionPointStatets[i - 1]
         const currentState = accordionPointStatets[i - 1]
         accordionBody.style.opacity = currentState ? 1 : 0;
         accordionPoint.style.height = currentState ? accordionPointActiveHeights[i - 1] : '';
+        pointer.style.transform = currentState ? 'rotate(180deg)' : '';
     })
 }
 
