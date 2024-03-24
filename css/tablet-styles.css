@@ -499,7 +499,7 @@
 #tablet_composition_4 {
     overflow: hidden;
     width: 114.28125vw;
-    height: 78.56414vh;
+    min-height: 78.56414vh;
     margin-top: 5.4257vh;
     margin-left: -22.17551vw;
 }
@@ -540,6 +540,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    transition: height 0.3s ease-in-out;
 }
 
 .tablet__accordion__point:first-of-type{
@@ -573,10 +574,12 @@
 }
 
 .tablet__accordion__point__body{
-    margin-top: 1.95325vh;
+
     font-size: var(--font_14);
     font-weight: 400;
     line-height: 2.38731vh;
     letter-spacing: -0.015em;
     text-align: center;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
 }

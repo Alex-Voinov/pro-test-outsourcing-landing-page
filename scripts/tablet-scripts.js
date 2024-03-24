@@ -2,6 +2,19 @@ const hamburger = document.getElementById('tablet_hamburger');//772 926
 const navigation = document.getElementById('from_tablet_modal_menu__navigation')
 const closeNavigation = document.getElementById('from_tablet__nav__close');
 const flipCardStates = [false, false, false];
+const accordionPointStatets = [false, false, false, false, false, false];
+const accordionPointActiveHeights = ['15.19196vh', '15.19196vh', '15.19196vh', '12.91317vh', '13.02168vh', '17.57927vh'];
+
+for (let i = 1; i <= 6; ++i) {
+    const accordionPoint = document.getElementById(`tablet__accordion__point_${i}`);
+    const accordionBody = document.getElementById(`tablet__accordion__point_${i}__body`);
+    accordionPoint.addEventListener('click', () => {
+        accordionPointStatets[i - 1] = !accordionPointStatets[i - 1]
+        const currentState = accordionPointStatets[i - 1]
+        accordionBody.style.opacity = currentState ? 1 : 0;
+        accordionPoint.style.height = currentState ? accordionPointActiveHeights[i - 1] : '';
+    })
+}
 
 for (let i = 1; i <= 3; ++i) {
     const cardBlock = document.getElementById(`tablet__flipcard_block_${i}`);
