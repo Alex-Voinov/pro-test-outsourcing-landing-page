@@ -4,6 +4,17 @@ const closeNavigation = document.getElementById('from_tablet__nav__close');
 const flipCardStates = [false, false, false];
 const accordionPointStatets = [false, false, false, false, false, false];
 const accordionPointActiveHeights = ['15.19196vh', '15.19196vh', '15.19196vh', '12.91317vh', '13.02168vh', '17.57927vh'];
+const fixedHeader = document.getElementById('from_tablet__fixed_header');
+const fixedMenuBurger = document.getElementById('tablet__fixed_menu__hamburger');
+let isOpenBurger = false;
+const windowHieght = window.innerHeight;
+
+window.addEventListener('scroll', () => {
+    if (!isOpenBurger) {
+        fixedHeader.style.opacity = window.scrollY > windowHieght ? '1' : '';
+        fixedHeader.style.top = window.scrollY > windowHieght ? '0' : '';
+    }
+})
 
 for (let i = 1; i <= 6; ++i) {
     const accordionPoint = document.getElementById(`tablet__accordion__point_${i}`);
@@ -47,15 +58,24 @@ for (let i = 1; i <= 3; ++i) {
     })
 }
 
-hamburger.addEventListener('click', () => {
+const openBurger = () => {
+    isOpenBurger = true;
     from_tablet_modal_menu.style.display = 'block';
     setTimeout(() => {
         from_tablet_modal_menu.style.backdropFilter = 'blur(2px)';
         navigation.style.marginRight = '0';
     }, 1)
-})
+}
+
+hamburger.addEventListener('click', openBurger);
+fixedMenuBurger.addEventListener('click', ()=>{
+    fixedHeader.style.opacity = '';
+    fixedHeader.style.top = '';
+    openBurger();
+});
 
 closeNavigation.addEventListener('click', () => {
+    isOpenBurger = false;
     from_tablet_modal_menu.style.backdropFilter = '';
     navigation.style.marginRight = '';
     setTimeout(() => {

@@ -23,6 +23,43 @@
     font-family: 'IBMPlexSans';
 }
 
+#from_tablet__fixed_header{
+    z-index: 4;
+    position: fixed;
+    top: -5.39957vh;
+    left: 0;
+    opacity: 0;
+    width: 100vw;
+    height: 5.39957vh;
+    background: linear-gradient(90deg, #26264F 0%, #434989 100%);
+    display: flex;
+    align-items: center;
+    border-radius: 0 0 min(3.23834vw, 2.69978vh) min(3.23834vw, 2.69978vh) ;
+    transition: top 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+#from_tablet__fixed_header > img{
+    width: 27.46114vw;
+    height: 2.80778vh;
+    margin-left: 3.2383vw;
+}
+
+#tablet__fixed_menu__hamburger{
+    margin-left: 61.1399vw;
+    width: 2.97927vw;
+    height: 1.51188vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.tablet__fixed_menu__hamburger__line{
+    width: 100%;
+    background-color: #ECECEC;
+    height: 0.21598vh;
+    border-radius: 0.21598vh;
+}
+
 #from_tablet_modal_menu {
     width: 100vw;
     height: 100vh;
