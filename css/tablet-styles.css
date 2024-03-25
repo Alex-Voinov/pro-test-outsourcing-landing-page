@@ -873,7 +873,7 @@
     border-radius: min(5.69948vw, 4.75162vh);
     background-color: #E8EFF9;
     position: absolute;
-    transition: opacity 0.3s ease-in-out, width 0.3s ease-in-out, height 0.3s ease-in-out, left 0.3s ease-in-out ;
+    transition: opacity 0.3s ease-in-out, width 0.3s ease-in-out, height 0.3s ease-in-out, left 0.3s ease-in-out, border-radius 0.3s ease-in-out;
 }
 
 .tablet__tester_card.active{
@@ -904,7 +904,7 @@
     transition: all 0.3s ease-in-out;
 }
 
-.tablet__tester_card__name_block.active{
+.active .tablet__tester_card__name_block{
     border-width: min(0.3886vw, 0.32397vh);
     border-radius: min(1.68394vw, 1.40389vh);
 }
@@ -919,7 +919,7 @@
     transition: font-size 0.3s ease-in-out;
 }
 
-.tablet__tester_card__name_block.active > h1{
+.active .tablet__tester_card__name_block > h1{
     font-size: var(--radius_25);
 }
 
@@ -935,7 +935,7 @@
     transition: font-size 0.3s ease-in-out;
 }
 
-.tablet__tester_card__name_block.active > p{
+.active .tablet__tester_card__name_block > p{
     font-size: var(--font_16);
 }
 
@@ -987,7 +987,7 @@
     transition: font-size 0.3s ease-in-out, margin-left 0.3s ease-in-out;
 }
 
-.tablet__tester_card__button.active > p{
+.active .tablet__tester_card__button> p{
     font-size: var(--font_19);
     margin-left: 5.31088vw;
 }
@@ -1004,7 +1004,7 @@
     justify-content: center;
 }
 
-.tablet__tester_card__button.active > div{
+.active .tablet__tester_card__button> div{
     width: min(4.66321vw, 3.88769vh);
     height: min(4.66321vw, 3.88769vh);
     margin-left: 3.88601vw;
@@ -1028,10 +1028,12 @@
     top: 24.19006vh;
 }
 
+
 #tablet__tester_card__left_pointer > img,
 #tablet__tester_card__right_pointer > img{
     width: 25%;
     margin-left: 0.3vw;
+    pointer-events: none;
 }
 
 #tablet__tester_card__left_pointer{
@@ -1041,4 +1043,14 @@
 
 #tablet__tester_card__right_pointer{
     right: 5.18135vw;
+}
+
+#tablet_composition_8_card_block{
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
 }

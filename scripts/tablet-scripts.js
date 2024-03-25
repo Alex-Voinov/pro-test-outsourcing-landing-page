@@ -9,14 +9,15 @@ const accordionPointActiveHeights = ['15.19196vh', '15.19196vh', '15.19196vh', '
 const fixedHeader = document.getElementById('from_tablet__fixed_header');
 const fixedMenuBurger = document.getElementById('tablet__fixed_menu__hamburger');
 let isOpenBurger = false;
-let activeCardNumber = 0;
+let activeCardNumber = 1;
 const amountTesters = testers.length;
 const windowHieght = window.innerHeight;
-const cardComposition = document.getElementById('tablet_composition_8')
+const cardComposition = document.getElementById('tablet_composition_8_card_block')
 const leftPosCard = [-25.51813, 14.50777, 71.24352];
 
 const leftPointer = document.getElementById('tablet__tester_card__left_pointer')
 const rightPointer = document.getElementById('tablet__tester_card__right_pointer')
+
 
 const diffNeberByOne = (number) => {
     if (number == amountTesters) {
@@ -29,7 +30,6 @@ const diffNeberByOne = (number) => {
 
 const swapTesterCard = (isLeft) => {
     const innerFunck = () => {
-        console.log(isLeft)
         const leftCardNumber = diffNeberByOne(activeCardNumber - 1);
         const rightCardNumber = diffNeberByOne(activeCardNumber + 1);
         const leftCard = document.getElementById(`tablet__tester_card__${leftCardNumber}`);
@@ -38,35 +38,38 @@ const swapTesterCard = (isLeft) => {
         activeCard.classList.remove('active');
         if (isLeft) {
             rightCard.classList.add('active');
-            const numberNewRightCard = diffNeberByOne(leftCardNumber + 1);
-            const newCard = generateCard(testers[numberNewRightCard], false, 140, numberNewRightCard)
+            const numberNewRightCard = diffNeberByOne(rightCardNumber + 1);
+            const newCard = generateCard(numberNewRightCard, false, 100)
             leftCard.style.left = '-40vw';
             activeCard.style.left = `${leftPosCard[0]}vw`;
             rightCard.style.left = `${leftPosCard[1]}vw`;
-            newCard.style.left = `${leftPosCard[2]}vw`;
+            cardComposition.appendChild(newCard);
+            setTimeout(() => { newCard.style.left = `${leftPosCard[2]}vw`; }, 1)
+            setTimeout(() => {
+                cardComposition.removeChild(leftCard);
+            }, 300)
         } else {
             leftCard.classList.add('active');
             const numberNewLeftCard = diffNeberByOne(leftCardNumber - 1);
-            const newCard = generateCard(testers[numberNewLeftCard], false, -40, numberNewLeftCard)
+            const newCard = generateCard(numberNewLeftCard, false, -40)
             rightCard.style.left = '140vw';
-            newCard.style.left = `${leftPosCard[0]}vw`;
-            leftCardCard.style.left = `${leftPosCard[1]}vw`;
+            leftCard.style.left = `${leftPosCard[1]}vw`;
             activeCard.style.left = `${leftPosCard[2]}vw`;
+            cardComposition.appendChild(newCard);
+            setTimeout(() => { newCard.style.left = `${leftPosCard[0]}vw`; }, 1)
+            setTimeout(() => {
+                cardComposition.removeChild(rightCard);
+            }, 300)
         }
         activeCardNumber += isLeft ? 1 : -1;
-        activeCardNumber = diffNeberByOne(activeCard)
+        activeCardNumber = diffNeberByOne(activeCardNumber)
     }
     return innerFunck;
 }
 
-console.log("leftPointer:", leftPointer); 
-console.log("rightPointer:", rightPointer); 
+leftPointer.addEventListener('click', swapTesterCard(true));
+rightPointer.addEventListener('click', swapTesterCard(false));
 
-leftPointer.addEventListener('click', () => { console.log(1) });
-rightPointer.addEventListener('click', () => { console.log(1) });
-//swapTesterCard(true) 
-
-//swapTesterCard(false)
 window.addEventListener('scroll', () => {
     if (!isOpenBurger) {
         fixedHeader.style.opacity = window.scrollY > windowHieght ? '1' : '';
@@ -141,32 +144,31 @@ closeNavigation.addEventListener('click', () => {
     }, 500)
 })
 
-const generateCard = (tester, isActive, left, number) => {
-    const additionalClass = isActive ? ' active' : ''
-    return `
-    <div class='tablet__tester_card${additionalClass}' style='left: ${left}vw;' id='tablet__tester_card__${number}'>
-        <div class='tablet__tester_card__inner_wrapper'>
-            <div class='tablet__tester_card__name_block${additionalClass}'>
-                <h1>${tester.name}</h1>
-                <p>${tester.specialization}</p>
-            </div>
-            <img src='img/svg/tablet__tester_card__detail.svg' alt='a thought icon going to a person' class='tablet__tester_card__detail'>
-            <img src='img/svg/tablet__tester_card__mountains.svg' alt='the image of the white mountains' class='tablet__tester_card__mountains'>
-            <img src='img/photos_of_testers/tablet_${tester.img}.png' alt='photo of the tester' class='tablet__tester_card__tester_photo'>
-            <button class='tablet__tester_card__button${additionalClass}'>
-                <p>Больше информации</p>
-                <div>
-                    <img src='img/svg/tablet__tester_card__pointer.svg' alt='pointer' class='tablet__tester_card__pointer'>
-                </div>
-            </button>
-        </div>
+const generateCard = (number, isActive, left) => {
+    const tester = testers[number];
+    const newCard = document.createElement('div');
+    newCard.classList.add('tablet__tester_card');
+    if (isActive) newCard.classList.add('active');
+    newCard.id = `tablet__tester_card__${number}`
+    newCard.style.left = `${left}vw`;
+    newCard.innerHTML = `<div class='tablet__tester_card__inner_wrapper'>
+    <div class='tablet__tester_card__name_block'>
+        <h1>${tester.name}</h1>
+        <p>${tester.specialization}</p>
     </div>
-    `
+    <img src='img/svg/tablet__tester_card__detail.svg' alt='a thought icon going to a person' class='tablet__tester_card__detail'>
+    <img src='img/svg/tablet__tester_card__mountains.svg' alt='the image of the white mountains' class='tablet__tester_card__mountains'>
+    <img src='img/photos_of_testers/tablet_${tester.img}.png' alt='photo of the tester' class='tablet__tester_card__tester_photo'>
+    <button class='tablet__tester_card__button'>
+        <p>Больше информации</p>
+        <div>
+            <img src='img/svg/tablet__tester_card__pointer.svg' alt='pointer' class='tablet__tester_card__pointer'>
+        </div>
+    </button>
+</div>`
+    return newCard;
 }
 
-testers.forEach(
-    (tester, number) => {
-        number == 1;
-        cardComposition.innerHTML += generateCard(tester, number == 1, leftPosCard[number], number)
-    }
-)
+for (let i = 0; i < 3; ++i) {
+    cardComposition.appendChild(generateCard(i, i == 1, leftPosCard[i]));
+}
