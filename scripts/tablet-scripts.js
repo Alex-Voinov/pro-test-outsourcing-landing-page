@@ -10,6 +10,7 @@ const fixedHeader = document.getElementById('from_tablet__fixed_header');
 const fixedMenuBurger = document.getElementById('tablet__fixed_menu__hamburger');
 let isOpenBurger = false;
 let activeCardNumber = 1;
+let isActiveCoursel = false;
 const amountTesters = testers.length;
 const windowHieght = window.innerHeight;
 const cardComposition = document.getElementById('tablet_composition_8_card_block')
@@ -30,45 +31,57 @@ const diffNeberByOne = (number) => {
 
 const swapTesterCard = (isLeft) => {
     const innerFunck = () => {
-        const leftCardNumber = diffNeberByOne(activeCardNumber - 1);
-        const rightCardNumber = diffNeberByOne(activeCardNumber + 1);
-        const leftCard = document.getElementById(`tablet__tester_card__${leftCardNumber}`);
-        const activeCard = document.getElementById(`tablet__tester_card__${activeCardNumber}`);
-        const rightCard = document.getElementById(`tablet__tester_card__${rightCardNumber}`);
-        activeCard.classList.remove('active');
-        if (isLeft) {
-            rightCard.classList.add('active');
-            const numberNewRightCard = diffNeberByOne(rightCardNumber + 1);
-            const newCard = generateCard(numberNewRightCard, false, 100)
-            leftCard.style.left = '-40vw';
-            activeCard.style.left = `${leftPosCard[0]}vw`;
-            rightCard.style.left = `${leftPosCard[1]}vw`;
-            cardComposition.appendChild(newCard);
-            setTimeout(() => { newCard.style.left = `${leftPosCard[2]}vw`; }, 1)
-            setTimeout(() => {
-                cardComposition.removeChild(leftCard);
-            }, 300)
-        } else {
-            leftCard.classList.add('active');
-            const numberNewLeftCard = diffNeberByOne(leftCardNumber - 1);
-            const newCard = generateCard(numberNewLeftCard, false, -40)
-            rightCard.style.left = '140vw';
-            leftCard.style.left = `${leftPosCard[1]}vw`;
-            activeCard.style.left = `${leftPosCard[2]}vw`;
-            cardComposition.appendChild(newCard);
-            setTimeout(() => { newCard.style.left = `${leftPosCard[0]}vw`; }, 1)
-            setTimeout(() => {
-                cardComposition.removeChild(rightCard);
-            }, 300)
+        if (!isActiveCoursel) {
+            isActiveCoursel = true;
+            const leftCardNumber = diffNeberByOne(activeCardNumber - 1);
+            const rightCardNumber = diffNeberByOne(activeCardNumber + 1);
+            const leftCard = document.getElementById(`tablet__tester_card__${leftCardNumber}`);
+            const activeCard = document.getElementById(`tablet__tester_card__${activeCardNumber}`);
+            const rightCard = document.getElementById(`tablet__tester_card__${rightCardNumber}`);
+            const leftCardOpen = document.getElementById(`tablet__tester_card_open__${leftCardNumber}`);
+            const activeCardOpen = document.getElementById(`tablet__tester_card_open__${activeCardNumber}`);
+            const rightCardOpen = document.getElementById(`tablet__tester_card_open__${rightCardNumber}`);
+
+            activeCard.classList.remove('active');
+            activeCardOpen.classList.remove('active');
+            if (isLeft) {
+                rightCard.classList.add('active');
+                rightCardOpen.classList.add('active');
+                const numberNewRightCard = diffNeberByOne(rightCardNumber + 1);
+                const newCard = generateCard(numberNewRightCard, false, 100);
+                leftCard.style.left = '-40vw';
+                activeCard.style.left = `${leftPosCard[0]}vw`;
+                rightCard.style.left = `${leftPosCard[1]}vw`;
+                cardComposition.appendChild(newCard);
+                setTimeout(() => { newCard.style.left = `${leftPosCard[2]}vw`; }, 1)
+                setTimeout(() => {
+                    cardComposition.removeChild(leftCard);
+                    isActiveCoursel = false;
+                }, 300)
+            } else {
+                leftCard.classList.add('active');
+                leftCardOpen.classList.add('active');
+                const numberNewLeftCard = diffNeberByOne(leftCardNumber - 1);
+                const newCard = generateCard(numberNewLeftCard, false, -40)
+                rightCard.style.left = '140vw';
+                leftCard.style.left = `${leftPosCard[1]}vw`;
+                activeCard.style.left = `${leftPosCard[2]}vw`;
+                cardComposition.appendChild(newCard);
+                setTimeout(() => { newCard.style.left = `${leftPosCard[0]}vw`; }, 1)
+                setTimeout(() => {
+                    cardComposition.removeChild(rightCard);
+                    isActiveCoursel = false;
+                }, 300)
+            }
+            activeCardNumber += isLeft ? 1 : -1;
+            activeCardNumber = diffNeberByOne(activeCardNumber)
         }
-        activeCardNumber += isLeft ? 1 : -1;
-        activeCardNumber = diffNeberByOne(activeCardNumber)
     }
     return innerFunck;
 }
 
-leftPointer.addEventListener('click', swapTesterCard(true));
-rightPointer.addEventListener('click', swapTesterCard(false));
+leftPointer.addEventListener('click', swapTesterCard(false));
+rightPointer.addEventListener('click', swapTesterCard(true));
 
 window.addEventListener('scroll', () => {
     if (!isOpenBurger) {
@@ -144,30 +157,151 @@ closeNavigation.addEventListener('click', () => {
     }, 500)
 })
 
+
 const generateCard = (number, isActive, left) => {
     const tester = testers[number];
+
+    // Создаем основной элемент карточки
     const newCard = document.createElement('div');
     newCard.classList.add('tablet__tester_card');
     if (isActive) newCard.classList.add('active');
-    newCard.id = `tablet__tester_card__${number}`
+    newCard.id = `tablet__tester_card__${number}`;
     newCard.style.left = `${left}vw`;
-    newCard.innerHTML = `<div class='tablet__tester_card__inner_wrapper'>
-    <div class='tablet__tester_card__name_block'>
-        <h1>${tester.name}</h1>
-        <p>${tester.specialization}</p>
-    </div>
-    <img src='img/svg/tablet__tester_card__detail.svg' alt='a thought icon going to a person' class='tablet__tester_card__detail'>
-    <img src='img/svg/tablet__tester_card__mountains.svg' alt='the image of the white mountains' class='tablet__tester_card__mountains'>
-    <img src='img/photos_of_testers/tablet_${tester.img}.png' alt='photo of the tester' class='tablet__tester_card__tester_photo'>
-    <button class='tablet__tester_card__button'>
-        <p>Больше информации</p>
-        <div>
-            <img src='img/svg/tablet__tester_card__pointer.svg' alt='pointer' class='tablet__tester_card__pointer'>
-        </div>
-    </button>
-</div>`
+
+    // Создаем внутренний контейнер
+    const innerWrapper = document.createElement('div');
+    innerWrapper.classList.add('tablet__tester_card__inner_wrapper');
+
+
+    // Создаем блок с открытой версией
+    const openVersion = document.createElement('div');
+    openVersion.id = `tablet__tester_card_open__${number}`;
+    openVersion.classList.add(`tablet__tester_card__open_version`);
+    if (isActive) openVersion.classList.add('active');
+    innerWrapper.appendChild(openVersion);
+
+    //Создаем блок с именем и специализацией в открытой версии
+    const nameBlockOpen = document.createElement('div');
+    nameBlockOpen.classList.add('tablet__tester_card_open__name_block');
+    const nameHeadingOpen = document.createElement('h1');
+    nameHeadingOpen.textContent = tester.name;
+    const specializationParagraphOpen = document.createElement('p');
+    specializationParagraphOpen.textContent = tester.specialization;
+    nameBlockOpen.appendChild(nameHeadingOpen);
+    nameBlockOpen.appendChild(specializationParagraphOpen);
+    openVersion.appendChild(nameBlockOpen);
+
+
+    //Создаем блок откат в открытой версии
+    const backPointer = document.createElement('div');
+    backPointer.classList.add('tablet__tester_card_open__back_block');
+    backPointer.addEventListener('click', () => {
+        openVersion.style.opacity = 0;
+        setTimeout(() => openVersion.style.display = 'none', 500)
+    })
+    const backPoinerImg = document.createElement('img');
+    backPoinerImg.src = 'img/svg/tablet__comp_8__poiner_reversed.svg';
+    backPoinerImg.alt = 'the back button';
+    backPointer.appendChild(backPoinerImg);
+    openVersion.appendChild(backPointer);
+
+    //Создаем текстовый-блок описаний в открытой версии
+    const descriptionBlock = document.createElement('ul');
+    descriptionBlock.classList.add('tablet__tester_card_open__description_block')
+    tester.characteristics.forEach(
+        characteristic => {
+            const characteristicParagraph = document.createElement('li');
+            characteristicParagraph.innerText = characteristic;
+            descriptionBlock.appendChild(characteristicParagraph);
+        }
+    )
+    openVersion.appendChild(descriptionBlock);
+
+    //Создаем текстовый-блок описаний в открытой версии
+    tester.doesOwn.forEach((skillsRow, number) => {
+        const skillsBlock = document.createElement('div');
+        skillsRow.forEach((skill, numberInRow) => {
+            const skillBlock = document.createElement('p');
+            skillBlock.innerText = skill;
+            skillBlock.classList.add(`${tester.borderColor[number][numberInRow]}_line`)
+            skillsBlock.appendChild(skillBlock);
+        })
+        skillsBlock.classList.add('tablet__tester_card_open__skills_block')
+        skillsBlock.style.top = 58 + 5.15 * number + '%';
+        openVersion.appendChild(skillsBlock);
+    })
+
+    //создаем блок с кнопкой
+    const openCardTgBlock =  document.createElement('div');
+    openCardTgBlock.classList.add('tablet__tester_card_open__tg_button_block');
+    const tgLogo = document.createElement('img');
+    const openCardButtonToTransition = document.createElement('div');
+    openCardButtonToTransition.classList.add('tablet__tester_card_open__button_transition');
+    openCardButtonToTransition.innerText = 'Забронировать встречу';
+    openVersion.appendChild(openCardButtonToTransition);
+    tgLogo.src = 'img/svg/tellegram_logo.svg';
+    tgLogo.alt = 'Telegram logotip';
+    openCardTgBlock.appendChild(tgLogo);
+    openVersion.appendChild(openCardTgBlock);
+
+
+    // Создаем блок с именем и специализацией
+    const nameBlock = document.createElement('div');
+    nameBlock.classList.add('tablet__tester_card__name_block');
+    const nameHeading = document.createElement('h1');
+    nameHeading.textContent = tester.name;
+    const specializationParagraph = document.createElement('p');
+    specializationParagraph.textContent = tester.specialization;
+    nameBlock.appendChild(nameHeading);
+    nameBlock.appendChild(specializationParagraph);
+    innerWrapper.appendChild(nameBlock);
+
+    // Создаем изображения
+    const detailImage = document.createElement('img');
+    detailImage.src = 'img/svg/tablet__tester_card__detail.svg';
+    detailImage.alt = 'a thought icon going to a person';
+    detailImage.classList.add('tablet__tester_card__detail');
+    innerWrapper.appendChild(detailImage);
+
+    const mountainsImage = document.createElement('img');
+    mountainsImage.src = 'img/svg/tablet__tester_card__mountains.svg';
+    mountainsImage.alt = 'the image of the white mountains';
+    mountainsImage.classList.add('tablet__tester_card__mountains');
+    innerWrapper.appendChild(mountainsImage);
+
+    const testerPhotoImage = document.createElement('img');
+    testerPhotoImage.src = `img/photos_of_testers/tablet_${tester.img}.png`;
+    testerPhotoImage.alt = 'photo of the tester';
+    testerPhotoImage.classList.add('tablet__tester_card__tester_photo');
+    innerWrapper.appendChild(testerPhotoImage);
+
+    // Создаем кнопку
+    const button = document.createElement('button');
+    button.classList.add('tablet__tester_card__button');
+    button.id = `tablet__tester_card_${number}__button`;
+    button.addEventListener('click', () => {
+
+        openVersion.style.display = 'block';
+        setTimeout(() => openVersion.style.opacity = 1, 1)
+    })
+    const buttonText = document.createElement('p');
+    buttonText.textContent = 'Больше информации';
+    const buttonIcon = document.createElement('div');
+    const pointerImage = document.createElement('img');
+    pointerImage.src = 'img/svg/tablet__tester_card__pointer.svg';
+    pointerImage.alt = 'pointer';
+    pointerImage.classList.add('tablet__tester_card__pointer');
+    buttonIcon.appendChild(pointerImage);
+    button.appendChild(buttonText);
+    button.appendChild(buttonIcon);
+    innerWrapper.appendChild(button);
+
+    // Добавляем внутренний контейнер в основной элемент карточки
+    newCard.appendChild(innerWrapper);
+
     return newCard;
 }
+
 
 for (let i = 0; i < 3; ++i) {
     cardComposition.appendChild(generateCard(i, i == 1, leftPosCard[i]));
