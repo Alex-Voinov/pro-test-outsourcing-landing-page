@@ -107,9 +107,9 @@ const selectQ = (i) => {
         });
         formCheckBoxValue = [false, false, false];
         let select;
-        if (testers[i].specialization.includes('Junior')) {
+        if (testers[i].qualification.includes('Junior')) {
             select = 0;
-        } else if (testers[i].specialization.includes('Middle')) {
+        } else if (testers[i].qualification.includes('Middle')) {
             select = 1;
         } else {
             select = 2;

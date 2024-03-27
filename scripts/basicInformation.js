@@ -5,8 +5,8 @@ export const EMAIL = 'support@pro-test.studio';
 export const LOCATION = "CDFjBYZ8";
 export const SERVIES_LINK = 'https://pro-test.studio/ru';
 export const COUESES_LINK = 'https://pro-test.studio/ru/course';
-export const SOFTWARE_TESTER_COURSE = '';
-export const COMPUTER_LITERACY_COURSE_FOR_QA = '';
+export const SOFTWARE_TESTER_COURSE = 'https://course.pro-test.studio';
+export const COMPUTER_LITERACY_COURSE_FOR_QA = 'https://youtube.com/playlist?list=PLJiynNYauVeJ_bMlfEAuPojwT3JaoO6Wv&si=8Eawvv5YfCdufBzo';
 export const MESSAGE_TITLE = 'Новая заявка на аутсорсинг/аутстаффинг тестировщиков'
 export const MESSAGE_TEMPLATE = `Клиент: %name
 Краткое описание проекта: %description

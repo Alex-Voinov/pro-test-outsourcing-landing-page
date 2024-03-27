@@ -1,5 +1,6 @@
 import { testers } from "./dataAboutTesters.js";
 import { responders } from "./dataAboutResponders.js";
+import { COMPUTER_LITERACY_COURSE_FOR_QA, COUESES_LINK, EMAIL, LOCATION, MESSAGE_TEMPLATE, MESSAGE_TITLE, SERVIES_LINK, SOFTWARE_TESTER_COURSE, TELEGRAM_LINK, TELEPHON_NUMBER, VK_LINK } from "./basicInformation.js";
 
 const hamburger = document.getElementById('tablet_hamburger');
 const navigation = document.getElementById('from_tablet_modal_menu__navigation')
@@ -20,7 +21,7 @@ const leftPointer = document.getElementById('tablet__tester_card__left_pointer')
 const rightPointer = document.getElementById('tablet__tester_card__right_pointer')
 const anchor = document.getElementById('tablet__anchor');
 const topButton = document.getElementById('tablet__comp_1__button');
-const checkBoxStates = [false, false, false];
+let checkBoxStates = [false, false, false];
 let activeResponer = 0;
 const respondersPhoto = document.getElementById('tablet__comp_11__left_block__responder_block__photo')
 const respondersName = document.getElementById('tablet__comp_11__left_block__responder_block__name')
@@ -29,6 +30,22 @@ const respondersFeed = document.getElementById('tablet__comp_11__left_block__tex
 const responderPoinerLeft = document.getElementById('tablet__comp_11__left_pointer');
 const responderPoinerRight = document.getElementById('tablet__comp_11__right_pointer');
 const respondersAmount = responders.length;
+const rightModalTopLink = document.getElementById('from_tablet__nav__categories__gears');
+const rightModalBottomLink1 = document.getElementById('from_tablet__nav__categories__graduates_hat');
+const rightModalBottomLink2 = document.getElementById('from_tablet__nav__categories__tester');
+const rightModalBottomLink3 = document.getElementById('from_tablet__nav__categories__qa');
+const rightModalEmailLink = document.getElementById('from_tablet__nav__links_block__email');
+const rightModalLocationLink = document.getElementById('from_tablet__nav__links_block__location');
+const rightModalTelnumberLink = document.getElementById('from_tablet__nav__links_block__telnumber');
+const FooterEmailLink = document.getElementById('tablet__footer__mail_link');
+const FooterLocationLink = document.getElementById('tablet__footer__location_link');
+const FooterTelnumberLink = document.getElementById('tablet__footer__phone_link');
+const FooterTestingLink = document.getElementById('tablet__footer__testing_link');
+const FooterCourserLink = document.getElementById('tablet__footer__course_link');
+const FormCallingLink = document.getElementById('tablet__form__column_left__bottom__calling_button');
+const FormVkLink = document.getElementById('tablet__vk__button');
+const FormTellegramLink = document.getElementById('tablet__tellegram__button');
+
 
 const setResponders = (number) => {
     respondersPhoto.src = `img/photos_of_responders/${responders[number].img}.png`;
@@ -50,6 +67,13 @@ const swapResponder = (isLeft) => {
 setResponders(0);
 responderPoinerLeft.addEventListener('click', swapResponder(true))
 responderPoinerRight.addEventListener('click', swapResponder(false))
+
+const transitionToLink = (link) => {
+    const innerFunc = () => {
+        window.location.href = link;
+    }
+    return innerFunc;
+}
 
 for (let i = 1; i <= 3; i++) {
     const cBox = document.getElementById(`tablet__form__category_${i}`);
@@ -125,6 +149,22 @@ const swapTesterCard = (isLeft) => {
 
 leftPointer.addEventListener('click', swapTesterCard(false));
 rightPointer.addEventListener('click', swapTesterCard(true));
+
+rightModalTopLink.addEventListener('click', transitionToLink(SERVIES_LINK));
+rightModalBottomLink1.addEventListener('click', transitionToLink(COUESES_LINK));
+rightModalBottomLink2.addEventListener('click', transitionToLink(SOFTWARE_TESTER_COURSE));
+rightModalBottomLink3.addEventListener('click', transitionToLink(COMPUTER_LITERACY_COURSE_FOR_QA));
+rightModalEmailLink.addEventListener('click', transitionToLink(`mailto:${encodeURIComponent(EMAIL)}`));
+rightModalLocationLink.addEventListener('click', transitionToLink(`https://yandex.ru/maps/-/:${LOCATION}`));
+rightModalTelnumberLink.addEventListener('click', transitionToLink(`tel:${TELEPHON_NUMBER}`));
+FooterEmailLink.addEventListener('click', transitionToLink(`mailto:${encodeURIComponent(EMAIL)}`));
+FooterLocationLink.addEventListener('click', transitionToLink(`https://yandex.ru/maps/-/:${LOCATION}`));
+FooterTelnumberLink.addEventListener('click', transitionToLink(`tel:${TELEPHON_NUMBER}`));
+FooterTestingLink.addEventListener('click', transitionToLink(SERVIES_LINK));
+FooterCourserLink.addEventListener('click', transitionToLink(COUESES_LINK));
+FormCallingLink.addEventListener('click', transitionToLink(`tel:${TELEPHON_NUMBER}`));
+FormVkLink.addEventListener('click', transitionToLink(VK_LINK));
+FormTellegramLink.addEventListener('click', transitionToLink(TELEGRAM_LINK));
 
 anchor.addEventListener('click', () => {
     window.scrollTo({
@@ -222,6 +262,33 @@ closeNavigation.addEventListener('click', () => {
 })
 
 
+const transitionToForm = (qualification) => {
+    const innerFunc = () => {
+        let select;
+        checkBoxStates = [false, false, false];
+        if (qualification.includes('Junior')) {
+            select = 0;
+        } else if (qualification.includes('Middle')) {
+            select = 1;
+        } else {
+            select = 2;
+        }
+        checkBoxStates[select] = true;
+        for (let i = 1; i <= 3; i++) {
+            const cBoxCp = document.getElementById(`tablet__form__category_${i}__cp`);
+            const cBoxCpImg = document.getElementById(`tablet__form__category_${i}__cp_img`);
+            const currentState = checkBoxStates[i - 1];
+            cBoxCp.style.backgroundColor = currentState ? '#4273FB' : '';
+            cBoxCpImg.style.opacity = currentState ? '1' : '';
+        }
+        window.scrollTo({
+            top: 4.5 * windowHieght,
+            behavior: 'smooth'
+        });
+    }
+    return innerFunc;
+}
+
 const generateCard = (number, isActive, left) => {
     const tester = testers[number];
 
@@ -302,10 +369,12 @@ const generateCard = (number, isActive, left) => {
     const openCardButtonToTransition = document.createElement('div');
     openCardButtonToTransition.classList.add('tablet__tester_card_open__button_transition');
     openCardButtonToTransition.innerText = 'Забронировать встречу';
+    openCardButtonToTransition.addEventListener('click', transitionToForm(tester.qualification));
     openVersion.appendChild(openCardButtonToTransition);
     tgLogo.src = 'img/svg/tellegram_logo.svg';
     tgLogo.alt = 'Telegram logotip';
     openCardTgBlock.appendChild(tgLogo);
+    openCardTgBlock.addEventListener('click', transitionToLink(TELEGRAM_LINK));
     openVersion.appendChild(openCardTgBlock);
 
 
@@ -370,3 +439,122 @@ const generateCard = (number, isActive, left) => {
 for (let i = 0; i < 3; ++i) {
     cardComposition.appendChild(generateCard(i, i == 1, leftPosCard[i]));
 }
+
+
+
+const sendFormButton = document.getElementById('tablet__send_form')
+sendFormButton.addEventListener('click', (event) => {
+    event.preventDefault();
+    let isError = false;
+    const descriptionInput = document.getElementById('tablet__form__column_left__middle__left');
+    const description = descriptionInput.value || '';
+    const nameInput = document.getElementById('tablet__form_name');
+    const name = nameInput.value || '';
+    const telInput = document.getElementById('tablet__form_tel')
+    const tel = telInput.value || '';
+    if (!name) {
+        isError = true;
+        nameInput.placeholder = 'Введите имя';
+        nameInput.style.border = '1px solid red';
+        nameInput.style.color = 'red';
+        setTimeout(() => {
+            nameInput.placeholder = 'Имя';
+            nameInput.style.border = '';
+            nameInput.style.color = '';
+        }, 2000)
+    }
+    else if (!/^[a-zA-Zа-яА-Я\s]+$/.test(name)) {
+        isError = true;
+        nameInput.value = ''
+        nameInput.placeholder = 'Недопустимый символ';
+        nameInput.style.border = '1px solid red';
+        nameInput.style.color = 'red';
+        setTimeout(() => {
+            nameInput.placeholder = 'Имя';
+            nameInput.style.border = '';
+            nameInput.style.color = '';
+        }, 2000)
+    }
+    if (!tel) {
+        isError = true;
+        telInput.placeholder = 'Введите номер телефона';
+        telInput.style.border = '1px solid red';
+        telInput.style.color = 'red';
+        setTimeout(() => {
+            telInput.placeholder = 'Номер телефона';
+            telInput.style.border = '';
+            telInput.style.color = '';
+        }, 2000)
+    }
+    else if (!/^\+?[0-9() ]{0,14}$/.test(tel)) {
+        isError = true;
+        telInput.placeholder = 'Некорректный номер телефона';
+        telInput.style.border = '1px solid red';
+        telInput.style.color = 'red';
+        telInput.value = ''
+        setTimeout(() => {
+            telInput.placeholder = 'Номер телефона';
+            telInput.style.border = '';
+            telInput.style.color = '';
+        }, 2000)
+    }
+    const email = document.getElementById('tablet__form_email').value || '';
+    let skillLevelTesters = '';
+    const formCheckBoxValue = checkBoxStates;
+    if (formCheckBoxValue[0]) {
+        if (formCheckBoxValue[1] && formCheckBoxValue[2]) {
+            skillLevelTesters = 'Junior, Middle, Senior';
+        } else if (formCheckBoxValue[1]) {
+            skillLevelTesters = 'Junior, Middle';
+        } else if (formCheckBoxValue[2]) {
+            skillLevelTesters = 'Junior, Senior';
+        } else {
+            skillLevelTesters = 'Junior';
+        }
+    } else {
+        skillLevelTesters = formCheckBoxValue[1] && formCheckBoxValue[2] ? 'Middle, Senior' : formCheckBoxValue[1] ? 'Middle' : 'Senior';
+    }
+    if (!isError) {
+        sendFormButton.innerText = 'Отправка...';
+        const msg = MESSAGE_TEMPLATE.replace(
+            '%description', description).replace(
+                '%name', name).replace(
+                    '%skillLevelTesters', skillLevelTesters).replace(
+                        '%telNumber', tel).replace(
+                            '%email', email);
+
+
+        fetch('http://localhost:3000/submit-form', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                titleMessage: MESSAGE_TITLE,
+                textMessage: msg,
+            })
+        })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Server response:', data);
+                sendFormButton.innerText = 'Отправлено 🚀';
+                setTimeout(() => {
+                    sendFormButton.innerText = 'Отправить заявку';
+                }, 2000)
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                sendFormButton.innerText = 'Произошла ошибка';
+                setTimeout(() => {
+                    sendFormButton.innerText = 'Отправить заявку';
+                }, 2000)
+            });
+    } else {
+        sendFormButton.innerText = 'Ошибка, заявка не отправлена 😢';
+        sendFormButton.style.cursor = 'not-allowed';
+        setTimeout(() => {
+            sendFormButton.innerText = 'Отправить заявку';
+            sendFormButton.style.cursor = '';
+        }, 1000)
+    }
+})

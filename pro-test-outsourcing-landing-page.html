@@ -76,15 +76,15 @@
                     </p>
                 </div>
                 <div id="from_tablet__nav__links_block">
-                    <div class="from_tablet__nav__links_block__link">
+                    <div class="from_tablet__nav__links_block__link" id="from_tablet__nav__links_block__email">
                         <p>support@pro-test.studio</p>
                         <img src="img/svg/tablet__nav__mail.svg" alt="mail icon">
                     </div>
-                    <div class="from_tablet__nav__links_block__link">
+                    <div class="from_tablet__nav__links_block__link" id="from_tablet__nav__links_block__location">
                         <p>Россия, г. Москва</p>
                         <img src="img/svg/tablet__nav__location.svg" alt="location icon">
                     </div>
-                    <div class="from_tablet__nav__links_block__link">
+                    <div class="from_tablet__nav__links_block__link" id="from_tablet__nav__links_block__telnumber">
                         <p>+ 7 (978) 563-30-88</p>
                         <img src="img/svg/tablet__nav__phone.svg" alt="phone icon">
                     </div>
@@ -451,7 +451,7 @@
             <p>Оставьте заявку на сайте или напишите нам в Тelegram</p>
             <form>
                 <div class="tablet__form__column">
-                    <input type="text" placeholder="Имя">
+                    <input type="text" placeholder="Имя" id="tablet__form_name">
                     <div id="tablet__form__column_left__middle">
                         <textarea id="tablet__form__column_left__middle__left"
                             placeholder="Краткое описание проекта"></textarea>
@@ -493,8 +493,8 @@
                     </div>
                 </div>
                 <div class="tablet__form__column">
-                    <input type="tel" placeholder="Номер телефона">
-                    <input type="email" placeholder="test@pro-test.studio">
+                    <input type="tel" placeholder="Номер телефона" id="tablet__form_tel">
+                    <input type="email" placeholder="test@pro-test.studio" id="tablet__form_email">
                     <button id="tablet__send_form">Отправить заявку</button>
                     <p id="tablet__form__column__unreadable">Нажимая кнопку вы даёте согласие на обработку ваших
                         персональных данных и соглашаетесь c
@@ -531,24 +531,24 @@
                 <div id="tablet__comp_12__left_column">
                     <h1>Ссылки</h1>
                     <div>
-                        <p>Услуги тестирования ПО</p>
+                        <p id="tablet__footer__testing_link">Услуги тестирования ПО</p>
                         <div id="tablet__comp_12__left_column__select_poiner">
                             <img src="img/svg/from1200__footer_select_point_pointer.svg" alt=" select pointer">
                             <p>Аутсорсинг/аутстаффинг тестировщиков</p>
                         </div>
-                        <p>Обучающий курс</p>
+                        <p id="tablet__footer__course_link">Обучающий курс</p>
                     </div>
                 </div>
                 <div id="tablet__comp_12__middle_column">
-                    <div>
+                    <div id="tablet__footer__mail_link">
                         <img src="img/svg/tablet__nav__mail.svg" alt="email icon">
                         <h1>support@pro-test.studio</h1>
                     </div>
-                    <div>
+                    <div id="tablet__footer__location_link">
                         <img src="img/svg/tablet__nav__location.svg" alt="location icon">
                         <h1>Россия, г. Москва</h1>
                     </div>
-                    <div>
+                    <div id="tablet__footer__phone_link">
                         <img src="img/svg/tablet__nav__phone.svg" alt="tel icon">
                         <h1>+ 7 (978) 563-30-88</h1>
                     </div>
@@ -562,6 +562,7 @@
                     <img src="img/svg/header_logo.svg" alt="company logo">
                 </div>
             </div>
+            <div id="tablet__deep_footer">© Pro-test.studio 2024</div>
         </section>
     </section>
     <section id="from_1200">

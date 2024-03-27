@@ -1969,3 +1969,20 @@
     width: 21.24352vw;
     margin-left: 2.8vw;
 }
+
+#tablet__deep_footer{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 80.18135vw;
+    background-color: #0000004D;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    padding-right: 8.67876vw;
+    font-family: IBM Plex Sans;
+    font-size: var(--font_12);
+    font-weight: 300;
+    letter-spacing: -0.015em;
+    color: #fff;
+}
