@@ -1697,7 +1697,6 @@
 }
 
 #form_textarea {
-    overflow: visible;
     height: 100%;
     width: 20.3125vw;
     resize: none;
@@ -1713,6 +1712,10 @@
     padding-top: 2.22222vh;
     padding-left: 1.30208vw;
     transition: box-shadow 0.5s ease-in-out;
+    overflow: auto; 
+    white-space: pre-wrap; 
+    word-wrap: break-word;
+    padding-right: 1em;
 }
 
 #form_textarea:hover {

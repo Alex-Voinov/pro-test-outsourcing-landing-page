@@ -1,6 +1,7 @@
 import { testers } from "./dataAboutTesters.js";
+import { responders } from "./dataAboutResponders.js";
 
-const hamburger = document.getElementById('tablet_hamburger');//772 926
+const hamburger = document.getElementById('tablet_hamburger');
 const navigation = document.getElementById('from_tablet_modal_menu__navigation')
 const closeNavigation = document.getElementById('from_tablet__nav__close');
 const flipCardStates = [false, false, false];
@@ -15,11 +16,52 @@ const amountTesters = testers.length;
 const windowHieght = window.innerHeight;
 const cardComposition = document.getElementById('tablet_composition_8_card_block')
 const leftPosCard = [-25.51813, 14.50777, 71.24352];
-
 const leftPointer = document.getElementById('tablet__tester_card__left_pointer')
 const rightPointer = document.getElementById('tablet__tester_card__right_pointer')
-
 const anchor = document.getElementById('tablet__anchor');
+const topButton = document.getElementById('tablet__comp_1__button');
+const checkBoxStates = [false, false, false];
+let activeResponer = 0;
+const respondersPhoto = document.getElementById('tablet__comp_11__left_block__responder_block__photo')
+const respondersName = document.getElementById('tablet__comp_11__left_block__responder_block__name')
+const respondersDesc = document.getElementById('tablet__comp_11__left_block__responder_block__desc')
+const respondersFeed = document.getElementById('tablet__comp_11__left_block__text__p')
+const responderPoinerLeft = document.getElementById('tablet__comp_11__left_pointer');
+const responderPoinerRight = document.getElementById('tablet__comp_11__right_pointer');
+const respondersAmount = responders.length;
+
+const setResponders = (number) => {
+    respondersPhoto.src = `img/photos_of_responders/${responders[number].img}.png`;
+    respondersName.innerText = responders[number].name;
+    respondersDesc.innerText = responders[number].description;
+    respondersFeed.innerText = responders[number].feedback;
+}
+
+const swapResponder = (isLeft) => {
+    const innerFunc = () => {
+        activeResponer += isLeft ? -1 : 1;
+        if (activeResponer === -1) { activeResponer = respondersAmount - 1 }
+        else if (activeResponer === respondersAmount) { activeResponer = 0; }
+        setResponders(activeResponer);
+    }
+    return innerFunc;
+}
+
+setResponders(0);
+responderPoinerLeft.addEventListener('click', swapResponder(true))
+responderPoinerRight.addEventListener('click', swapResponder(false))
+
+for (let i = 1; i <= 3; i++) {
+    const cBox = document.getElementById(`tablet__form__category_${i}`);
+    const cBoxCp = document.getElementById(`tablet__form__category_${i}__cp`);
+    const cBoxCpImg = document.getElementById(`tablet__form__category_${i}__cp_img`);
+    cBox.addEventListener('click', () => {
+        const currentState = !checkBoxStates[i];
+        checkBoxStates[i] = currentState;
+        cBoxCp.style.backgroundColor = currentState ? '#4273FB' : '';
+        cBoxCpImg.style.opacity = currentState ? '1' : '';
+    })
+}
 
 const diffNeberByOne = (number) => {
     if (number == amountTesters) {
@@ -87,6 +129,13 @@ rightPointer.addEventListener('click', swapTesterCard(true));
 anchor.addEventListener('click', () => {
     window.scrollTo({
         top: 0,
+        behavior: 'smooth'
+    });
+});
+
+topButton.addEventListener('click', () => {
+    window.scrollTo({
+        top: 4.5 * windowHieght,
         behavior: 'smooth'
     });
 });
