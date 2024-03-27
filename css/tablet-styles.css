@@ -34,6 +34,23 @@
     font-family: 'IBMPlexSans';
 }
 
+#tablet__anchor {
+    position: fixed;
+    cursor: pointer;
+    top: 90%;
+    left: 92%;
+    transition: opacity 0.3s ease-in-out;
+    z-index: 4;
+    width: min(5.18135vw, 4.31965vh);
+    height: min(5.18135vw, 4.31965vh);
+}
+
+#tablet__anchor>svg {
+    width: 100%;
+    height: 100%;
+}
+
+
 #from_tablet__fixed_header {
     z-index: 4;
     position: fixed;
@@ -76,7 +93,7 @@
     height: 100vh;
     position: fixed;
     display: none;
-    z-index: 5;
+    z-index: 6;
     backdrop-filter: blur(0px);
 }
 
@@ -1041,7 +1058,7 @@
 #tablet__tester_card__left_pointer,
 #tablet__tester_card__right_pointer {
     position: absolute;
-    z-index: 4;
+    z-index: 3;
     width: min(5.18135vw, 4.31965vh);
     height: min(5.18135vw, 4.31965vh);
     background-color: #383C73;
@@ -1213,7 +1230,6 @@
 
 #tablet__composition_9 {
     width: 100%;
-    height: 47.22222vh;
     margin-top: 7.66739vh;
     display: flex;
     justify-content: center;
@@ -1402,4 +1418,16 @@
 
 .tablet__composition_9__bottom__card__top__inner_text.big {
     width: 13vw;
+}
+
+#tablet__comp_10__back{
+    margin-top: 5.39957vh;
+    height: 78.29374vh;
+    width: 100vw;
+    overflow: hidden;
+}
+
+#tablet__comp_10__back > img{
+    width: 100%;
+    height: 100%;
 }

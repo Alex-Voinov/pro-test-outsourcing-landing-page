@@ -19,6 +19,7 @@ const leftPosCard = [-25.51813, 14.50777, 71.24352];
 const leftPointer = document.getElementById('tablet__tester_card__left_pointer')
 const rightPointer = document.getElementById('tablet__tester_card__right_pointer')
 
+const anchor = document.getElementById('tablet__anchor');
 
 const diffNeberByOne = (number) => {
     if (number == amountTesters) {
@@ -83,7 +84,21 @@ const swapTesterCard = (isLeft) => {
 leftPointer.addEventListener('click', swapTesterCard(false));
 rightPointer.addEventListener('click', swapTesterCard(true));
 
+anchor.addEventListener('click', () => {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+});
+
 window.addEventListener('scroll', () => {
+    if (window.scrollY > 0) {
+        anchor.style.display = 'block';
+        setTimeout(() => anchor.style.opacity = '1', 1);
+    } else {
+        setTimeout(() => anchor.style.display = 'none', 300);
+        anchor.style.opacity = '0'
+    }
     if (!isOpenBurger) {
         fixedHeader.style.opacity = window.scrollY > windowHieght ? '1' : '';
         fixedHeader.style.top = window.scrollY > windowHieght ? '0' : '';
@@ -232,7 +247,7 @@ const generateCard = (number, isActive, left) => {
     })
 
     //создаем блок с кнопкой
-    const openCardTgBlock =  document.createElement('div');
+    const openCardTgBlock = document.createElement('div');
     openCardTgBlock.classList.add('tablet__tester_card_open__tg_button_block');
     const tgLogo = document.createElement('img');
     const openCardButtonToTransition = document.createElement('div');
