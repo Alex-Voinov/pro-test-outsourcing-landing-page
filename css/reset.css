@@ -8,6 +8,7 @@
 *::before,
 *::after {
     box-sizing: border-box;
+    font-family: IBMPlexSans;
 }
 
 /* Fix mobile Safari increase font-size on landscape mode */
