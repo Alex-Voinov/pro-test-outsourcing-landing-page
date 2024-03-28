@@ -9,12 +9,31 @@ for (let i = 1; i <= 3; i++) {
     const card = document.getElementById(`mobile__comp_3__card_${i}`);
     const openCard = document.getElementById(`mobile__comp_3__open_card_${i}`);
     const pointer = document.getElementById(`mobile__comp_3__pointer_${i}`);
+    const preview = document.getElementById(`mobile__comp_3__card_${i}__preview`);
+    const title = document.getElementById(`mobile__comp_3__card_${i}__title`);
     card.addEventListener('click', () => {
         const currentState = !comp3CardStates[i - 1];
         comp3CardStates[i - 1] = currentState;
         card.style.minHeight = currentState ? `${comp3CardHSize[i - 1]}lvh` : '';
         pointer.style.transform = currentState ? 'rotate(180deg)' : '';
         openCard.style.opacity = currentState ? '1' : '';
+        if (currentState) {
+            preview.style.opacity = '0';
+            title.style.opacity = '0';
+            setTimeout(() => {
+                preview.style.display = 'none';
+                title.style.display = 'none';
+                pointer.style.marginLeft = '83vw';
+            }, 300)
+        } else {
+            preview.style.display = '';
+            title.style.display = '';
+            pointer.style.marginLeft = '';
+            setTimeout(() => {
+                preview.style.opacity = '';
+                title.style.opacity = '';
+            }, 1)
+        }
     })
 }
 
