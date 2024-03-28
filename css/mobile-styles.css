@@ -4,6 +4,7 @@
     align-items: center;
     overflow-x: hidden;
     width: 100vw;
+    --px11_5: min(3.07487vw, 1.23126lvh);
     --px12: min(3.20856vw, 1.47783lvh);
     --px14: min(3.74332vw, 1.49893lvh);
     --px15: min(4.0107vw, 1.84729lvh);
@@ -12,6 +13,7 @@
     --px16true: min(4.27807vw, 1.71306lvh);
     --px18: min(4.81283vw, 2.21675lvh);
     --px24: min(6.41711vw, 2.56959lvh);
+    --px25: min(6.68449vw, 2.67666lvh);
     --px29: min(7.75401vw, 3.10493lvh);
     --px30: min(8.02139vw, 3.69458lvh);
     --px35: min(9.35829vw, 3.74732lvh);
@@ -525,6 +527,15 @@
     right: 0;
 }
 
+#mobile__comp_6>h1 {
+    width: 100%;
+    font-size: var(--px24);
+    font-weight: 700;
+    letter-spacing: -0.015em;
+    text-align: center;
+    margin-top: 4.18415lvh;
+}
+
 #mobile__comp_6>div {
     overflow: hidden;
     display: flex;
@@ -536,21 +547,174 @@
     line-height: 2.21675lvh;
     letter-spacing: -0.015em;
     width: 100%;
-    margin-top: 18.32266lvh;
+    margin-top: 11vh;
 }
 
-#mobile__comp_6__textpoint_2{
+#mobile__comp_6__textpoint_2 {
     margin-top: 7.14286lvh;
 }
 
-#mobile__comp_6__textpoint_3{
+#mobile__comp_6__textpoint_3 {
     margin-top: 6.65025lvh;
 }
 
-#mobile__comp_6__textpoint_4{
+#mobile__comp_6__textpoint_4 {
     margin-top: 7.26601lvh;
 }
 
-#mobile__comp_6__textpoint_5{
+#mobile__comp_6__textpoint_5 {
     margin-top: 6.52709lvh;
+}
+
+#mobile__comp_7 {
+    margin-top: 8.13704lvh;
+    width: 84.97059vw;
+    height: 48.62634lvh;
+}
+
+#mobile__comp_7>h1 {
+    font-size: var(--px24);
+    font-weight: 700;
+    letter-spacing: -0.015em;
+    text-align: center;
+    width: 100%;
+}
+
+#mobile__comp_7>div {
+    width: 100%;
+    height: 12.7409lvh;
+    position: relative;
+}
+
+#mobile__comp_7>div:first-of-type {
+    margin-top: 2.82976lvh;
+}
+
+#mobile__comp_7>div:not(:first-of-type) {
+    margin-top: 2.09422lvh;
+}
+
+.mobile__technologies_block {
+    position: absolute;
+    width: 82.48663vw;
+    height: 11.20236lvh;
+    bottom: 0;
+    left: 0;
+    border-radius: var(--px25);
+    border: min(0.80214vw, 0.3212lvh) solid #ECECEC;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.mobile__technologies_logo {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    height: min(10.45722vw, 4.18737lvh);
+    width: min(10.45722vw, 4.18737lvh);
+}
+
+.mobile__technologies_block>h1 {
+    text-align: center;
+    margin-top: 1.3lvh;
+    font-size: var(--px16true);
+    font-weight: 500;
+}
+
+.mobile__tech__rows {
+    height: 2.24839lvh;
+    width: 72.19251vw;
+    display: flex;
+    align-items: center;
+}
+
+.mobile__tech__rows:first-of-type {
+    margin-top: 1.06852lvh;
+    margin-bottom: 0.62848lvh;
+}
+
+.mobile__tech__rows>p {
+    font-size: var(--px11_5);
+    font-weight: 400;
+    letter-spacing: -0.015em;
+    border-width: min(0.13369vw, 0.05353lvh);
+    padding: 0.2em 1em 0.2em 1em;
+    border-radius: var(--px50);
+    border-style: solid;
+}
+
+.mobile__tech__rows>p:not(:first-of-type) {
+    margin-left: 1.54545vw;
+}
+
+.blue_line {
+    border-color: #0026FF;
+}
+
+.gold_line {
+    border-color: #FFA966;
+}
+
+.black_line {
+    border-color: #000;
+}
+
+#mobile__comp_8 {
+    margin-top: 6.51285lvh;
+    width: 83.55615vw;
+    height: 23.01927lvh;
+    overflow: hidden;
+}
+
+#mobile__comp_8>img {
+    width: 100%;
+    height: 100%;
+}
+
+#mobile__comp_9 {
+    margin-top: 8.88651lvh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+}
+
+#mobile__comp_9>h1 {
+    font-size: var(--px24);
+    font-weight: 700;
+    line-height: 3.42612lvh;
+    letter-spacing: -0.015em;
+    text-align: center;
+
+}
+
+#mobile__comp_9>p {
+    margin-top: 3.21199lvh;
+    font-size: var(--px16true);
+    font-weight: 400;
+    line-height: 1.92719lvh;
+    letter-spacing: -0.015em;
+    text-align: center;
+
+}
+
+#mobaile__pointer_block {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 26.84759vw;
+    margin-top: 4.28266lvh;
+}
+
+#mobaile__pointer_block>img {
+    height: 2.26017lvh;
+}
+
+.mobile__tester_section {
+    margin-top: 4.27088lvh;
+    height: 48.394lvh;
+    width: 100%;
+    border: 1px solid red;
 }
