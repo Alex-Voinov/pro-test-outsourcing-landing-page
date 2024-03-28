@@ -1,3 +1,5 @@
+import { testers } from "./dataAboutTesters.js";
+
 const hamburger = document.getElementById('mobile__hamburger');
 const closeAsideMenu = document.getElementById('mobile__right_menu__close');
 const menu = document.getElementById('mobile__right_menu');
@@ -6,6 +8,90 @@ const comp3CardStates = [false, false, false];
 const comp3CardHSize = [22.16274, 15.09636, 17.45182];
 const accordionSetH = [19.05782, 19.05782, 16.70236, 14.3469, 16.70236, 21.41328];
 const accordionStates = [false, false, false, false, false, false];
+const testerSection = document.getElementById('mobile__tester_section');
+const testerCardLeftSet = [-70, 12.56684, 100];
+let activeTesterCardNumber = 1;
+
+const createTesterCard = (number, isActive, leftValue) => {
+    const tester = testers[number];
+    //card block
+    const newCard = document.createElement('div');
+    newCard.id = `mobile__tester_card_${number}`;
+    newCard.style.left = `${leftValue}vw`;
+    newCard.classList.add('mobile__tester_card');
+    if (isActive) {
+        newCard.classList.add('active');
+    }
+
+    //front 
+    const front = document.createElement('div');
+    front.id = 'mobile__tester_card__front';
+    newCard.appendChild(front)
+
+    // front block name
+    const nameBlock = document.createElement('div');
+    nameBlock.classList.add('mobile__tester_card__name_block');
+    const nameHeading = document.createElement('h1');
+    nameHeading.textContent = tester.name;
+    const specializationParagraph = document.createElement('p');
+    specializationParagraph.textContent = tester.specialization;
+    nameBlock.appendChild(nameHeading);
+    nameBlock.appendChild(specializationParagraph);
+    front.appendChild(nameBlock);
+
+    // front detail image
+    const detailImage = document.createElement('img');
+    detailImage.src = 'img/svg/tablet__tester_card__detail.svg';
+    detailImage.alt = 'a thought icon going to a person';
+    detailImage.classList.add('mobile__tester_card__detail');
+    front.appendChild(detailImage);
+
+
+    //front mount image
+    const mountainsImage = document.createElement('img');
+    mountainsImage.src = 'img/svg/tablet__tester_card__mountains.svg';
+    mountainsImage.alt = 'the image of the white mountains';
+    mountainsImage.classList.add('mobile__tester_card__mountains');
+    front.appendChild(mountainsImage);
+
+    //front tester photo
+    const testerPhotoImage = document.createElement('img');
+    testerPhotoImage.src = `img/photos_of_testers/mobile_${tester.img}.png`;
+    testerPhotoImage.alt = 'photo of the tester';
+    testerPhotoImage.classList.add('mobile__tester_card__tester_photo');
+    front.appendChild(testerPhotoImage);
+
+    // front button
+    const button = document.createElement('button');
+    button.classList.add('mobile__tester_card__button');
+    button.id = `mobile__tester_card_${number}__button`;
+    button.addEventListener('click', () => {
+       // openVersion.style.display = 'block';
+        //setTimeout(() => openVersion.style.opacity = 1, 1)
+    })
+    const buttonText = document.createElement('p');
+    buttonText.textContent = 'Больше информации';
+    const buttonIcon = document.createElement('div');
+    const pointerImage = document.createElement('img');
+    pointerImage.src = 'img/svg/tablet__tester_card__pointer.svg';
+    pointerImage.alt = 'pointer';
+    pointerImage.classList.add('mobile__tester_card__pointer');
+    buttonIcon.appendChild(pointerImage);
+    button.appendChild(buttonText);
+    button.appendChild(buttonIcon);
+    front.appendChild(button);
+
+    //back 
+    const back = document.createElement('div');
+    back.id = 'mobile__tester_card__back';
+    newCard.appendChild(back)
+
+    return newCard;
+}
+
+for (let i = 0; i < 3; ++i) {
+    testerSection.appendChild(createTesterCard(i, i === activeTesterCardNumber, testerCardLeftSet[i]));
+}
 
 for (let i = 1; i <= 6; ++i) {
     const accordionPoint = document.getElementById(`mobile__accordion__point_${i}`);

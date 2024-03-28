@@ -6,6 +6,7 @@
     width: 100vw;
     --px11_5: min(3.07487vw, 1.23126lvh);
     --px12: min(3.20856vw, 1.47783lvh);
+    --px13: min(3.47594vw, 1.60099lvh);
     --px14: min(3.74332vw, 1.49893lvh);
     --px15: min(4.0107vw, 1.84729lvh);
     --px15true: min(4.0107vw, 1.606lvh);
@@ -14,8 +15,10 @@
     --px18: min(4.81283vw, 2.21675lvh);
     --px24: min(6.41711vw, 2.56959lvh);
     --px25: min(6.68449vw, 2.67666lvh);
+    --px27: min(7.21925vw, 3.32512lvh);
     --px29: min(7.75401vw, 3.10493lvh);
     --px30: min(8.02139vw, 3.69458lvh);
+    --px32: min(8.55615vw, 3.94089lvh);
     --px35: min(9.35829vw, 3.74732lvh);
     --px50: min(13.36898vw, 5.35332lvh);
 }
@@ -712,9 +715,170 @@
     height: 2.26017lvh;
 }
 
-.mobile__tester_section {
+#mobile__tester_section {
     margin-top: 4.27088lvh;
-    height: 48.394lvh;
+    height: 55.41872lvh;
     width: 100%;
-    border: 1px solid red;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.mobile__tester_card {
+    position: absolute;
+    width: 67.91444vw;
+    height: 50.24631lvh;
+    background-color: #E8EFF9;
+    transition: all 0.3s ease-in-out;
+    opacity: 0.35;
+    border-radius: var(--px27);
+}
+
+.active.mobile__tester_card {
+    opacity: 1;
+    border-radius: var(--px32);
+    width: 74.86631vw;
+    height: 55.41872lvh;
+    overflow: hidden;
+}
+
+#mobile__tester_card__front,
+#mobile__tester_card__back {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    align-items: center;
+    transition: all 0.3s ease-in-out;
+}
+
+#mobile__tester_card__front {
+    opacity: 1;
+    display: flex;
+    z-index: 1;
+}
+
+#mobile__tester_card__back {
+    opacity: 0;
+    display: none;
+    z-index: 0;
+}
+
+.mobile__tester_card__name_block {
+    position: absolute;
+    left: 25.35%;
+    top: 4.44%;
+    width: 64.28%;
+    height: 16.88%;
+    background-color: #CDD5E9;
+    border: min(0.80214vw, 0.36946lvh) solid #FFFFFF;
+    transition: all 0.3s ease-in-out;
+    border-radius: var(--px15);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.active .mobile__tester_card__name_block {
+    border: min(1.06952vw, 0.49261lvh) solid #FFFFFF;
+    border-radius: min(4.43048vw, 2.04064lvh);
+}
+
+.mobile__tester_card__name_block>h1 {
+    font-weight: 700;
+    letter-spacing: -0.015em;
+    text-align: left;
+    width: 28.60963vw;
+    transition: font-size 0.3s ease-in-out;
+    font-size: var(--px16true);
+}
+
+.active .mobile__tester_card__name_block>h1 {
+    font-size: var(--px18);
+}
+
+.mobile__tester_card__name_block>p {
+    width: 28.60963vw;
+    font-style: italic;
+    font-weight: 400;
+    letter-spacing: -0.015em;
+    text-align: left;
+    overflow: visible;
+    text-wrap: nowrap;
+    transition: font-size 0.3s ease-in-out;
+    font-size: var(--px11_5);
+}
+
+.active .mobile__tester_card__name_block>p {
+    font-size: var(--px13);
+}
+
+.mobile__tester_card__detail {
+    width: 15%;
+    position: absolute;
+    top: 27.33%;
+    left: 68%;
+    transform: rotate(2.19deg);
+}
+
+.mobile__tester_card__tester_photo {
+    position: absolute;
+    width: 87%;
+    top: 21.33%;
+    z-index: 2;
+    height: 64.6%;
+}
+
+.mobile__tester_card__button {
+    display: flex;
+    align-items: center;
+    width: 87.14%;
+    height: 9.3%;
+    top: 86%;
+    border-radius: var(--px50);
+    background-color: white;
+    position: absolute;
+    justify-content: space-around;
+}
+
+.mobile__tester_card__button>p {
+    font-weight: 500;
+    letter-spacing: -0.015em;
+    transition: font-size 0.3s ease-in-out;
+    font-size: var(--px14);
+    color: #3E4285;
+}
+
+.active .mobile__tester_card__button>p {
+    font-size: var(--px16true);
+}
+
+.mobile__tester_card__button>div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease-in-out;
+    width: var(--px29);
+    height: var(--px29);
+    background-color: #CDD5E9;
+    border-radius: 50%;
+}
+
+.active .mobile__tester_card__button>div {
+    width: var(--px32);
+    height: var(--px32);
+}
+
+.mobile__tester_card__button>div>img{
+    width: 30%;
+}
+
+.mobile__tester_card__mountains{
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    top: 58.9%;
 }
