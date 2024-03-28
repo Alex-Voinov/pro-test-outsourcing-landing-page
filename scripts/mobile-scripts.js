@@ -11,6 +11,73 @@ const accordionStates = [false, false, false, false, false, false];
 const testerSection = document.getElementById('mobile__tester_section');
 const testerCardLeftSet = [-70, 12.56684, 100];
 let activeTesterCardNumber = 1;
+let isActiveCoursel = false;
+const leftPointer = document.getElementById('mobaile__tester_pointer_left');
+const rightPointer = document.getElementById('mobaile__tester_pointer_right');
+const amountTesters = testers.length;
+
+const diffNeberByOne = (number) => {
+    if (number == amountTesters) {
+        number = 0;
+    } else if (number == -1) {
+        number = amountTesters - 1;
+    }
+    return number
+}
+
+const swapTesterCard = (isLeft) => {
+    const innerFunck = () => {
+        if (!isActiveCoursel) {
+            isActiveCoursel = true;
+            const leftCardNumber = diffNeberByOne(activeTesterCardNumber - 1);
+            const rightCardNumber = diffNeberByOne(activeTesterCardNumber + 1);
+            const leftCard = document.getElementById(`mobile__tester_card_${leftCardNumber}`);
+            const activeCard = document.getElementById(`mobile__tester_card_${activeTesterCardNumber}`);
+            const rightCard = document.getElementById(`mobile__tester_card_${rightCardNumber}`);
+            const leftCardOpen = document.getElementById(`mobile__tester_card_${leftCardNumber}`);
+            const activeCardOpen = document.getElementById(`mobile__tester_card_${activeTesterCardNumber}`);
+            const rightCardOpen = document.getElementById(`mobile__tester_card_${rightCardNumber}`);
+
+            activeCard.classList.remove('active');
+            activeCardOpen.classList.remove('active');
+            if (isLeft) {
+                rightCard.classList.add('active');
+                rightCardOpen.classList.add('active');
+                const numberNewRightCard = diffNeberByOne(rightCardNumber + 1);
+                const newCard = createTesterCard(numberNewRightCard, false, 100);
+                leftCard.style.left = '-90vw';
+                activeCard.style.left = `${testerCardLeftSet[0]}vw`;
+                rightCard.style.left = `${testerCardLeftSet[1]}vw`;
+                testerSection.appendChild(newCard);
+                setTimeout(() => { newCard.style.left = `${testerCardLeftSet[2]}vw`; }, 1)
+                setTimeout(() => {
+                    testerSection.removeChild(leftCard);
+                    isActiveCoursel = false;
+                }, 300)
+            } else {
+                leftCard.classList.add('active');
+                leftCardOpen.classList.add('active');
+                const numberNewLeftCard = diffNeberByOne(leftCardNumber - 1);
+                const newCard = createTesterCard(numberNewLeftCard, false, -90)
+                rightCard.style.left = '140vw';
+                leftCard.style.left = `${testerCardLeftSet[1]}vw`;
+                activeCard.style.left = `${testerCardLeftSet[2]}vw`;
+                testerSection.appendChild(newCard);
+                setTimeout(() => { newCard.style.left = `${testerCardLeftSet[0]}vw`; }, 1)
+                setTimeout(() => {
+                    testerSection.removeChild(rightCard);
+                    isActiveCoursel = false;
+                }, 300)
+            }
+            activeTesterCardNumber += isLeft ? 1 : -1;
+            activeTesterCardNumber = diffNeberByOne(activeTesterCardNumber)
+        }
+    }
+    return innerFunck;
+}
+
+leftPointer.addEventListener('click', swapTesterCard(false));
+rightPointer.addEventListener('click', swapTesterCard(true));
 
 const createTesterCard = (number, isActive, leftValue) => {
     const tester = testers[number];
@@ -66,7 +133,7 @@ const createTesterCard = (number, isActive, leftValue) => {
     button.classList.add('mobile__tester_card__button');
     button.id = `mobile__tester_card_${number}__button`;
     button.addEventListener('click', () => {
-       // openVersion.style.display = 'block';
+        // openVersion.style.display = 'block';
         //setTimeout(() => openVersion.style.opacity = 1, 1)
     })
     const buttonText = document.createElement('p');

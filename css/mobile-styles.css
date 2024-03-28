@@ -713,6 +713,7 @@
 
 #mobaile__pointer_block>img {
     height: 2.26017lvh;
+    pointer-events: all;
 }
 
 #mobile__tester_section {
