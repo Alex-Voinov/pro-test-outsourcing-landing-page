@@ -4,6 +4,8 @@
     align-items: center;
     overflow-x: hidden;
     width: 100vw;
+    --px9: min(2.40642vw, 1.10837lvh);
+    --px11: min(2.94118vw, 1.35468lvh);
     --px11_5: min(3.07487vw, 1.23126lvh);
     --px12: min(3.20856vw, 1.47783lvh);
     --px13: min(3.47594vw, 1.60099lvh);
@@ -767,9 +769,17 @@
     z-index: 0;
 }
 
+.mobile__tester_card_open__name_block {
+    left: 8.2%;
+}
+
+.mobile__tester_card__name_block {
+    left: 25.35%;
+}
+
+.mobile__tester_card_open__name_block,
 .mobile__tester_card__name_block {
     position: absolute;
-    left: 25.35%;
     top: 4.44%;
     width: 64.28%;
     height: 16.88%;
@@ -783,11 +793,13 @@
     justify-content: center;
 }
 
+.active .mobile__tester_card_open__name_block,
 .active .mobile__tester_card__name_block {
     border: min(1.06952vw, 0.49261lvh) solid #FFFFFF;
     border-radius: min(4.43048vw, 2.04064lvh);
 }
 
+.mobile__tester_card_open__name_block>h1,
 .mobile__tester_card__name_block>h1 {
     font-weight: 700;
     letter-spacing: -0.015em;
@@ -797,10 +809,12 @@
     font-size: var(--px16true);
 }
 
+.active .mobile__tester_card_open__name_block>h1,
 .active .mobile__tester_card__name_block>h1 {
     font-size: var(--px18);
 }
 
+.mobile__tester_card_open__name_block>p,
 .mobile__tester_card__name_block>p {
     width: 28.60963vw;
     font-style: italic;
@@ -813,6 +827,7 @@
     font-size: var(--px11_5);
 }
 
+.active .mobile__tester_card_open__name_block>p,
 .active .mobile__tester_card__name_block>p {
     font-size: var(--px13);
 }
@@ -873,13 +888,128 @@
     height: var(--px32);
 }
 
-.mobile__tester_card__button>div>img{
+.mobile__tester_card__button>div>img {
     width: 30%;
 }
 
-.mobile__tester_card__mountains{
+.mobile__tester_card__mountains {
     position: absolute;
     z-index: 1;
     width: 100%;
     top: 58.9%;
+}
+
+
+
+.mobile__tester_card_open__back_block {
+    position: absolute;
+    width: var(--px32);
+    height: var(--px32);
+    border-radius: 50%;
+    background-color: #CDD5E9;
+    top: 10.22%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    right: 8.2%;
+}
+
+.mobile__tester_card_open__back_block>img {
+    width: 25%;
+}
+
+.mobile__tester_card_open__description_block {
+    position: absolute;
+    min-height: 27.11%;
+    width: 78%;
+    left: 13.8%;
+    top: 26%;
+    overflow: visible;
+    font-size: var(--px9);
+    font-weight: 400;
+    line-height: 115%;
+    letter-spacing: -0.015em;
+    text-align: left;
+    transition: font-size 0.3s ease-in-out;
+}
+
+.active .mobile__tester_card_open__description_block {
+    font-size: var(--px11);
+}
+
+.mobile__tester_card_open__description_block li {
+    list-style-type: disc;
+    margin-bottom: 2%;
+}
+
+.mobile__tester_card_open__skills_block {
+    position: absolute;
+    width: 82.14%;
+    left: 8.2%;
+    height: 4.22%;
+    display: flex;
+    align-items: center;
+}
+
+.mobile__tester_card_open__skills_block>p {
+    border-width: 1px;
+    border-style: solid;
+    padding: 0.06em 0.5em 0.06em 0.5em;
+    border-radius: min(7.25389vw, 6.04752vh);
+    font-size: var(--px9);
+    font-weight: 400;
+    letter-spacing: -0.015em;
+}
+
+.active .mobile__tester_card_open__skills_block>p {
+    font-size: var(--px11);
+}
+
+.mobile__tester_card_open__skills_block>p:not(:last-of-type) {
+    margin-right: 0.5em;
+}
+
+.mobile__tester_card_open__tg_button_block {
+    position: absolute;
+    left: 8.2%;
+    bottom: 4.17%;
+    border-radius: var(--px13);
+    background-color: #FFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: width 0.3s ease-in-out, height 0.3s ease-in-out;
+    width: var(--font_32);
+    height: var(--font_32);
+}
+
+.active .mobile__tester_card_open__tg_button_block {
+    width: min(10.96257vw, 5.04926lvh);
+    height: min(10.96257vw, 5.04926lvh);
+}
+
+.mobile__tester_card_open__tg_button_block>img {
+    width: 57.44%;
+}
+
+.mobile__tester_card_open__button_transition {
+    position: absolute;
+    right: 8.2%;
+    width: 63.57%;
+    bottom: 4.17%;
+    background-image: linear-gradient(180deg, #3E5AFA 0%, #4DB6FF 100%);
+    font-weight: 500;
+    letter-spacing: -0.015em;
+    text-align: center;
+    color: #FFFFFF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: min(10.96257vw, 5.04926lvh);
+    border-radius: min(10.96257vw, 5.04926lvh);
+    font-size: var(--px14);
+    transition: all 0.3s ease-in-out;
+    line-height: 1.97044lvh;
+    padding-left: 5em;
+    padding-right: 5em;
 }
