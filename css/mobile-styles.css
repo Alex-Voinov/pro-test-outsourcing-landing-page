@@ -486,3 +486,16 @@
     line-height: 2.35546lvh;
     letter-spacing: -0.015em;
 }
+
+#mobile__comp_4{
+    margin-top: 6.63383lvh;
+    margin-left: 12.17112vw;
+    width: 95.32086vw;
+    height: 25.1606lvh;
+    overflow: hidden;
+}
+
+#mobile__comp_4 > img{
+    width: 100%;
+    height: 100%;
+}
