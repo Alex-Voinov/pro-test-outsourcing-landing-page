@@ -4,6 +4,17 @@ const menu = document.getElementById('mobile__right_menu');
 const blurBack = document.getElementById('mobile__blur__back');
 const comp3CardStates = [false, false, false];
 const comp3CardHSize = [22.16274, 15.09636, 17.45182];
+const accordionSetH = [19.05782, 19.05782, 16.70236, 14.3469, 16.70236, 21.41328];
+const accordionStates = [false, false, false, false, false, false];
+
+for (let i = 1; i <= 6; ++i) {
+    const accordionPoint = document.getElementById(`mobile__accordion__point_${i}`);
+    accordionPoint.addEventListener('click', () => {
+        const currentState = !accordionStates[i - 1];
+        accordionStates[i - 1] = currentState;
+        accordionPoint.style.height = currentState ? `${accordionSetH[i - 1]}lvh` : '';
+    })
+}
 
 for (let i = 1; i <= 3; i++) {
     const card = document.getElementById(`mobile__comp_3__card_${i}`);
