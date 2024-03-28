@@ -14,7 +14,7 @@ for (let i = 1; i <= 3; i++) {
     card.addEventListener('click', () => {
         const currentState = !comp3CardStates[i - 1];
         comp3CardStates[i - 1] = currentState;
-        card.style.minHeight = currentState ? `${comp3CardHSize[i - 1]}lvh` : '';
+        card.style.height = currentState ? `${comp3CardHSize[i - 1]}lvh` : '';
         pointer.style.transform = currentState ? 'rotate(180deg)' : '';
         openCard.style.opacity = currentState ? '1' : '';
         if (currentState) {

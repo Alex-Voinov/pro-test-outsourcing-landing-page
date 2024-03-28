@@ -353,7 +353,7 @@
 .mobile__comp_3__card {
     position: relative;
     width: 91.71123vw;
-    min-height: 15.73876lvh;
+    height: 15.73876lvh;
     border: #DFE7EC min(0.80214vw, 0.3212lvh) solid;
     border-radius: var(--px35);
     display: flex;
@@ -371,7 +371,6 @@
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.3s ease-in-out;
-    background-color: #FFF;
 }
 
 .mobile__comp_3__open_card>h1 {
