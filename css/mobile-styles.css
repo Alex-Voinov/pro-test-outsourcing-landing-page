@@ -14,6 +14,7 @@
     --px24: min(6.41711vw, 2.56959lvh);
     --px29: min(7.75401vw, 3.10493lvh);
     --px30: min(8.02139vw, 3.69458lvh);
+    --px35: min(9.35829vw, 3.74732lvh);
     --px50: min(13.36898vw, 5.35332lvh);
 }
 
@@ -330,4 +331,93 @@
     line-height: 2.35546lvh;
     letter-spacing: -0.015em;
     text-align: left;
+}
+
+#mobile__comp_3 {
+    margin-top: 5.48073lvh;
+    width: 91.71123vw;
+    min-height: 58.3833lvh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#mobile__comp_3>h1 {
+    font-size: var(--px24);
+    font-weight: 700;
+    line-height: 3.42612lvh;
+    letter-spacing: -0.015em;
+    text-align: center;
+}
+
+.mobile__comp_3__card {
+    position: relative;
+    width: 91.71123vw;
+    min-height: 15.73876lvh;
+    border: #DFE7EC min(0.80214vw, 0.3212lvh) solid;
+    border-radius: var(--px35);
+    display: flex;
+    align-items: center;
+    transition: all 0.3s ease-in-out;
+}
+
+.mobile__comp_3__open_card {
+    position: absolute;
+    z-index: 1;
+    width: 70.85561vw;
+    height: calc(100% - 3.85439lvh);
+    margin-left: 5.61497vw;
+    overflow: hidden;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease-in-out;
+    background-color: #FFF;
+}
+
+.mobile__comp_3__open_card>h1 {
+    margin-left: 14.17112vw;
+    font-size: var(--px16true);
+    font-weight: 500;
+    letter-spacing: -0.015em;
+    text-align: center;
+}
+
+.mobile__comp_3__open_card>p {
+    text-align: left;
+    margin-top: 1.56317lvh;
+    font-size: var(--px14);
+    font-weight: 400;
+    line-height: 2.35546lvh;
+    letter-spacing: -0.015em;
+}
+
+.mobile__comp_3__card:first-of-type {
+    margin-top: 4.31478lvh;
+}
+
+.mobile__comp_3__card:not(:first-of-type) {
+    margin-top: 1.71306lvh;
+}
+
+.mobile__comp_3__card>img:first-of-type {
+    width: 39.83957vw;
+    height: 12.20557lvh;
+    margin-left: 4.33957vw;
+}
+
+.mobile__comp_3__card>h1 {
+    font-size: var(--px16true);
+    font-weight: 500;
+    line-height: 2.35546lvh;
+    letter-spacing: -0.015em;
+    width: 28.34225vw;
+    text-align: center;
+    margin-left: 5.88235vw;
+}
+
+.mobile__comp_3__card>img:last-of-type {
+    width: 3.47594vw;
+    margin-left: 4.54545vw;
+    transform: rotate(0deg);
+    transition: transform 0.3s ease-in-out;
 }
