@@ -16,6 +16,79 @@ let isActiveCoursel = false;
 const leftPointer = document.getElementById('mobaile__tester_pointer_left');
 const rightPointer = document.getElementById('mobaile__tester_pointer_right');
 const amountTesters = testers.length;
+const windowHieght = window.innerHeight;
+const sendRequest = document.getElementById('mobile__send__request');
+
+const anchor = document.getElementById('mobile__anchor');
+
+let checkBoxStates = [false, false, false];
+for (let i = 1; i <= 3; i++) {
+    const cBox = document.getElementById(`mobile__form__category_${i}`);
+    const cBoxCp = document.getElementById(`mobile__form__category_${i}__cp`);
+    const cBoxCpImg = document.getElementById(`mobile__form__category_${i}__cp_img`);
+    cBox.addEventListener('click', () => {
+        const currentState = !checkBoxStates[i];
+        checkBoxStates[i] = currentState;
+        cBoxCp.style.backgroundColor = currentState ? '#4273FB' : '';
+        cBoxCpImg.style.opacity = currentState ? '1' : '';
+    })
+}
+const transitionToForm = (qualification) => {
+    const innerFunc = () => {
+        let select;
+        checkBoxStates = [false, false, false];
+        if (qualification.includes('Junior')) {
+            select = 0;
+        } else if (qualification.includes('Middle')) {
+            select = 1;
+        } else {
+            select = 2;
+        }
+        checkBoxStates[select] = true;
+        for (let i = 1; i <= 3; i++) {
+            const cBoxCp = document.getElementById(`mobile__form__category_${i}__cp`);
+            const cBoxCpImg = document.getElementById(`mobile__form__category_${i}__cp_img`);
+            const currentState = checkBoxStates[i - 1];
+            cBoxCp.style.backgroundColor = currentState ? '#4273FB' : '';
+            cBoxCpImg.style.opacity = currentState ? '1' : '';
+        }
+        window.scrollTo({
+            top: 6.35 * windowHieght,
+            behavior: 'smooth'
+        });
+    }
+    return innerFunc;
+}
+
+sendRequest.addEventListener('click', (e) => {
+    e.preventDefault();
+    window.scrollTo({
+        top: 6.35 * windowHieght,
+        behavior: 'smooth'
+    });
+})
+
+
+anchor.addEventListener('click', () => {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+});
+
+window.addEventListener('scroll', () => {
+    if (window.scrollY > 0) {
+        anchor.style.display = 'block';
+        setTimeout(() => anchor.style.opacity = '1', 1);
+    } else {
+        setTimeout(() => anchor.style.display = 'none', 300);
+        anchor.style.opacity = '0'
+    }
+    if (!isOpenBurger) {
+        fixedHeader.style.opacity = window.scrollY > windowHieght ? '1' : '';
+        fixedHeader.style.top = window.scrollY > windowHieght ? '0' : '';
+    }
+})
 
 const transitionToLink = (link) => {
     const innerFunc = () => {
@@ -168,7 +241,7 @@ const createTesterCard = (number, isActive, leftValue) => {
     const openCardButtonToTransition = document.createElement('div');
     openCardButtonToTransition.classList.add('mobile__tester_card_open__button_transition');
     openCardButtonToTransition.innerText = 'Забронировать встречу';
-    //openCardButtonToTransition.addEventListener('click', transitionToForm(tester.qualification));
+    openCardButtonToTransition.addEventListener('click', transitionToForm(tester.qualification));
     back.appendChild(openCardButtonToTransition);
     tgLogo.src = 'img/svg/tellegram_logo.svg';
     tgLogo.alt = 'Telegram logotip';
@@ -304,4 +377,123 @@ closeAsideMenu.addEventListener('click', () => {
     setTimeout(() => {
         blurBack.style.display = '';
     }, 300)
+})
+
+
+
+const sendFormButton = document.getElementById('mobile__send_form')
+sendFormButton.addEventListener('click', (event) => {
+    event.preventDefault();
+    let isError = false;
+    const descriptionInput = document.getElementById('mobile__form__desc');
+    const description = descriptionInput.value || '';
+    const nameInput = document.getElementById('mobile__form__name');
+    const name = nameInput.value || '';
+    const telInput = document.getElementById('mobile__form__tel')
+    const tel = telInput.value || '';
+    if (!name) {
+        isError = true;
+        nameInput.placeholder = 'Введите имя';
+        nameInput.style.border = '1px solid red';
+        nameInput.style.color = 'red';
+        setTimeout(() => {
+            nameInput.placeholder = 'Имя';
+            nameInput.style.border = '';
+            nameInput.style.color = '';
+        }, 2000)
+    }
+    else if (!/^[a-zA-Zа-яА-Я\s]+$/.test(name)) {
+        isError = true;
+        nameInput.value = ''
+        nameInput.placeholder = 'Недопустимый символ';
+        nameInput.style.border = '1px solid red';
+        nameInput.style.color = 'red';
+        setTimeout(() => {
+            nameInput.placeholder = 'Имя';
+            nameInput.style.border = '';
+            nameInput.style.color = '';
+        }, 2000)
+    }
+    if (!tel) {
+        isError = true;
+        telInput.placeholder = 'Введите номер телефона';
+        telInput.style.border = '1px solid red';
+        telInput.style.color = 'red';
+        setTimeout(() => {
+            telInput.placeholder = 'Номер телефона';
+            telInput.style.border = '';
+            telInput.style.color = '';
+        }, 2000)
+    }
+    else if (!/^\+?[0-9() ]{0,14}$/.test(tel)) {
+        isError = true;
+        telInput.placeholder = 'Некорректный номер телефона';
+        telInput.style.border = '1px solid red';
+        telInput.style.color = 'red';
+        telInput.value = ''
+        setTimeout(() => {
+            telInput.placeholder = 'Номер телефона';
+            telInput.style.border = '';
+            telInput.style.color = '';
+        }, 2000)
+    }
+    const email = document.getElementById('mobile__form__email').value || '';
+    let skillLevelTesters = '';
+    const formCheckBoxValue = checkBoxStates;
+    if (formCheckBoxValue[0]) {
+        if (formCheckBoxValue[1] && formCheckBoxValue[2]) {
+            skillLevelTesters = 'Junior, Middle, Senior';
+        } else if (formCheckBoxValue[1]) {
+            skillLevelTesters = 'Junior, Middle';
+        } else if (formCheckBoxValue[2]) {
+            skillLevelTesters = 'Junior, Senior';
+        } else {
+            skillLevelTesters = 'Junior';
+        }
+    } else {
+        skillLevelTesters = formCheckBoxValue[1] && formCheckBoxValue[2] ? 'Middle, Senior' : formCheckBoxValue[1] ? 'Middle' : 'Senior';
+    }
+    if (!isError) {
+        sendFormButton.innerText = 'Отправка...';
+        const msg = MESSAGE_TEMPLATE.replace(
+            '%description', description).replace(
+                '%name', name).replace(
+                    '%skillLevelTesters', skillLevelTesters).replace(
+                        '%telNumber', tel).replace(
+                            '%email', email);
+
+
+        fetch('http://localhost:3000/submit-form', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                titleMessage: MESSAGE_TITLE,
+                textMessage: msg,
+            })
+        })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Server response:', data);
+                sendFormButton.innerText = 'Отправлено 🚀';
+                setTimeout(() => {
+                    sendFormButton.innerText = 'Отправить заявку';
+                }, 2000)
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                sendFormButton.innerText = 'Произошла ошибка';
+                setTimeout(() => {
+                    sendFormButton.innerText = 'Отправить заявку';
+                }, 2000)
+            });
+    } else {
+        sendFormButton.innerText = 'Ошибка, заявка не отправлена 😢';
+        sendFormButton.style.cursor = 'not-allowed';
+        setTimeout(() => {
+            sendFormButton.innerText = 'Отправить заявку';
+            sendFormButton.style.cursor = '';
+        }, 1000)
+    }
 })
