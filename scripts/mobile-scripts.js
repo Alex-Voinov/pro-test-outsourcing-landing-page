@@ -1,4 +1,5 @@
 import { testers } from "./dataAboutTesters.js";
+import { responders } from "./dataAboutResponders.js";
 import { TELEGRAM_LINK, VK_LINK, TELEPHON_NUMBER, EMAIL, LOCATION, SERVIES_LINK, COUESES_LINK, SOFTWARE_TESTER_COURSE, COMPUTER_LITERACY_COURSE_FOR_QA, MESSAGE_TITLE, MESSAGE_TEMPLATE } from "./basicInformation.js";
 
 const hamburger = document.getElementById('mobile__hamburger');
@@ -20,6 +21,75 @@ const windowHieght = window.innerHeight;
 const sendRequest = document.getElementById('mobile__send__request');
 
 const anchor = document.getElementById('mobile__anchor');
+const testPO = document.getElementById('mobile__aside__categories__gears');
+const studyCourse = document.getElementById('mobile__aside__categories__graduates_hat');
+const testerByZerro = document.getElementById('mobile__aside__categories__tester');
+const footerLinkTesting = document.getElementById('footerLinkTesting');
+const footerLinkCourse = document.getElementById('footerLinkCourse');
+const courseQA = document.getElementById('mobile__aside__categories__qa');
+const navEmail = document.getElementById('from_tablet__nav__links_block__email');
+const navLoc = document.getElementById('from_tablet__nav__links_block__location');
+const navTel = document.getElementById('from_tablet__nav__links_block__telnumber');
+const footerEmail = document.getElementById('mobile__footer__mail_link');
+const footerLoc = document.getElementById('mobile__footer__location_link');
+const footerTel = document.getElementById('mobile__footer__phone_link');
+const formButtonCall = document.getElementById('mobile__calling_button');
+const formButtonVK = document.getElementById('mobile__vk_button');
+const formButtonTG = document.getElementById('mobile__tg_button');
+
+
+let activeResponer = 0;
+const respondersPhoto = document.getElementById('mobile__comp_11__left_block__responder_block__photo')
+const respondersName = document.getElementById('mobile__comp_11__left_block__responder_block__name')
+const respondersDesc = document.getElementById('mobile__comp_11__left_block__responder_block__desc')
+const respondersFeed = document.getElementById('mobile__comp_11__left_block__text__p')
+const responderPoinerLeft = document.getElementById('mobile__comp_11__left_pointer');
+const responderPoinerRight = document.getElementById('mobile__comp_11__right_pointer');
+const respondersAmount = responders.length;
+const setResponders = (number) => {
+    respondersPhoto.src = `img/photos_of_responders/${responders[number].img}.png`;
+    respondersName.innerText = responders[number].name;
+    respondersDesc.innerText = responders[number].description;
+    respondersFeed.innerText = responders[number].feedback;
+}
+
+const transitionToLink = (link) => {
+    const innerFunc = () => {
+        window.location.href = link;
+    }
+    return innerFunc;
+}
+
+testPO.addEventListener('click', transitionToLink(SERVIES_LINK));
+
+studyCourse.addEventListener('click', transitionToLink(COUESES_LINK));
+testerByZerro.addEventListener('click', transitionToLink(SOFTWARE_TESTER_COURSE));
+courseQA.addEventListener('click', transitionToLink(COMPUTER_LITERACY_COURSE_FOR_QA));
+navEmail.addEventListener('click', transitionToLink(`mailto:${encodeURIComponent(EMAIL)}`));
+navLoc.addEventListener('click', transitionToLink(`https://yandex.ru/maps/-/:${LOCATION}`));
+navTel.addEventListener('click', transitionToLink(`tel:${TELEPHON_NUMBER}`));
+footerEmail.addEventListener('click', transitionToLink(`mailto:${encodeURIComponent(EMAIL)}`));
+footerLoc.addEventListener('click', transitionToLink(`https://yandex.ru/maps/-/:${LOCATION}`));
+footerTel.addEventListener('click', transitionToLink(`tel:${TELEPHON_NUMBER}`));
+footerLinkTesting.addEventListener('click', transitionToLink(SERVIES_LINK));
+footerLinkCourse.addEventListener('click', transitionToLink(COUESES_LINK));
+formButtonCall.addEventListener('click', transitionToLink(`tel:${TELEPHON_NUMBER}`));
+formButtonVK.addEventListener('click', transitionToLink(VK_LINK));
+formButtonTG.addEventListener('click', transitionToLink(TELEGRAM_LINK));
+
+const swapResponder = (isLeft) => {
+    const innerFunc = () => {
+        activeResponer += isLeft ? -1 : 1;
+        if (activeResponer === -1) { activeResponer = respondersAmount - 1 }
+        else if (activeResponer === respondersAmount) { activeResponer = 0; }
+        setResponders(activeResponer);
+    }
+    return innerFunc;
+}
+
+setResponders(0);
+responderPoinerLeft.addEventListener('click', swapResponder(true))
+responderPoinerRight.addEventListener('click', swapResponder(false))
 
 let checkBoxStates = [false, false, false];
 for (let i = 1; i <= 3; i++) {
@@ -84,18 +154,9 @@ window.addEventListener('scroll', () => {
         setTimeout(() => anchor.style.display = 'none', 300);
         anchor.style.opacity = '0'
     }
-    if (!isOpenBurger) {
-        fixedHeader.style.opacity = window.scrollY > windowHieght ? '1' : '';
-        fixedHeader.style.top = window.scrollY > windowHieght ? '0' : '';
-    }
 })
 
-const transitionToLink = (link) => {
-    const innerFunc = () => {
-        window.location.href = link;
-    }
-    return innerFunc;
-}
+
 
 const diffNeberByOne = (number) => {
     if (number == amountTesters) {

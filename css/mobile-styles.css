@@ -38,7 +38,7 @@
 
 #mobile__anchor {
     position: fixed;
-    bottom:  3%;
+    bottom: 3%;
     left: 86.62%;
     transition: opacity 0.3s ease-in-out;
     z-index: 3;
@@ -46,7 +46,7 @@
     height: var(--px40);
 }
 
-#mobile__anchor > svg{
+#mobile__anchor>svg {
     width: 100%;
 }
 
@@ -1392,4 +1392,271 @@
 
 #mobile__police>a {
     text-decoration: underline;
+}
+
+#mobile_comp_12 {
+    width: 89.03743vw;
+    margin-top: 2.80514lvh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#mobile_comp_12>h1 {
+    font-size: var(--px32);
+    font-weight: 700;
+    letter-spacing: -0.015em;
+    text-align: center;
+    color: #007BFF;
+}
+
+#mobile_comp_12>p {
+    margin-top: 2.67666lvh;
+    font-size: var(--px16true);
+    font-weight: 400;
+    line-height: 2.35546lvh;
+    letter-spacing: -0.015em;
+    text-align: center;
+}
+
+#mobaile__pointer_block__2 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 26.84759vw;
+    margin-top: 4.28266lvh;
+}
+
+#mobaile__pointer_block__2>img {
+    height: 2.26017lvh;
+    pointer-events: all;
+}
+
+#mobile__responder_block {
+    width: 100%;
+    height: 31.94433lvh;
+    margin-top: 4.91113lvh;
+    overflow: hidden;
+    position: relative;
+}
+
+#mobile__responder_block>img:first-of-type {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+#mobile__comp_11__left_block__responder_block {
+    position: absolute;
+    width: 32vw;
+    height: 17.45182lvh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    top: 10.92077lvh;
+    left: 7.5vw;
+}
+
+#mobile__comp_11__left_block__responder_block__photo {
+    width: min(22.45989vw, 8.99358lvh);
+    height: min(22.45989vw, 8.99358lvh);
+    border-radius: 50%;
+}
+
+#mobile__comp_11__left_block__responder_block__name {
+    margin-top: 0.9636lvh;
+    width: 100%;
+    text-align: center;
+    font-size: var(--px12);
+    font-weight: 700;
+    letter-spacing: -0.015em;
+    color: #191919;
+}
+
+#mobile__comp_11__left_block__responder_block__desc {
+    margin-top: 0.1lvh;
+    font-size: var(--px9);
+    font-style: italic;
+    font-weight: 400;
+    line-height: 1.71306lvh;
+    letter-spacing: -0.015em;
+    text-align: center;
+}
+
+#mobile__comp_11__left_block__text {
+    top: 4.33833lvh;
+    left: 41vw;
+    position: absolute;
+    width: 31vw;
+    height: 20.34261lvh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#mobile__comp_11__left_block__text__p {
+    max-height: 100%;
+    width: 100%;
+    padding-right: 0.5em;
+    color: #191919;
+    font-size: var(--px9);
+    font-style: italic;
+    font-weight: 400;
+    line-height: 1.71306lvh;
+    letter-spacing: -0.015em;
+    text-align: left;
+    overflow: auto;
+}
+
+
+#mobile__comp_11__left_block__text__p::-webkit-scrollbar {
+    width: 0.26042vw;
+    height: 0.46296vh;
+
+}
+
+#mobile__comp_11__left_block__text__p::-webkit-scrollbar-thumb {
+    background-color: #c5bfcc !important;
+    border-radius: min(0.15625vw, 0.27778vh) min(0.26042vw, 0.46296vh) min(0.26042vw, 0.46296vh) min(0.15625vw, 0.27778vh) !important
+}
+
+#mobile__comp_11__left_block__text__p::-webkit-scrollbar-thumb:hover {
+    border-radius: 1em !important
+}
+
+#mobile__comp_11__left_block__text__p::-webkit-scrollbar-button:vertical:start:decrement {
+    background-color: #f6f8f4 !important;
+    display: none
+}
+
+#mobile__comp_11__left_block__text__p::-webkit-scrollbar-button:vertical:end:increment {
+    background-color: #f6f8f4 !important;
+    display: none
+}
+
+#mobile__comp_11__left_block__text__p::-webkit-scrollbar-button:horizontal:start:decrement {
+    background-color: #f6f8f4;
+    display: none
+}
+
+#mobile__comp_11__left_block__text__p::-webkit-scrollbar-button:horizontal:end:increment {
+    background-color: #f6f8f4;
+    display: none
+}
+
+#mobile__comp_13 {
+    margin-top: 4.29979lvh;
+    height: 38.75803lvh;
+    width: 100vw;
+    overflow: hidden;
+    position: relative;
+}
+
+#mobile__comp_13>img {
+    position: absolute;
+    width: 248.93048vw;
+    height: 100%;
+    z-index: 0;
+    right: 0;
+    max-inline-size: none;
+    max-block-size: none;
+    pointer-events: none;
+}
+
+#mobile_infoblock {
+    position: absolute;
+    width: 75.13369vw;
+    height: 20.02141lvh;
+    top: 14.56103lvh;
+    left: 10.66578vw;
+}
+
+#deep_footer {
+    position: absolute;
+    height: 2.24839lvh;
+    width: 100%;
+    background-color: #0000004D;
+    bottom: 0;
+    padding-left: 10.69519vw;
+    display: flex;
+    align-items: center;
+    font-size: var(--px12);
+    font-weight: 300;
+    letter-spacing: -0.015em;
+    color: #FFF;
+}
+
+#mobile_infoblock>h1 {
+    font-size: var(--px12);
+    font-weight: 700;
+    letter-spacing: -0.015em;
+    text-align: left;
+    color: #FFF;
+}
+
+#mobile_infoblock>p {
+    font-size: var(--px12);
+    margin-top: 0.3em;
+    font-weight: 400;
+    letter-spacing: -0.015em;
+    text-align: left;
+    color: #FFF;
+}
+
+#mobile__comp_12__left_column__select_poiner {
+    display: flex;
+    align-items: center;
+    margin-top: 0.1em;
+}
+
+#mobile__comp_12__left_column__select_poiner>img {
+    width: 1.60428vw;
+}
+
+#mobile__comp_12__left_column__select_poiner>p {
+    font-size: var(--px12);
+    font-weight: 400;
+    letter-spacing: -0.015em;
+    text-align: left;
+    color: #FFF;
+    margin-left: 0.5em;
+    color: #4DB2FF;
+}
+
+#mobile__comp_12__middle_column{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 1.1vh;
+    width: 47.59358vw;
+}
+
+.mobile__footer__bottom__rows{
+    width: 47.59358vw;
+    height: 2.2vh;
+    display: flex;
+    align-items: center;
+    justify-content:flex-start;
+}
+
+.mobile__footer__bottom__rows > img{
+    height: min(5.08021vw, 2.03426lvh);
+    width: min(5.08021vw, 2.03426lvh);
+}
+
+.mobile__footer__bottom__rows > h1{
+    width: 40.37433vw;
+    text-align: left;
+    margin-left: 1.91444vw;
+    font-size: var(--px12);
+    font-weight: 400;
+    letter-spacing: -0.015em;
+    color: #FFFFFF;
+}
+
+#mobile_infoblock > img{
+    margin-top: 1.07066lvh;
+    width: 49.19786vw;
 }
