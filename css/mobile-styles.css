@@ -1071,7 +1071,8 @@
     width: 80.48128vw;
     height: 9.16256lvh;
     margin-top: 2.72291lvh;
-    border: 1px solid red;
+    display: flex;
+    justify-content: space-between;
     margin-left: 2.90642vw;
 }
 
@@ -1110,4 +1111,58 @@
     overflow: visible;
     text-wrap: nowrap;
     text-align: center;
+}
+
+
+
+.professional_division {
+    height: 100%;
+    width: 31.23262vw;
+    border-radius: var(--px8);
+    background-color: #FFF;
+    padding-top: 0.84113lvh;
+    padding-left: 3.74332vw;
+}
+
+.professional_division>* {
+    width: 23.36631vw;
+}
+
+.junior.professional_division>* {
+    width: 11.88235vw;
+}
+
+.junior.professional_division {
+    width: 15.61765vw;
+    padding-left: 2.01604vw;
+}
+
+.professional_division>h1 {
+    font-size: var(--px12);
+    font-weight: 500;
+    letter-spacing: -0.015em;
+    text-align: center;
+    color: #3D3D3D;
+}
+
+.professional_division>p {
+    text-align: right;
+    margin-top: 0.53695lvh;
+    font-size: var(--px8);
+    font-weight: 400;
+    letter-spacing: -0.015em;
+}
+
+.professional_division>div {
+    margin-top: 0.30665lvh;
+    border-radius: var(--px8);
+    height: 3.01601lvh;
+    background-color: #E8EFF9;
+    color: #4484FC;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: var(--px13);
+    font-weight: 700;
+    letter-spacing: -0.015em;
 }
