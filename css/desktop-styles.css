@@ -679,7 +679,7 @@
     line-height: 100%;
     letter-spacing: -0.015em;
     font-weight: 400;
-    overflow: hidden;
+    overflow: visible;
 }
 
 .composition_2__widget {
@@ -694,7 +694,9 @@
     width: 7.96875vw;
     height: 7.66vh;
     margin-top: 5vh;
+    overflow: visible;
 }
+
 
 #composition_2__w2 {
     width: 5.028125vw;
@@ -1035,6 +1037,7 @@
     margin-top: 13.33333vh;
     margin-left: 12.5vw;
     position: relative;
+    overflow: visible;
 }
 
 #comp_5__left_back {
@@ -2459,7 +2462,7 @@
     overflow-y: auto;
     text-align: center;
     letter-spacing: -0.015em;
-    font-weight: 500;
+    font-weight: 400;
     font-style: italic;
     font-size: min(1.04167vw, 1.85185vh);
     line-height: 2.96296vh;
