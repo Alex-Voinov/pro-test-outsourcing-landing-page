@@ -17,9 +17,9 @@ let isActiveCoursel = false;
 const leftPointer = document.getElementById('mobaile__tester_pointer_left');
 const rightPointer = document.getElementById('mobaile__tester_pointer_right');
 const amountTesters = testers.length;
-const windowHieght = window.innerHeight;
-const sendRequest = document.getElementById('mobile__send__request');
 
+const sendRequest = document.getElementById('mobile__send__request');
+const sendRequestSection = document.getElementById('mobile_comp_11');
 const anchor = document.getElementById('mobile__anchor');
 const testPO = document.getElementById('mobile__aside__categories__gears');
 const studyCourse = document.getElementById('mobile__aside__categories__graduates_hat');
@@ -123,17 +123,19 @@ const transitionToForm = (qualification) => {
             cBoxCpImg.style.opacity = currentState ? '1' : '';
         }
         window.scrollTo({
-            top: 6.35 * windowHieght,
+            top: sendRequestSection.offsetTop,
             behavior: 'smooth'
         });
     }
     return innerFunc;
 }
 
+
+
 sendRequest.addEventListener('click', (e) => {
     e.preventDefault();
     window.scrollTo({
-        top: 6.35 * windowHieght,
+        top: sendRequestSection.offsetTop,
         behavior: 'smooth'
     });
 })

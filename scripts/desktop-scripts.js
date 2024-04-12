@@ -818,6 +818,15 @@ window.addEventListener('scroll', () => {
     }
 })
 
+const accordionHeightSet = [
+    23.42593,
+    23.42593,
+    23.14815,
+    17.5,
+    20.46296,
+    23.42593,
+]
+
 for (let i = 0; i < accordionPoints.length; i++) {
     const point = document.getElementById(`1200_accordion_point_${i}`);
     const pointer = document.getElementById(`1200_accordion_pointer_${i}`);
@@ -825,7 +834,7 @@ for (let i = 0; i < accordionPoints.length; i++) {
         const isActive = point.getAttribute('data-active');
         const hiddenPoint = document.getElementById(`1200_accordion_heidden_point_${i}`);
         if (isActive === '0') {
-            point.style.height = '23.42593vh';
+            point.style.height = accordionHeightSet[i] + 'vh';
             hiddenPoint.style.display = 'block';
             pointer.style.transform = 'rotate(180deg)';
             setTimeout(() => { hiddenPoint.style.opacity = '1'; }, 300)
