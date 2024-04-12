@@ -279,7 +279,7 @@ headerMenuBlockPoint1.addEventListener('mousemove', () => { //при ДВИЖЕ�
         hederMenuPoint1IsActive = 1;//отмечаем что меню начинает открытие, чтобы снова сюда не попадать
         headerMenuBlockPoint1.style.border = 'min(0.10417vw, 0.18519vh) solid #FFFFFF99';
         headerMenuBlockPoint1.style.boxShadow = '0 0 min(0.78125vw, 1.38889vh) 0 #FFFFFF40';
-        headerMenuPoint1Pointer.style.transform = 'rotate(0deg)';
+        headerMenuPoint1Pointer.style.transform = 'rotate(180deg)';
         headerMenuBlockPoint1.style.backgroundColor = '#FFFFFF0C';
         setTimeout(() => {
             headerMenuDropPoint1.style.height = '3.7963vh';
@@ -322,7 +322,7 @@ headerMenuBlockPoint2.addEventListener('mousemove', () => { //при ДВИЖЕ�
         hederMenuPoint2IsActive = 1;//отмечаем что меню начинает открытие, чтобы снова сюда не попадать
         headerMenuBlockPoint2.style.border = 'min(0.10417vw, 0.18519vh) solid #FFFFFF99';
         headerMenuBlockPoint2.style.boxShadow = '0 0 min(0.78125vw, 1.38889vh) 0 #FFFFFF40';
-        headerMenuPoint2Pointer.style.transform = 'rotate(0deg)';
+        headerMenuPoint2Pointer.style.transform = 'rotate(180deg)';
         headerMenuBlockPoint2.style.backgroundColor = '#FFFFFF0C';
         setTimeout(() => {
             headerMenuDropPoint2_1.style.height = '3.7963vh';
@@ -390,7 +390,7 @@ fixedHeaderMenuBlockPoint1.addEventListener('mousemove', () => { //при ДВИ
         fixedHederMenuPoint1IsActive = 1;//отмечаем что меню начинает открытие, чтобы снова сюда не попадать
         fixedHeaderMenuBlockPoint1.style.border = 'min(0.10417vw, 0.18519vh) solid #FFFFFF99';
         fixedHeaderMenuBlockPoint1.style.boxShadow = '0 0 min(0.78125vw, 1.38889vh) 0 #FFFFFF40';
-        fixedHeaderMenuPoint1Pointer.style.transform = 'rotate(0deg)';
+        fixedHeaderMenuPoint1Pointer.style.transform = 'rotate(180deg)';
         fixedHeaderMenuPoint1Blur.style.opacity = '0.99';
         setTimeout(() => {
             fixedHeaderMenuDropPoint1.style.height = '3.7963vh';
@@ -433,7 +433,7 @@ fixedHeaderMenuBlockPoint2.addEventListener('mousemove', () => { //при ДВИ
         fixedHederMenuPoint2IsActive = 1;//отмечаем что меню начинает открытие, чтобы снова сюда не попадать
         fixedHeaderMenuBlockPoint2.style.border = 'min(0.10417vw, 0.18519vh) solid #FFFFFF99';
         fixedHeaderMenuBlockPoint2.style.boxShadow = '0 0 min(0.78125vw, 1.38889vh) 0 #FFFFFF40';
-        fixedHeaderMenuPoint2Pointer.style.transform = 'rotate(0deg)';
+        fixedHeaderMenuPoint2Pointer.style.transform = 'rotate(180deg)';
         fixedHeaderMenuPoint2Blur.style.opacity = '99';
         setTimeout(() => {
             fixedHeaderMenuDropPoint2_1.style.height = '3.7963vh';
@@ -801,7 +801,7 @@ window.addEventListener('scroll', () => {
         }
     }
 
-    for (let j = 1; j < 5; j++) {
+    for (let j = 1; j <= 5; j++) {
         const comp5Point = document.getElementById(`from1200__composition_5__text_point_${j}`);
         if (window.scrollY > hieght * (3.4 + (j / 10))) {
             comp5Point.style.opacity = 1;

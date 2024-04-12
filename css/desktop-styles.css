@@ -124,9 +124,9 @@
 #header_point_1_pointer,
 #header_point_2_pointer {
     width: 0.88542vw;
-    -webkit-transform: rotate(90deg);
-    -ms-transform: rotate(90deg);
-    transform: rotate(90deg);
+    -webkit-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    transform: rotate(0deg);
     -webkit-transition: -webkit-transform 0.6s ease-in-out;
     transition: -webkit-transform 0.6s ease-in-out;
     -o-transition: transform 0.6s ease-in-out;
@@ -137,9 +137,9 @@
 #fixed_header_point_1_pointer,
 #fixed_header_point_2_pointer {
     width: 0.88542vw;
-    -webkit-transform: rotate(90deg);
-    -ms-transform: rotate(90deg);
-    transform: rotate(90deg);
+    -webkit-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    transform: rotate(0deg);
     -webkit-transition: -webkit-transform 0.6s ease-in-out;
     transition: -webkit-transform 0.6s ease-in-out;
     -o-transition: transform 0.6s ease-in-out;
@@ -338,7 +338,7 @@
 }
 
 #composition_1__header #header_point_1>h1 {
-    color: #4DB2FF;
+    color: #FFFFFF;
 }
 
 #composition_1__header #header_droppoint_2_1,
@@ -530,7 +530,7 @@
 }
 
 #fixed_header_point_1>h1 {
-    color: #4DB2FF;
+    color: #ffffff;
 }
 
 #fixed_header_droppoint_2_1,
