@@ -923,11 +923,12 @@
 
 #composition_4>img {
     position: absolute;
-    height: 122.5vh;
+    /* height: 108.51852vh; */
     max-block-size: none;
-    width: 43.75vw;
+    width: 45.72917vw;
     z-index: -1;
     overflow: visible;
+    object-fit: contain;
 }
 
 #composition_4>h1 {
