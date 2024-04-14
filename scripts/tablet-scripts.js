@@ -45,6 +45,7 @@ const FooterCourserLink = document.getElementById('tablet__footer__course_link')
 const FormCallingLink = document.getElementById('tablet__form__column_left__bottom__calling_button');
 const FormVkLink = document.getElementById('tablet__vk__button');
 const FormTellegramLink = document.getElementById('tablet__tellegram__button');
+const formSection = document.getElementById('tablet__comp_10__back')
 
 
 const setResponders = (number) => {
@@ -175,7 +176,7 @@ anchor.addEventListener('click', () => {
 
 topButton.addEventListener('click', () => {
     window.scrollTo({
-        top: 4.5 * windowHieght,
+        top: formSection.offsetTop,
         behavior: 'smooth'
     });
 });
@@ -262,6 +263,7 @@ closeNavigation.addEventListener('click', () => {
 })
 
 
+
 const transitionToForm = (qualification) => {
     const innerFunc = () => {
         let select;
@@ -282,7 +284,7 @@ const transitionToForm = (qualification) => {
             cBoxCpImg.style.opacity = currentState ? '1' : '';
         }
         window.scrollTo({
-            top: 4.5 * windowHieght,
+            top: formSection.offsetTop,
             behavior: 'smooth'
         });
     }
