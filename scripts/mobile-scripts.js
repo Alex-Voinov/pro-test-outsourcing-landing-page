@@ -77,6 +77,7 @@ formButtonCall.addEventListener('click', transitionToLink(`tel:${TELEPHON_NUMBER
 formButtonVK.addEventListener('click', transitionToLink(VK_LINK));
 formButtonTG.addEventListener('click', transitionToLink(TELEGRAM_LINK));
 
+
 const swapResponder = (isLeft) => {
     const innerFunc = () => {
         activeResponer += isLeft ? -1 : 1;
@@ -560,3 +561,4 @@ sendFormButton.addEventListener('click', (event) => {
         }, 1000)
     }
 })
+

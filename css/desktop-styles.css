@@ -690,6 +690,22 @@
     overflow: visible;
 }
 
+#composition_2__widget_img_1{
+    width: 7.34375vw;
+    object-fit: contain;
+}
+
+#composition_2__widget_img_2{
+    width: 5.02813vw;
+    object-fit: contain;
+}
+
+#composition_2__widget_img_3{
+    width: 5.6401vw;
+    object-fit: contain;
+}
+
+
 #composition_2__w1 {
     width: 7.96875vw;
     height: 7.66vh;
@@ -902,6 +918,7 @@
     align-self: flex-start;
     width: 100vw;
     min-height: 136.11111vh;
+    overflow: visible;
 }
 
 #composition_4>img {
@@ -910,6 +927,7 @@
     max-block-size: none;
     width: 43.75vw;
     z-index: -1;
+    overflow: visible;
 }
 
 #composition_4>h1 {
