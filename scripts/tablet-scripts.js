@@ -224,10 +224,10 @@ for (let i = 1; i <= 3; ++i) {
         setTimeout
             (() => {
                 cardBlock.style.transform = isFlip ? 'rotate3d(-1, 1, 0, 180deg)' : '';
-                card.style.width = isFlip ? '18.91508vh' : '';
+                card.style.width = isFlip ? '22.57902vw' : '';
                 card.style.height = isFlip ? '25.33972vw' : '';
-                card.style.marginTop = isFlip ? 'calc((26.80924vw - 20.04796vh)/-2)' : '';
-                card.style.marginLeft = isFlip ? 'calc((26.80924vw - 20.04796vh)/2)' : '';
+                card.style.marginTop = isFlip ? '-2.11511vw' : '';
+                card.style.marginLeft = isFlip ? '2.11511vw' : '';
                 title.style.opacity = isFlip ? '0' : '';
                 preview.style.opacity = isFlip ? '0' : '';
                 numberLogo.style.opacity = isFlip ? '0' : '';
