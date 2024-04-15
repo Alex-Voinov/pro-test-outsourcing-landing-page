@@ -724,44 +724,52 @@
 
 #tablet_composition_4 {
     overflow: hidden;
-    width: 114.28125vw;
-    min-height: 78.56414vh;
-    margin-top: 5.4257vh;
-    margin-left: -22.17551vw;
+    width: 100vw;
+    min-height: 93.83161vw;
+    margin-top: 6.46891vw;
 }
 
 #tablet_composition_4>img {
+    text-align: left;
     position: absolute;
-    width: 77.08257vw;
-    height: 78.59453vh;
+    object-fit: contain;
+    object-position: left;
+    overflow: visible;
+     width: 48.05699vw;
+    height: 74.74093vw;
     z-index: -1;
+    left: 0;
+    max-inline-size: none; 
+    max-block-size: none; 
+     pointer-events: none;
 }
 
 #tablet_composition_4>h1 {
-    margin-left: 50.76274vw;
-    margin-top: 3.67645vh;
-    width: 42.69277vw;
-    font-size: var(--font_24);
+    position: absolute;
+    margin-left: 28.49741vw;
+    margin-top: 4.3886vw;
+    font-size: 3.10881vw;
     font-weight: 700;
-    line-height: 3.47245vh;
+    line-height: 4.14508vw;
     letter-spacing: -0.015em;
     text-align: center;
 }
 
 #tablet_composition_4>div {
-    width: 51.66476vw;
-    min-height: 44.07188vh;
-    margin-top: 5.57871vh;
-    margin-left: 62.65554vw;
+    position: absolute;
+    width: 51.4158vw;
+    min-height: 52.60881vw;
+    margin-top: 18.81995vw;
+    margin-left: 40.28497vw;
 }
 
 .tablet__accordion__point {
     width: 51.66476vw;
-    height: 6.1853vh;
-    border: min(0.26032vw, 0.21703vh) solid #DFE7EC;
+    height: 7.38342vw;
+    border: 0.26032vw solid #DFE7EC;
     background-color: white;
-    border-radius: var(--radius_35);
-    margin-top: 1.30217vh;
+    border-radius: 4.53368vw;
+    margin-top: 1.5544vw;
     overflow: hidden;
     display: -webkit-box;
     display: -ms-flexbox;
@@ -783,13 +791,13 @@
 }
 
 .tablet__accordion__point:last-of-type {
-    margin-bottom: 12.52794vh;
+    margin-bottom: 14.95466vw;
 }
 
 .tablet__accordion__point__header {
     width: 51.66476vw;
     position: relative;
-    height: 6.1853vh;
+    height: 7.38342vw;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -802,11 +810,11 @@
 }
 
 .tablet__accordion__point__header>h1 {
-    font-size: var(--font_16);
+    font-size: 2.07254vw;
     font-weight: 500;
     letter-spacing: -0.015em;
     text-align: center;
-    height: 6.1853vh;
+    height: 7.38342vw;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -820,8 +828,9 @@
 
 .tablet__accordion__point__header>img {
     position: absolute;
-    width: 1.69209vw;
-    right: 3.51434vw;
+    width: 1.94301vw;
+    right: 3.23834vw;
+    object-fit: contain;
     -webkit-transform: rotate(0deg);
     -ms-transform: rotate(0deg);
     transform: rotate(0deg);
@@ -833,10 +842,9 @@
 }
 
 .tablet__accordion__point__body {
-
-    font-size: var(--font_14);
+    font-size: 1.81347vw;
     font-weight: 400;
-    line-height: 2.38731vh;
+    line-height: 2.84974vw;
     letter-spacing: -0.015em;
     text-align: center;
     opacity: 0;
