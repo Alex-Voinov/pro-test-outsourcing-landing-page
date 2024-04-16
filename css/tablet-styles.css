@@ -43,14 +43,14 @@
 #tablet__anchor {
     position: fixed;
     cursor: pointer;
-    top: 90%;
-    left: 92%;
+    bottom: 5.07559%;
+    right: 1.94301%;
     -webkit-transition: opacity 0.3s ease-in-out;
     -o-transition: opacity 0.3s ease-in-out;
     transition: opacity 0.3s ease-in-out;
     z-index: 4;
-    width: min(5.18135vw, 4.31965vh);
-    height: min(5.18135vw, 4.31965vh);
+    width: 5.18135vw;
+    height: 5.18135vw;
 }
 
 #tablet__anchor>svg {
@@ -2102,12 +2102,12 @@
 }
 
 #tablet__comp_11 {
-    width: 81.21762vw;
-    margin-top: 3.23974vh;
+    width: 81.24352vw;
+    margin-top: 7vw;
     -ms-flex-item-align: center;
     -ms-grid-row-align: center;
     align-self: center;
-    height: 40.82073vh;
+    height: 48.97927vw;
     position: relative;
 }
 
@@ -2115,16 +2115,16 @@
     position: absolute;
     left: 0;
     top: 0;
-    width: 55.31088vw;
-    height: 40.82073vh;
+    width: 55.33161vw;
+    height: 48.97927vw;
     overflow: hidden;
 }
 
 #tablet__comp_11>h1 {
     position: absolute;
     right: 0;
-    top: 2.37581vh;
-    font-size: var(--font_24);
+    top: 2.84974vw;
+    font-size: 3.10881vw;
     font-weight: 700;
     letter-spacing: -0.015em;
     text-align: right;
@@ -2134,10 +2134,10 @@
 #tablet__comp_11>p {
     position: absolute;
     right: 0.3886vw;
-    top: 7.12743vh;
-    font-size: var(--font_16);
+    top: 8.54922vw;
+    font-size: 2.07254vw;
     font-weight: 400;
-    line-height: 1.94384vh;
+    line-height: 2.33161vw;
     letter-spacing: -0.015em;
     text-align: right;
     color: #000;
@@ -2146,9 +2146,9 @@
 #tablet__comp_11__left_pointer,
 #tablet__comp_11__right_pointer {
     position: absolute;
-    top: 17.27862vh;
-    width: min(5.18135vw, 4.31965vh);
-    height: min(5.18135vw, 4.31965vh);
+    top: 20.72539vw;
+    width: 5.18135vw;
+    height: 5.18135vw;
     border-radius: 50%;
     display: -webkit-box;
     display: -ms-flexbox;
@@ -2186,16 +2186,18 @@
 #tablet__comp_11__left_block>img {
     position: absolute;
     width: 100%;
-    height: 100%;
     z-index: -1;
+    object-fit: contain;
+    object-position: center center;
+    overflow: visible;
 }
 
 #tablet__comp_11__left_block__text {
     position: absolute;
-    top: 7.4514vh;
-    left: 23.3vw;
+    top: 8.52591vw;
+    left: 24.74093vw;
     width: 23.57513vw;
-    height: 22.24622vh;
+    height: 26.68394vw;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -2211,10 +2213,10 @@
 #tablet__comp_11__left_block__text__p {
     max-height: 100%;
     text-align: center;
-    font-size: var(--font_12);
+    font-size: 1.5544vw;
     font-style: italic;
     font-weight: 400;
-    line-height: 2.26782vh;
+    line-height: 2.72021vw;
     letter-spacing: -0.015em;
     color: #191919;
     overflow: auto;
@@ -2224,13 +2226,13 @@
 
 #tablet__comp_11__left_block__text__p::-webkit-scrollbar {
     width: 0.26042vw;
-    height: 0.46296vh;
+    height: 0.55699vw;
 
 }
 
 #tablet__comp_11__left_block__text__p::-webkit-scrollbar-thumb {
     background-color: #c5bfcc !important;
-    border-radius: min(0.15625vw, 0.27778vh) min(0.26042vw, 0.46296vh) min(0.26042vw, 0.46296vh) min(0.15625vw, 0.27778vh) !important
+    border-radius: 0.15625vw 0.26042vw 0.26042vw 0.15625vw!important
 }
 
 #tablet__comp_11__left_block__text__p::-webkit-scrollbar-thumb:hover {
@@ -2260,10 +2262,10 @@
 #tablet__comp_11__left_block__responder_block {
     position: absolute;
     left: 3.36788vw;
-    top: 15.44276vh;
+    top: 18.5vw;
     z-index: 1;
-    width: 21vw;
-    height: 16.1987vh;
+    width: 20.34067vw;
+    height: 19.40803vw;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -2277,14 +2279,17 @@
 }
 
 #tablet__comp_11__left_block__responder_block__photo {
-    width: min(13.60104vw, 11.33909vh);
-    height: min(13.60104vw, 11.33909vh);
+    width: 13.66969vw;
+    height: 13.66969vw;
     border-radius: 50%;
+    object-fit: contain;
+    overflow: visible;
+    object-fit: center center;
 }
 
 #tablet__comp_11__left_block__responder_block__name {
-    margin-top: 1.1879vh;
-    font-size: var(--font_12);
+    margin-top: 1.46503vw;
+    font-size: 1.5544vw;
     font-weight: 700;
     letter-spacing: -0.015em;
     color: #292929;
@@ -2293,8 +2298,8 @@
 }
 
 #tablet__comp_11__left_block__responder_block__desc {
-    margin-top: 0.25vh;
-    font-size: var(--font_11);
+    margin-top: 0.32383vw;
+    font-size: 1.5544vw;
     font-style: italic;
     font-weight: 500;
     letter-spacing: -0.015em;
@@ -2305,17 +2310,17 @@
 #tablet__comp_12 {
     position: relative;
     width: 100vw;
-    margin-top: -8vh;
     overflow: hidden;
-    height: 40.49676vh;
+    height: 49.21875vw;
+    margin-top: -7.25389vw;
 }
 
 #tablet__comp_12>img {
     position: absolute;
+    object-fit: contain;
+    object-position: top;
     z-index: -1;
-    margin-left: -3vw;
-    width: 104.01554vw;
-    height: 53.02376vh;
+    width: 100%;
     overflow: hidden;
     max-inline-size: none;
     max-block-size: none;
@@ -2325,9 +2330,9 @@
 #tablet__comp_12__content {
     position: absolute;
     width: 68.26425vw;
-    height: 19.11447vh;
+    height: 23.05699vw;
     left: 22.53886vw;
-    top: 19vh;
+    top: 22vw;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -2341,7 +2346,7 @@
 
 #tablet__comp_12__left_column {
     width: 17.09845vw;
-    height: 8.63931vh;
+    height: 10.23316vw;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -2355,7 +2360,7 @@
 }
 
 #tablet__comp_12__left_column>h1 {
-    font-size: var(--font_12);
+    font-size: 1.5544vw;
     font-weight: 700;
     letter-spacing: -0.015em;
     text-align: left;
@@ -2364,7 +2369,7 @@
 
 #tablet__comp_12__left_column>div {
     width: 16.96891vw;
-    height: 6.69546vh;
+    height: 8.2vw;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -2375,7 +2380,7 @@
     -webkit-box-pack: justify;
     -ms-flex-pack: justify;
     justify-content: space-between;
-    font-size: var(--font_11);
+    font-size: 1.42487vw;
     font-weight: 400;
     letter-spacing: -0.015em;
     text-align: left;
@@ -2384,7 +2389,7 @@
 
 #tablet__comp_12__left_column__select_poiner {
     width: 100%;
-    height: 1.94384vh;
+    height: 2.33161vw;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -2399,9 +2404,9 @@
 }
 
 #tablet__comp_12__left_column__select_poiner>p {
-    font-size: var(--font_10);
+    font-size: 1.29534vw;
     font-weight: 400;
-    line-height: 0.97192vh;
+    line-height: 1.1658vw;
     letter-spacing: -0.015em;
     text-align: left;
     color: #4DB6FE;
@@ -2410,7 +2415,7 @@
 
 #tablet__comp_12__middle_column {
     width: 19.94819vw;
-    height: 6.47948vh;
+    height: 8.16062vw;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -2434,16 +2439,16 @@
     -ms-flex-pack: justify;
     justify-content: space-between;
     width: 100%;
-    height: 1.94384vh;
+    height: 2.33161vw;
 }
 
 #tablet__comp_12__middle_column>div>img {
-    width: 1.94384vh;
-    height: 1.94384vh;
+    width: 2.33161vw;
+    height: 2.33161vw;
 }
 
 #tablet__comp_12__middle_column>div>h1 {
-    font-size: var(--font_12);
+    font-size: 1.5544vw;
     font-weight: 400;
     letter-spacing: -0.015em;
     text-align: left;
@@ -2457,21 +2462,20 @@
 }
 
 #tablet__comp_12__right_column>h1 {
-    font-size: var(--font_14);
+    font-size: 1.81347vw;
     font-weight: 700;
-    line-height: 3.45572vh;
     letter-spacing: -0.015em;
     text-align: right;
     color: #FFFFFF;
-
 }
 
 #tablet__comp_12__right_column>p {
     width: 100%;
-    min-height: 13.5vh;
-    font-size: var(--font_11);
+    margin-top: 1em;
+    min-height: 16.19171vw;
+    font-size: 1.42487vw;
     font-weight: 400;
-    line-height: 1.51188vh;
+    line-height: 1.81347vw;
     letter-spacing: -0.015em;
     text-align: right;
     color: #FFFFFF;
@@ -2487,7 +2491,7 @@
     position: absolute;
     bottom: 0;
     right: 0;
-    width: 80.18135vw;
+    width: 82.25vw;
     background-color: #0000004D;
     display: -webkit-box;
     display: -ms-flexbox;
@@ -2499,11 +2503,11 @@
     -ms-flex-pack: end;
     justify-content: end;
     padding-right: 8.67876vw;
-    font-family: IBM Plex Sans;
-    font-size: var(--font_12);
+    font-size: 1.5544vw;
     font-weight: 300;
     letter-spacing: -0.015em;
     color: #fff;
+    height: 3.36788vw;
 }
 
 @media screen and (max-height: 499.99px) {
