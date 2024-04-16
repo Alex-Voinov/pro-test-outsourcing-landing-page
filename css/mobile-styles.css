@@ -303,7 +303,6 @@
 
 #mobile__comp_1 {
     position: relative;
-    overflow: hidden;
     width: 100vw;
     height: 71.41328lvh;
     display: -webkit-box;
@@ -316,6 +315,7 @@
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
+    overflow: visible;
 }
 
 #mobile__comp_1__back_1 {
@@ -477,7 +477,6 @@
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
-    justify-content: space-evenly;
     -webkit-transition: all 0.3s ease-in-out;
     -o-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
@@ -485,10 +484,10 @@
 
 .mobile__comp_3__open_card {
     position: absolute;
+    left: 5.61497vw;
     z-index: 1;
     width: 70.85561vw;
     height: calc(100% - 3.85439lvh);
-    margin-left: 5.61497vw;
     overflow: hidden;
     opacity: 0;
     pointer-events: none;
@@ -498,7 +497,7 @@
 }
 
 .mobile__comp_3__open_card>h1 {
-    margin-left: 14.17112vw;
+    margin-left: 15vw;
     font-size: var(--px16true);
     font-weight: 500;
     letter-spacing: -0.015em;
@@ -531,8 +530,18 @@
 }
 
 .mobile__comp_3__card>div {
-    width: 39.83957vw;
+    width: 70.85561vw;
     height: 80%;
+    overflow: visible;
+}
+
+.mobile__comp_3__card>div:first-of-type {
+    width: 70.85561vw;
+}
+
+.mobile__comp_3__card>div:last-of-type {
+    width: 39.55348vw;
+    margin-left: 4.33957vw;
 }
 
 .mobile__comp_3__card>div>img {
@@ -551,6 +560,8 @@
 }
 
 .mobile__comp_3__card>img:last-of-type {
+    position: absolute;
+    right: 8.26%;
     width: 3.47594vw;
     -webkit-transform: rotate(0deg);
     -ms-transform: rotate(0deg);
@@ -622,7 +633,7 @@
 
 .mobile__accordion__point__body {
     width: 100%;
-    text-align: right;
+    text-align: center;
     margin-top: 1lvh;
     font-size: var(--px14);
     font-weight: 400;

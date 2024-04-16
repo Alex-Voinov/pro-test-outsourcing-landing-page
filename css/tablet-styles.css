@@ -1051,6 +1051,8 @@
     font-size: 1.48964vw;
     font-weight: 400;
     letter-spacing: -0.015em;
+    white-space: nowrap;
+    overflow: visible;
 }
 
 .tablet__comp_6__widdget__row>.tablet__comp_6__widdget__row__point:not(:last-of-type) {

@@ -17,7 +17,7 @@
 
 
 /*mobile*/
-@media screen and (max-width: 767.98px) {
+@media screen and (max-width: 767.98px) and (orientation: portrait) {
     
     #from_1200 {
         display: none!important;
@@ -28,6 +28,22 @@
     }
 
     #from_tablet {
+        display: none !important;
+    }
+
+}
+
+@media screen and (max-width: 767.98px) and (orientation: landscape) {
+    
+    #from_1200 {
+        display: none !important;
+    }
+
+    .from1200 {
+        display: none !important;
+    }
+
+    #from_mobile {
         display: none !important;
     }
 

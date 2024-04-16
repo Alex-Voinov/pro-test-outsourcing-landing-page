@@ -1,12 +1,12 @@
 let oldScriptPath = null;
 let oldScript = null;
 const loadScriptByScreenSize = () => {
-    const path = window.matchMedia("(max-width: 767px)").matches
-        ? 'scripts/mobile-scripts.js'
-        : (window.matchMedia("(min-width: 768px) and (max-width: 1024px)").matches
-            ? 'scripts/tablet-scripts.js'
-            : 'scripts/desktop-scripts.js'
-        )
+    let path
+    if (window.matchMedia("(max-width: 767px) and (orientation: portrait)").matches) path = 'scripts/mobile-scripts.js'
+    else if (window.matchMedia("(max-width: 767.98px) and (orientation: landscape)").matches || (window.matchMedia("(min-width: 768px) and (max-width: 1024px)").matches))
+        path = 'scripts/tablet-scripts.js'
+    else path = 'scripts/desktop-scripts.js'
+
     if (path !== oldScriptPath) {
         if (oldScriptPath) {
             document.head.removeChild(oldScript);
