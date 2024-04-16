@@ -1,6 +1,6 @@
 import { testers } from "./dataAboutTesters.js";
 import { responders } from "./dataAboutResponders.js";
-import { TELEGRAM_LINK, VK_LINK, TELEPHON_NUMBER, EMAIL, LOCATION, SERVIES_LINK, COUESES_LINK, SOFTWARE_TESTER_COURSE, COMPUTER_LITERACY_COURSE_FOR_QA, MESSAGE_TITLE, MESSAGE_TEMPLATE } from "./basicInformation.js";
+import { TELEGRAM_LINK, VK_LINK, TELEPHON_NUMBER, EMAIL, LOCATION, SERVIES_LINK, COUESES_LINK, SOFTWARE_TESTER_COURSE, COMPUTER_LITERACY_COURSE_FOR_QA, MESSAGE_TEMPLATE } from "./basicInformation.js";
 
 const hamburger = document.getElementById('mobile__hamburger');
 const closeAsideMenu = document.getElementById('mobile__right_menu__close');
@@ -526,17 +526,12 @@ sendFormButton.addEventListener('click', (event) => {
                         '%telNumber', tel).replace(
                             '%email', email);
 
-
-        fetch('http://localhost:3000/submit-form', {
+        formData.append('message', msg)
+        fetch('process_form.php', {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                titleMessage: MESSAGE_TITLE,
-                textMessage: msg,
-            })
+            body: formData
         })
+
             .then(response => response.json())
             .then(data => {
                 console.log('Server response:', data);

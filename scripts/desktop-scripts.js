@@ -213,15 +213,10 @@ mainForm.addEventListener('submit', (event) => {
                             '%email', email);
 
 
-        fetch('http://localhost:3000/submit-form', {
+        formData.append('message', msg)
+        fetch('process_form.php', {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                titleMessage: MESSAGE_TITLE,
-                textMessage: msg,
-            })
+            body: formData
         })
             .then(response => response.json())
             .then(data => {

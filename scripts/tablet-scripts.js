@@ -1,6 +1,6 @@
 import { testers } from "./dataAboutTesters.js";
 import { responders } from "./dataAboutResponders.js";
-import { COMPUTER_LITERACY_COURSE_FOR_QA, COUESES_LINK, EMAIL, LOCATION, MESSAGE_TEMPLATE, MESSAGE_TITLE, SERVIES_LINK, SOFTWARE_TESTER_COURSE, TELEGRAM_LINK, TELEPHON_NUMBER, VK_LINK } from "./basicInformation.js";
+import { COMPUTER_LITERACY_COURSE_FOR_QA, COUESES_LINK, EMAIL, LOCATION, MESSAGE_TEMPLATE, SERVIES_LINK, SOFTWARE_TESTER_COURSE, TELEGRAM_LINK, TELEPHON_NUMBER, VK_LINK } from "./basicInformation.js";
 
 const hamburger = document.getElementById('tablet_hamburger');
 const navigation = document.getElementById('from_tablet_modal_menu__navigation')
@@ -518,6 +518,8 @@ sendFormButton.addEventListener('click', (event) => {
     }
     if (!isError) {
         sendFormButton.innerText = 'Отправка...';
+        let formData = new FormData();
+
         const msg = MESSAGE_TEMPLATE.replace(
             '%description', description).replace(
                 '%name', name).replace(
@@ -525,16 +527,10 @@ sendFormButton.addEventListener('click', (event) => {
                         '%telNumber', tel).replace(
                             '%email', email);
 
-
-        fetch('http://localhost:3000/submit-form', {
+        formData.append('message', msg)
+        fetch('process_form.php', {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                titleMessage: MESSAGE_TITLE,
-                textMessage: msg,
-            })
+            body: formData
         })
             .then(response => response.json())
             .then(data => {
