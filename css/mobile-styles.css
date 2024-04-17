@@ -72,8 +72,8 @@
     bottom: 0;
     width: 100vw;
     height: 6.15764lvh;
-    background-image: -webkit-gradient(linear, left top, right top, from(#26264F), to(#434989));
     background-image: -o-linear-gradient(left, #26264F 0%, #434989 100%);
+    background-image: -webkit-gradient(linear, left top, right top, from(#26264F), to(#434989));
     background-image: linear-gradient(90deg, #26264F 0%, #434989 100%);
     border-radius: 0 0 min(5.34759vw, 2.46305lvh) min(5.34759vw, 2.46305lvh);
 }
@@ -132,8 +132,8 @@
     -o-transition: left 0.3s ease-in-out, opacity 0.3s ease-in-out;
     transition: left 0.3s ease-in-out, opacity 0.3s ease-in-out;
     width: 86.8984vw;
-    background-image: -webkit-gradient(linear, left top, left bottom, from(#26264F), to(#434989));
     background-image: -o-linear-gradient(top, #26264F 0%, #434989 100%);
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#26264F), to(#434989));
     background-image: linear-gradient(180deg, #26264F 0%, #434989 100%);
     opacity: 0;
     border-radius: var(--px30) 0 0 var(--px30);
@@ -319,7 +319,8 @@
 }
 
 #mobile__comp_1__back_1 {
-    object-fit: cover;
+    -o-object-fit: cover;
+       object-fit: cover;
     position: absolute;
     width: 100%;
     max-width: 100%;
@@ -545,7 +546,8 @@
 }
 
 .mobile__comp_3__card>div>img {
-    object-fit: contain;
+    -o-object-fit: contain;
+       object-fit: contain;
     overflow: visible;
     height: 100%;
 }
@@ -652,7 +654,8 @@
 
 #mobile__comp_5>img {
     width: 100%;
-    object-fit: cover;
+    -o-object-fit: cover;
+       object-fit: cover;
     overflow: visible;
 }
 
@@ -838,12 +841,17 @@
     width: 83.55615vw;
     height: 23.01927lvh;
     overflow: hidden;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    justify-content: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
 }
 
 #mobile__comp_8>img {
-    object-fit: contain;
+    -o-object-fit: contain;
+       object-fit: contain;
     height: 100%;
 }
 
@@ -1246,8 +1254,8 @@
     right: 8.2%;
     width: 63.57%;
     bottom: 4.17%;
-    background-image: -webkit-gradient(linear, left top, left bottom, from(#3E5AFA), to(#4DB6FF));
     background-image: -o-linear-gradient(top, #3E5AFA 0%, #4DB6FF 100%);
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#3E5AFA), to(#4DB6FF));
     background-image: linear-gradient(180deg, #3E5AFA 0%, #4DB6FF 100%);
     font-weight: 500;
     letter-spacing: -0.015em;
@@ -1566,8 +1574,8 @@
 }
 
 .mobile__form__category>h1 {
-    background-image: -webkit-gradient(linear, left top, left bottom, from(#3D59F9), to(#4DB6FE));
     background-image: -o-linear-gradient(top, #3D59F9 0%, #4DB6FE 100%);
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#3D59F9), to(#4DB6FE));
     background-image: linear-gradient(180deg, #3D59F9 0%, #4DB6FE 100%);
     -webkit-background-clip: text;
     background-clip: text;
@@ -1605,8 +1613,8 @@
 }
 
 #mobile__send_form {
-    background: -webkit-gradient(linear, left top, left bottom, from(#3D59F9), to(#4DB6FE));
     background: -o-linear-gradient(top, #3D59F9 0%, #4DB6FE 100%);
+    background: -webkit-gradient(linear, left top, left bottom, from(#3D59F9), to(#4DB6FE));
     background: linear-gradient(180deg, #3D59F9 0%, #4DB6FE 100%);
     width: 100%;
     height: 5.59957lvh;
@@ -1653,8 +1661,8 @@
 }
 
 #mobile__calling_button>h1 {
-    background-image: -webkit-gradient(linear, left top, left bottom, from(#3D59F9), to(#4DB6FE));
     background-image: -o-linear-gradient(top, #3D59F9 0%, #4DB6FE 100%);
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#3D59F9), to(#4DB6FE));
     background-image: linear-gradient(180deg, #3D59F9 0%, #4DB6FE 100%);
     -webkit-background-clip: text;
     background-clip: text;
@@ -1785,7 +1793,8 @@
 #mobile__responder_block>img:first-of-type {
     position: absolute;
     height: 100%;
-    object-fit: contain;
+    -o-object-fit: contain;
+       object-fit: contain;
     overflow: visible;
     z-index: -1;
 }

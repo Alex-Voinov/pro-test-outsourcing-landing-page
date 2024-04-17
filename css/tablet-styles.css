@@ -67,8 +67,8 @@
     opacity: 0;
     width: 100vw;
     height: 6.47668vw;
-    background: -webkit-gradient(linear, left top, right top, from(#26264F), to(#434989));
     background: -o-linear-gradient(left, #26264F 0%, #434989 100%);
+    background: -webkit-gradient(linear, left top, right top, from(#26264F), to(#434989));
     background: linear-gradient(90deg, #26264F 0%, #434989 100%);
     display: -webkit-box;
     display: -ms-flexbox;
@@ -85,7 +85,8 @@
 #from_tablet__fixed_header>img {
     width: 27.46114vw;
     height: 3.43523vw;
-    object-fit: contain;
+    -o-object-fit: contain;
+       object-fit: contain;
     overflow: visible;
     margin-left: 3.2383vw;
 }
@@ -130,8 +131,8 @@
     height: 100vh;
     width: 34.77322vh;
     border-radius: 3.7797vh 0 0 3.7797vh;
-    background: -webkit-gradient(linear, left top, left bottom, from(#26264F), to(#434989));
     background: -o-linear-gradient(top, #26264F 0%, #434989 100%);
+    background: -webkit-gradient(linear, left top, left bottom, from(#26264F), to(#434989));
     background: linear-gradient(180deg, #26264F 0%, #434989 100%);
     margin-right: -34.77322vh;
     -webkit-transition: margin-right 0.3s ease-in-out;
@@ -214,28 +215,32 @@
     margin-left: 1.72786vh;
     width: 4.39957vh;
     height: 3.68251vh;
-    object-fit: contain;
+    -o-object-fit: contain;
+       object-fit: contain;
 }
 
 #from_tablet__nav__categories__group_of_people>img {
     margin-left: 2vh;
     width: 3.39201vh;
     height: 3.21922vh;
-    object-fit: contain;
+    -o-object-fit: contain;
+       object-fit: contain;
 }
 
 #from_tablet__nav__categories__graduates_hat>img {
     margin-left: 1.5vh;
     width: 4.37797vh;
     height: 3.82073vh;
-    object-fit: contain;
+    -o-object-fit: contain;
+       object-fit: contain;
 }
 
 #from_tablet__nav__categories__tester>img {
     margin-left: 1.7vh;
     width: 4.10367vh;
     height: 3.45572vh;
-    object-fit: contain;
+    -o-object-fit: contain;
+       object-fit: contain;
 }
 
 #from_tablet__nav__categories__qa>img {
@@ -325,7 +330,8 @@
 .from_tablet__nav__links_block__link>img {
     width: 2.05184vh;
     height: 2.05184vh;
-    object-fit: contain;
+    -o-object-fit: contain;
+       object-fit: contain;
 }
 
 #tablet_navigation__company_logo {
@@ -335,7 +341,8 @@
     height: 2.58099vh;
     margin-left: auto;
     padding-right: 1.07991vh;
-    object-fit: contain;
+    -o-object-fit: contain;
+       object-fit: contain;
 }
 
 
@@ -348,7 +355,8 @@
 #tablet_composition_1 {
     width: 100vw;
     height: 60.33549vw;
-    object-fit: cover;
+    -o-object-fit: cover;
+       object-fit: cover;
     position: relative;
 }
 
@@ -365,7 +373,8 @@
     width: 57.79143vw;
     margin-left: 32.41006vw;
     margin-top: 20.33679vw;
-    object-fit: contain;
+    -o-object-fit: contain;
+       object-fit: contain;
 }
 
 #tablet_composition_1>header {
@@ -388,7 +397,8 @@
 
 #tablet_header_logo {
     height: 100%;
-    object-fit: contain;
+    -o-object-fit: contain;
+       object-fit: contain;
 }
 
 #tablet_hamburger {
@@ -513,14 +523,16 @@
 #tablet__comp_2__widdget_1>img {
     width: 9.79851vw;
     height: 5.71373vw;
-    object-fit: contain;
+    -o-object-fit: contain;
+       object-fit: contain;
     overflow: visible;
 }
 
 #tablet__comp_2__widdget_2>img {
     width: 7.04951vw;
     height: 7.50777vw;
-    object-fit: contain;
+    -o-object-fit: contain;
+       object-fit: contain;
 }
 
 #tablet__comp_2__widdget_3>img {
@@ -715,7 +727,8 @@
 
 .tablet_front_card>img {
     width: 17.70188vw;
-    object-fit: contain;
+    -o-object-fit: contain;
+       object-fit: contain;
     overflow: visible;
     height: 11.98705vw;
     margin-top: 1.84474vh;
@@ -735,8 +748,10 @@
 #tablet_composition_4>img {
     text-align: left;
     position: absolute;
-    object-fit: contain;
-    object-position: left;
+    -o-object-fit: contain;
+       object-fit: contain;
+    -o-object-position: left;
+       object-position: left;
     overflow: visible;
     width: 48.05699vw;
     height: 74.74093vw;
@@ -832,7 +847,8 @@
     position: absolute;
     width: 1.94301vw;
     right: 3.23834vw;
-    object-fit: contain;
+    -o-object-fit: contain;
+       object-fit: contain;
     -webkit-transform: rotate(0deg);
     -ms-transform: rotate(0deg);
     transform: rotate(0deg);
@@ -887,7 +903,8 @@
     z-index: -1;
     width: 41.02931vw;
     height: 96.11399vw;
-    object-fit: contain;
+    -o-object-fit: contain;
+       object-fit: contain;
     overflow: visible;
     top: 0;
     left: 0;
@@ -900,9 +917,11 @@
     right: 0;
     width: 51.39637vw;
     height: 68.18394vw;
-    object-fit: contain;
+    -o-object-fit: contain;
+       object-fit: contain;
     overflow: visible;
-    object-position: right;
+    -o-object-position: right;
+       object-position: right;
 }
 
 #tablet_comp_5__text_block_1 {
@@ -940,8 +959,10 @@
     left: 0;
     width: 47.53886vw;
     height: 53.49741vw;
-    object-fit: contain;
-    object-position: left;
+    -o-object-fit: contain;
+       object-fit: contain;
+    -o-object-position: left;
+       object-position: left;
     overflow: visible;
 }
 
@@ -989,8 +1010,10 @@
     width: 5.06606vw;
     height: 5.06606vw;
     overflow: visible;
-    object-fit: contain;
-    object-position: top right;
+    -o-object-fit: contain;
+       object-fit: contain;
+    -o-object-position: top right;
+       object-position: top right;
     z-index: 1;
 }
 
@@ -1085,8 +1108,10 @@
     top: 0;
     height: 38.8601vw;
     width: 44.55959vw;
-    object-fit: contain;
-    object-position: top right;
+    -o-object-fit: contain;
+       object-fit: contain;
+    -o-object-position: top right;
+       object-position: top right;
     overflow: visible;
 }
 
@@ -1243,8 +1268,10 @@
     z-index: 1;
     width: 82%;
     left: 9%;
-    object-fit: contain;
-    object-position: bottom;
+    -o-object-fit: contain;
+       object-fit: contain;
+    -o-object-position: bottom;
+       object-position: bottom;
 }
 
 .tablet__tester_card__mountains {
@@ -1515,8 +1542,8 @@
     right: 9.2%;
     width: 67%;
     bottom: 6.5%;
-    background-image: -webkit-gradient(linear, left top, left bottom, from(#3E5AFA), to(#4DB6FF));
     background-image: -o-linear-gradient(top, #3E5AFA 0%, #4DB6FF 100%);
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#3E5AFA), to(#4DB6FF));
     background-image: linear-gradient(180deg, #3E5AFA 0%, #4DB6FF 100%);
     font-weight: 500;
     letter-spacing: -0.015em;
@@ -1814,7 +1841,8 @@
 
 #tablet__comp_10__back>img {
     position: absolute;
-    object-fit: contain;
+    -o-object-fit: contain;
+       object-fit: contain;
     overflow: visible;
     z-index: -1;
     width: 100vw;
@@ -1893,8 +1921,8 @@
 }
 
 #tablet__send_form {
-    background: -webkit-gradient(linear, left top, left bottom, from(#3D59F9), to(#4DB6FE));
     background: -o-linear-gradient(top, #3D59F9 0%, #4DB6FE 100%);
+    background: -webkit-gradient(linear, left top, left bottom, from(#3D59F9), to(#4DB6FE));
     background: linear-gradient(180deg, #3D59F9 0%, #4DB6FE 100%);
     width: 100%;
     height: 6.12565vw;
@@ -1995,8 +2023,8 @@
     font-size: 1.81347vw;
     font-weight: 500;
     letter-spacing: -0.015em;
-    background-image: -webkit-gradient(linear, left top, left bottom, from(#3D59F9), to(#4DB6FE));
     background-image: -o-linear-gradient(top, #3D59F9 0%, #4DB6FE 100%);
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#3D59F9), to(#4DB6FE));
     background-image: linear-gradient(180deg, #3D59F9 0%, #4DB6FE 100%);
     -webkit-background-clip: text;
     background-clip: text;
@@ -2089,8 +2117,8 @@
     font-weight: 700;
     letter-spacing: -0.015em;
     margin-left: 4.92228vw;
-    background-image: -webkit-gradient(linear, left top, left bottom, from(#3D59F9), to(#4DB6FE));
     background-image: -o-linear-gradient(top, #3D59F9 0%, #4DB6FE 100%);
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#3D59F9), to(#4DB6FE));
     background-image: linear-gradient(180deg, #3D59F9 0%, #4DB6FE 100%);
     -webkit-background-clip: text;
     background-clip: text;
@@ -2189,8 +2217,10 @@
     position: absolute;
     width: 100%;
     z-index: -1;
-    object-fit: contain;
-    object-position: center center;
+    -o-object-fit: contain;
+       object-fit: contain;
+    -o-object-position: center center;
+       object-position: center center;
     overflow: visible;
 }
 
@@ -2284,9 +2314,11 @@
     width: 13.66969vw;
     height: 13.66969vw;
     border-radius: 50%;
-    object-fit: contain;
+    -o-object-fit: contain;
+       object-fit: contain;
     overflow: visible;
-    object-fit: center center;
+    -o-object-fit: center center;
+       object-fit: center center;
 }
 
 #tablet__comp_11__left_block__responder_block__name {
@@ -2319,8 +2351,10 @@
 
 #tablet__comp_12>img {
     position: absolute;
-    object-fit: contain;
-    object-position: top;
+    -o-object-fit: contain;
+       object-fit: contain;
+    -o-object-position: top;
+       object-position: top;
     z-index: -1;
     width: 100%;
     overflow: hidden;
