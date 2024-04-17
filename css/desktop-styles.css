@@ -337,7 +337,7 @@
 #composition_1__header #header_droppoint_1>h1,
 #composition_1__header #header_droppoint_2_1>h1,
 #composition_1__header #header_droppoint_2_2>h1 {
-    font-size: min(0.9375vw, 1.66667vh);
+    font-size: 0.9375vw;
     line-height: 1.90185vh;
     margin-left: 0.89167vw;
     font-weight: 700;
