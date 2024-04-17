@@ -221,6 +221,7 @@
 }
 
 #composition_1__header #header_point_1 {
+    --titleColor: #FFFFFF;
     width: 16.66667vw !important;
     -webkit-box-pack: justify;
     -ms-flex-pack: justify;
@@ -229,6 +230,16 @@
     -webkit-transition: margin-bottom 0.3s ease-in-out;
     -o-transition: margin-bottom 0.3s ease-in-out;
     transition: margin-bottom 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+#composition_1__header #header_point_2 {
+    --titleColor: #FFFFFF;
+}
+
+#composition_1__header #header_point_1:hover,
+#composition_1__header #header_point_2:hover {
+    --titleColor: #8ACFFF;
 }
 
 #composition_1__header #header_point_2 {
@@ -338,7 +349,13 @@
 }
 
 #composition_1__header #header_point_1>h1 {
-    color: #FFFFFF;
+    color: var(--titleColor);
+    transition: color 0.3s ease-in-out;
+}
+
+#composition_1__header #header_point_2>h1 {
+    color: var(--titleColor);
+    transition: color 0.3s ease-in-out;
 }
 
 #composition_1__header #header_droppoint_2_1,
@@ -518,8 +535,8 @@
 #fixed_header_droppoint_1>h1,
 #fixed_header_droppoint_2_1>h1,
 #fixed_header_droppoint_2_2>h1 {
-    font-size: min(0.9375vw, 1.66667vh);
-    line-height: 1.90185vh;
+    font-size: 0.8375vw;
+    line-height: 0.93vw;
     margin-left: 0.89167vw;
     font-weight: 700;
     overflow: visible;
@@ -529,8 +546,31 @@
     transition: 0.3s color ease-in-out;
 }
 
-#fixed_header_point_1>h1 {
-    color: #ffffff;
+#fixed_header_point_1 {
+    --titleColor: #fff;
+    cursor: pointer;
+}
+
+#fixed_header_point_1:hover {
+    --titleColor: #8ACFFF;
+}
+
+#fixed_header_point_1 >h1 {
+    color: var(--titleColor);
+    transition: color 0.3s ease-in-out;
+}
+
+#fixed_header_point_2 {
+    --titleColor: #fff;
+}
+
+#fixed_header_point_2:hover {
+    --titleColor: #8ACFFF;
+}
+
+#fixed_header_point_2 >h1 {
+    color: var(--titleColor);
+    transition: color 0.3s ease-in-out;
 }
 
 #fixed_header_droppoint_2_1,
@@ -691,17 +731,17 @@
     overflow: visible;
 }
 
-#composition_2__widget_img_1{
+#composition_2__widget_img_1 {
     width: 7.34375vw;
     object-fit: contain;
 }
 
-#composition_2__widget_img_2{
+#composition_2__widget_img_2 {
     width: 5.02813vw;
     object-fit: contain;
 }
 
-#composition_2__widget_img_3{
+#composition_2__widget_img_3 {
     width: 5.6401vw;
     object-fit: contain;
 }
@@ -1791,7 +1831,7 @@
 
 #composition_9__top>h1 {
     font-weight: 500;
-    font-size: min(3.33333vw, 5.92593vh);
+    font-size: 3.33333vw;
     letter-spacing: -0.015em;
 }
 
@@ -2139,7 +2179,7 @@
     color: #EDEDED;
     font-weight: 500;
     letter-spacing: -0.015em;
-    font-size: min(1.47188vw, 2.61667vh);
+    font-size: 1.04vw;
     line-height: 2.61667vh;
     overflow: visible;
 }

@@ -86,7 +86,10 @@ const fixedHeaderMenuBlockPoint2 = document.getElementById('fixed_header_block_p
 const fixedHeaderMenuInnerPoint2 = document.getElementById('fixed_header_point_2');
 const fixedHeaderMenuPoint2Pointer = document.getElementById('fixed_header_point_2_pointer');
 
-
+const uslugiTestirovaniya = document.getElementById('header_point_1');
+const uslugiTestirovaniyaFixed = document.getElementById('fixed_header_point_1');
+const studyCourse = document.getElementById('header_point_2');
+const studyCourseFixed = document.getElementById('fixed_header_point_2');
 
 const interactionBlockButton = document.getElementById('composition_1__interaction_block__button');
 const composition_10 = document.getElementById('composition_10');
@@ -336,12 +339,30 @@ headerMenuBlockPoint2.addEventListener('mousemove', () => { //при ДВИЖЕ�
 
 headerMenuBlockPoint2.addEventListener('mouseleave', hederMenuPoint2IsLeaveFunction);
 
+uslugiTestirovaniya.addEventListener('click', () => {
+    window.open(SERVIES_LINK, '_blank');
+})
+
+uslugiTestirovaniyaFixed.addEventListener('click', () => {
+    window.open(SERVIES_LINK, '_blank');
+})
+
+studyCourse.addEventListener('click', () => {
+    window.open(COUESES_LINK, '_blank');
+})
+
+studyCourseFixed.addEventListener('click', () => {
+    window.open(COUESES_LINK, '_blank');
+})
+
+
+
 headerMenuDropPoint2_1.addEventListener('click', () => {
-    window.location.href = SOFTWARE_TESTER_COURSE;
+    window.open(SOFTWARE_TESTER_COURSE, '_blank');
 })
 
 headerMenuDropPoint2_2.addEventListener('click', () => {
-    window.location.href = COMPUTER_LITERACY_COURSE_FOR_QA;
+    window.open(COMPUTER_LITERACY_COURSE_FOR_QA, '_blank');
 })
 
 const setActiveResponders = (number) => {
@@ -448,11 +469,11 @@ fixedHeaderMenuBlockPoint2.addEventListener('mousemove', () => { //при ДВИ
 fixedHeaderMenuBlockPoint2.addEventListener('mouseleave', fixedHederMenuPoint2IsLeaveFunction);
 
 fixedHeaderMenuDropPoint2_1.addEventListener('click', () => {
-    window.location.href = SOFTWARE_TESTER_COURSE;
+    window.open(SOFTWARE_TESTER_COURSE, '_blank');
 })
 
 fixedHeaderMenuDropPoint2_2.addEventListener('click', () => {
-    window.location.href = COMPUTER_LITERACY_COURSE_FOR_QA;
+    window.open(COMPUTER_LITERACY_COURSE_FOR_QA, '_blank');
 })
 
 
@@ -472,15 +493,15 @@ contactsBlockMail.addEventListener('click', () => {
 });
 
 contactsBlockLocation.addEventListener('click', () => {
-    window.location.href = `https://yandex.ru/maps/-/:${LOCATION}`;
+    window.open(`https://yandex.ru/maps/-/:${LOCATION}`, '_blank');
 });
 
 linksBlockCategory1.addEventListener('click', () => {
-    window.location.href = SERVIES_LINK;
+    window.open(SERVIES_LINK, '_blank');
 });
 
 linksBlockCategory3.addEventListener('click', () => {
-    window.location.href = COUESES_LINK;
+    window.open(COUESES_LINK, '_blank');
 });
 
 contactsBlockTel.addEventListener('click', () => {
