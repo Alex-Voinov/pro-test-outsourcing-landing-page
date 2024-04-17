@@ -518,6 +518,7 @@ sendFormButton.addEventListener('click', (event) => {
         skillLevelTesters = formCheckBoxValue[1] && formCheckBoxValue[2] ? 'Middle, Senior' : formCheckBoxValue[1] ? 'Middle' : 'Senior';
     }
     if (!isError) {
+        let formData = new FormData();
         sendFormButton.innerText = 'Отправка...';
         const msg = MESSAGE_TEMPLATE.replace(
             '%description', description).replace(
