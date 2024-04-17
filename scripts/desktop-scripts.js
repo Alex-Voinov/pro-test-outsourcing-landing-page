@@ -218,25 +218,33 @@ mainForm.addEventListener('submit', (event) => {
 
 
         formData.append('message', msg)
+        let badResponse = false;
         fetch('process_form.php', {
             method: 'POST',
             body: formData
         })
-            .then(response => response.json())
+            .then(response => { if (!response.ok) badResponse = true })
             .then(data => {
                 console.log('Server response:', data);
-                sendFormButton.innerText = 'Отправлено 🚀';
-                setTimeout(() => {
-                    sendFormButton.innerText = 'Отправить заявку';
-                }, 2000)
+                if (data !== 'ok') { badResponse = true }
+
             })
             .catch(error => {
                 console.error('Error:', error);
-                sendFormButton.innerText = 'Произошла ошибка';
-                setTimeout(() => {
-                    sendFormButton.innerText = 'Отправить заявку';
-                }, 2000)
+                badResponse = true;
+
             });
+        if (badResponse) {
+            sendFormButton.innerText = 'Произошла ошибка';
+            setTimeout(() => {
+                sendFormButton.innerText = 'Отправить заявку';
+            }, 2000)
+        } else {
+            sendFormButton.innerText = 'Отправлено 🚀';
+            setTimeout(() => {
+                sendFormButton.innerText = 'Отправить заявку';
+            }, 2000)
+        }
     } else {
         sendFormButton.innerText = 'Ошибка, заявка не отправлена 😢';
         sendFormButton.style.cursor = 'not-allowed';
