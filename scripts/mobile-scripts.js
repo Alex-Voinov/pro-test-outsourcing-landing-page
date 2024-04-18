@@ -460,11 +460,11 @@ sendFormButton.addEventListener('click', (event) => {
         nameInput.placeholder = 'Введите имя';
         nameInput.style.border = '1px solid red';
         nameInput.style.color = 'red';
-        setTimeout(() => {
-            nameInput.placeholder = 'Имя';
-            nameInput.style.border = '';
-            nameInput.style.color = '';
-        }, 2000)
+        // setTimeout(() => {
+        //     nameInput.placeholder = 'Имя';
+        //     nameInput.style.border = '';
+        //     nameInput.style.color = '';
+        // }, 2000)
     }
     else if (!/^[a-zA-Zа-яА-Я\s]+$/.test(name)) {
         isError = true;
@@ -472,22 +472,22 @@ sendFormButton.addEventListener('click', (event) => {
         nameInput.placeholder = 'Недопустимый символ';
         nameInput.style.border = '1px solid red';
         nameInput.style.color = 'red';
-        setTimeout(() => {
-            nameInput.placeholder = 'Имя';
-            nameInput.style.border = '';
-            nameInput.style.color = '';
-        }, 2000)
+        // setTimeout(() => {
+        //     nameInput.placeholder = 'Имя';
+        //     nameInput.style.border = '';
+        //     nameInput.style.color = '';
+        // }, 2000)
     }
     if (!tel) {
         isError = true;
         telInput.placeholder = 'Введите номер телефона';
         telInput.style.border = '1px solid red';
         telInput.style.color = 'red';
-        setTimeout(() => {
-            telInput.placeholder = 'Номер телефона';
-            telInput.style.border = '';
-            telInput.style.color = '';
-        }, 2000)
+        // setTimeout(() => {
+        //     telInput.placeholder = 'Номер телефона';
+        //     telInput.style.border = '';
+        //     telInput.style.color = '';
+        // }, 2000)
     }
     else if (!/^\+?[0-9() ]{0,14}$/.test(tel)) {
         isError = true;
@@ -495,11 +495,11 @@ sendFormButton.addEventListener('click', (event) => {
         telInput.style.border = '1px solid red';
         telInput.style.color = 'red';
         telInput.value = ''
-        setTimeout(() => {
-            telInput.placeholder = 'Номер телефона';
-            telInput.style.border = '';
-            telInput.style.color = '';
-        }, 2000)
+        // setTimeout(() => {
+        //     telInput.placeholder = 'Номер телефона';
+        //     telInput.style.border = '';
+        //     telInput.style.color = '';
+        // }, 2000)
     }
     const email = document.getElementById('mobile__form__email').value || '';
     let skillLevelTesters = '';
@@ -548,12 +548,12 @@ sendFormButton.addEventListener('click', (event) => {
             sendFormButton.innerText = 'Произошла ошибка';
             setTimeout(() => {
                 sendFormButton.innerText = 'Отправить заявку';
-            }, 2000)
+            }, 5000)
         } else {
             sendFormButton.innerText = 'Отправлено 🚀';
             setTimeout(() => {
                 sendFormButton.innerText = 'Отправить заявку';
-            }, 2000)
+            }, 5000)
         }
     } else {
         sendFormButton.innerText = 'Ошибка, заявка не отправлена 😢';
@@ -561,7 +561,7 @@ sendFormButton.addEventListener('click', (event) => {
         setTimeout(() => {
             sendFormButton.innerText = 'Отправить заявку';
             sendFormButton.style.cursor = '';
-        }, 1000)
+        }, 7000)
     }
 })
 
